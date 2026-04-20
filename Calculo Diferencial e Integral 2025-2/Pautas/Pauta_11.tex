@@ -1,0 +1,994 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{framed}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=1.5cm,top=0.9cm,right=1.5cm, bottom=1.4cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+% Page
+\oddsidemargin -0.4in
+\textwidth 7in
+\topmargin -0.6in
+\textheight 9.1in
+\parindent 0em
+\parskip 1ex
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+% fin macros
+
+% Comandos más usados
+% Conjuntos
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R} \times \mathbb{R}}
+% Flechas
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+\newcommand{\pmi}{\Longleftarrow}
+% Trigonométricas
+\newcommand{\sen}{\text{sen}}
+
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Prueba con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+	
+	\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+	\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+	
+	\begin{minipage}{11.5 cm}
+         \vspace{-6mm}
+		\begin{flushleft}
+			\vspace{1mm}
+			\textbf{ING1002-2 Cálculo Diferencial e Integral}\\
+			\textbf{Profesor:}  Gonzalo Flores G.  \\
+			\textbf{Ayudante:}  Juan I. Riquelme \& Cristian Acevedo R. \\
+		\end{flushleft}
+	\end{minipage}
+	
+	\begin{picture}(2,3)
+		\put(430,9.5){\includegraphics[scale=0.22]{Imagenes/UOH.png}}
+	\end{picture}
+	\vspace{-6mm}
+	\begin{center}
+		\LARGE \bf{Pauta Ayudantía 11 $+$ ejercicios extra} %Teorema Fundamental del Cálculo
+	\end{center}
+    
+\begin{enumerate}[\textbf{P\arabic{enumi}.}]
+
+\item Usando integración por partes calcule las siguientes primitivas
+\begin{enumerate}
+    \item $\displaystyle \int x^2 \sen(x) \, dx$
+    \item $\displaystyle \int x^3 \ln^2(x) dx$
+\end{enumerate}
+
+\color{blue}
+\textbf{Sol:} a) una vaca sin cola vestida de uniforme
+\[
+u = x^2 \quad \Rightarrow \quad du = 2x\,dx
+\]
+\[
+dv = \sen(x)\,dx \quad \Rightarrow \quad v = -\cos(x)
+\]
+\[
+\int x^2 \sen(x)\,dx
+= -x^2\cos(x) + \int 2x\cos(x)\,dx
+\]
+\[
+\int 2x\cos(x)\,dx
+\]
+\[
+u = 2x \quad \Rightarrow \quad du = 2\,dx
+\]
+\[
+dv = \cos(x)\,dx \quad \Rightarrow \quad v = \sen(x)
+\]
+\[
+\int 2x\cos(x)\,dx
+= 2x\sen(x) - \int 2\sen(x)\,dx
+\]
+\[
+= 2x\sen(x) + 2\cos(x)
+\]
+\[
+\int x^2 \sen(x)\,dx
+= -x^2\cos(x) + 2x\sen(x) + 2\cos(x) + C
+\]
+b) para $\displaystyle 
+\int x^3 \ln^2(x)\,dx$
+\[
+u = \ln^2(x) \quad \Rightarrow \quad du = \frac{2\ln(x)}{x}\,dx
+\]
+\[
+dv = x^3\,dx \quad \Rightarrow \quad v = \frac{x^4}{4}
+\]
+\[
+\int x^3 \ln^2(x)\,dx
+= \frac{x^4}{4}\ln^2(x) - \int \frac{x^4}{4}\cdot\frac{2\ln(x)}{x}\,dx
+\]
+\[
+= \frac{x^4}{4}\ln^2(x) - \frac{1}{2}\int x^3\ln(x)\,dx
+\]
+\[
+\int x^3\ln(x)\,dx
+\]
+\[
+u = \ln(x) \quad \Rightarrow \quad du = \frac{1}{x}\,dx
+\]
+\[
+dv = x^3\,dx \quad \Rightarrow \quad v = \frac{x^4}{4}
+\]
+\[
+\int x^3\ln(x)\,dx
+= \frac{x^4}{4}\ln(x) - \int \frac{x^4}{4}\cdot\frac{1}{x}\,dx
+\]
+\[
+= \frac{x^4}{4}\ln(x) - \frac{1}{4}\int x^3\,dx
+\]
+\[
+= \frac{x^4}{4}\ln(x) - \frac{x^4}{16} +C
+\]
+
+\color{black}
+
+\item Considere la función $f : \mathbb{R} \to \mathbb{R}$ definida por $f(x) = \dfrac{1 - x^2}{1 + x^2}$ y la región $\mathcal{R}$ definida como el sector del plano comprendido entre $f$ y el eje horizontal $OX$, entre los ceros de $f$.
+\begin{enumerate}
+    \item Demuestre que existen $A, B \in \mathbb{R}$ tales que, para todo $x \in \mathbb{R}$, $f(x) = A + \dfrac{B}{1 + x^2}$
+
+    \color{blue}
+    \textbf{Sol:} Sea $\displaystyle A+\frac{B}{1+x^2}$
+\[
+A+\frac{B}{1+x^2}=\frac{A(1+x^2)+B}{1+x^2}.
+\]
+Igualamos a $f(x)$
+\[
+\dfrac{1 - x^2}{1 + x^2}=\frac{A(1+x^2)+B}{1+x^2} \implies
+A(1+x^2)+B=1-x^2.
+\]
+igualamos coeficientes
+\[
+\begin{cases}
+A= -1,\\
+A+B=1,
+\end{cases}
+\Rightarrow\ B=2.
+\]
+en efecto
+\[
+f(x)=-1+\frac{2}{1+x^2}, \qquad \forall x\in\mathbb{R}.
+\]
+    \color{black}
+    
+    \item Calcule el área de la región $\mathcal{R}$.
+
+\color{blue}
+\textbf{Sol:} Los ceros de $f$ se obtienen de
+\[
+1-x^2=0 \;\Rightarrow\; x=\pm1.
+\]
+Como $f(x)\ge 0$ en $[-1,1]$, el área es
+\[
+A=\int_{-1}^{1} f(x)\,dx.
+\]
+Usando que $\displaystyle f(x)=-1+\dfrac{2}{1+x^2}$,
+\[
+A=\int_{-1}^{1}\left(-1+\frac{2}{1+x^2}\right)dx.
+\]
+\[
+A=\left[-x+2\arctan x\right]_{-1}^{1}
+\]
+\[
+A=\big(-1+2\arctan 1\big)-\big(1-2\arctan 1\big)
+= -2+4\arctan 1.
+\]
+como $\arctan 1=\dfrac{\pi}{4}$,
+\[
+A=\pi-2
+\]
+\color{black}
+    
+\item Calcule el volumen del sólido de revolución obtenido al rotar la región $\mathcal{R}$.
+
+\textbf{Hint:} Puede usar que $\displaystyle \int \frac{1}{(1+x^2)^2} \, dx = \frac{1}{2} \left( \frac{x}{x^2+1} + \arctan(x) \right) + C$
+
+\color{blue}
+\textbf{Sol:} al tratarse de un sólido de revolución:
+\begin{align*}
+V(\mathcal{R}) &= \pi \int_{-1}^{1} f^2(x) \, dx = \pi \int_{-1}^{1} \left( \frac{2}{1+x^2} - 1 \right)^2 dx \\
+&= \pi \int_{-1}^{1} \left( \frac{4}{(1+x^2)^2} - \frac{4}{1+x^2} + 1 \right) dx \\
+&= \pi \left( \frac{4}{2} \left( \frac{x}{x^2+1} + \arctan(x) \right) - 4 \arctan(x) + x \right) \bigg|_{-1}^{1} \\
+&= \pi \left( 2 \left( \frac{1}{2} + \frac{\pi}{4} \right) - 4 \frac{\pi}{4} + 1 \right. \\
+&\quad - \left. \left( 2 \left( -\frac{1}{2} - \frac{\pi}{4} \right) + 4 \frac{\pi}{4} - 1 \right) \right) \\
+&= \pi \left( 1 + \pi/2 - \pi + 1 + 1 + \pi/2 - \pi + 1 \right) \\
+&= \pi (4 - \pi) > 0 \quad (\text{¡ojo con eso!})
+\end{align*}
+\color{black}
+
+\end{enumerate}
+
+    
+    \item Sea $f(x) = x\sqrt{1 - x^2}$. Si
+    \[
+    R = \{(x, y) \in \mathbb{R}^2 \mid 0 \le x \le 1, 0 \le y \le f(x)\}.
+    \]
+    \begin{enumerate}
+        \item Encuentre el área de la región $R$.
+
+\color{blue}
+\textbf{Sol:} El área de $R$ es
+\[
+A=\int_{0}^{1} x\sqrt{1-x^2}\,dx.
+\]
+cambio de variable $u=1-x^2$, entonces $du=-2x\,dx$, (recordar ajustar los límites de integración).
+\[
+A=\frac12\int_{0}^{1} \sqrt{u}\,du.
+\]
+\[
+A=\frac12\left[\frac{2}{3}u^{3/2}\right]_{0}^{1}=1/3
+\]
+\color{black}
+        
+        \item Encuentre el volumen del sólido de revolución que se obtiene al rotar la región $R$ en torno al eje $OX$.
+
+\color{blue}
+\textbf{Sol:} Al rotar $R$ alrededor del eje $OX$ usamos
+\[
+V=\pi\int_{0}^{1} \bigl(f(x)\bigr)^2\,dx.
+\]
+con $f(x)=x\sqrt{1-x^2}$,
+\[
+\bigl(f(x)\bigr)^2=x^2(1-x^2).
+\]
+\[
+V=\pi\int_{0}^{1}\left(x^2-x^4\right)dx.
+\]
+\[
+V=\pi\left[\frac{x^3}{3}-\frac{x^5}{5}\right]_{0}^{1}.
+\]
+\[
+V=\pi\left(\frac{1}{3}-\frac{1}{5}\right)=\frac{2\pi}{15}.
+\]
+
+\color{black}
+          
+    \end{enumerate}
+    \item 
+\begin{enumerate}
+\item Sean $\displaystyle I = \int \cos(\ln(x))dx$ y $\displaystyle J = \int \sen(\ln(x))dx$. Usando integración por partes, plantee un sistema lineal que permita calcular $I$ y $J$. Calcule $I$ y $J$.
+
+\color{blue}
+\textbf{Sol:} Definimos
+\[
+I=\int \cos(\ln x)\,dx, \qquad J=\int \sen(\ln x)\,dx.
+\]
+Para $I$, integramos por partes con
+\[
+u=\cos(\ln x), \quad dv=dx,
+\]
+\[
+du=-\frac{\sen(\ln x)}{x}dx, \quad v=x.
+\]
+\[
+I=x\cos(\ln x)+\int \sen(\ln x)\,dx=x\cos(\ln x)+J.
+\]
+Para $J$, integramos por partes con
+\[
+u=\sen(\ln x), \quad dv=dx,
+\]
+\[
+du=\frac{\cos(\ln x)}{x}dx, \quad v=x.
+\]
+\[
+J=x\sen(\ln x)-\int \cos(\ln x)\,dx=x\sen(\ln x)-I.
+\]
+obtenemos el sistema lineal:
+\[
+\begin{cases}
+I - J = x\cos(\ln x),\\
+I + J = x\sen(\ln x).
+\end{cases}
+\]
+resolvemos
+\[
+I=\frac{x}{2}\big(\sen(\ln x)+\cos(\ln x)\big)+C,
+\]
+\[
+J=\frac{x}{2}\big(\sen(\ln x)-\cos(\ln x)\big)+C.
+\]
+\color{black}
+
+\item Deducir una fórmula de recurrencia para $\displaystyle I_{m,n} = \int x^m (\ln(x))^n dx$. Use la fórmula para calcular $\displaystyle \int x^2 \ln x$.
+
+\color{blue}
+\textbf{Sol:} Sea
+\[
+I_{m,n}=\int x^m(\ln x)^n\,dx,\qquad m\neq -1.
+\]
+Integramos por partes tomando
+\[
+u=(\ln x)^n,\quad dv=x^m dx,
+\]
+de donde
+\[
+du=\frac{n(\ln x)^{\,n-1}}{x}dx,\quad v=\frac{x^{m+1}}{m+1}.
+\]
+\[
+I_{m,n}=\frac{x^{m+1}}{m+1}(\ln x)^n-\frac{n}{m+1}\int x^m(\ln x)^{n-1}dx.
+\]
+Obtenemos la fórmula de recurrencia:
+\[
+\,I_{m,n}=\frac{x^{m+1}}{m+1}(\ln x)^n-\frac{n}{m+1}I_{m,n-1}\, .
+\]
+para $\displaystyle \int x^2\ln x\,dx$, tenemos $m=2$, $n=1$.
+\[
+I_{2,1}=\frac{x^3}{3}\ln x-\frac{1}{3}I_{2,0}.
+\]
+Como
+\[
+I_{2,0}=\int x^2dx=\frac{x^3}{3},
+\]
+\[
+\int x^2\ln x\,dx=\frac{x^3}{3}\ln x-\frac{x^3}{9}+C.
+\]
+\color{black}
+
+\end{enumerate}
+\newpage
+\item Dadas las curvas $y = mx$ y $y = x^2$, considere la región limitada por ambas curvas y encuentre el valor de $m > 0$, para que los volúmenes de los sólidos obtenidos al rotar la región definida en torno al eje $OX$ y al eje $OY$, sean iguales. Luego, calcule el área encerrada entre ambas curvas.
+
+\color{blue}
+\textbf{Sol:} \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes/grafica_integral.png}
+\end{figure}
+Las curvas $y=mx$ y $y=x^2$ se intersectan cuando
+\[
+x^2=mx \;\Rightarrow\; x=0,\; x=m.
+\]
+Volumen al rotar en torno a $OX$ (método de anillos):
+\[
+V_{OX}=\pi\int_{0}^{m}\big[(mx)^2-(x^2)^2\big]dx
+=\pi\int_{0}^{m}(m^2x^2-x^4)dx.
+\]
+\[
+V_{OX}=\pi\left[\frac{m^2x^3}{3}-\frac{x^5}{5}\right]_{0}^{m}
+=\pi m^5\left(\frac{1}{3}-\frac{1}{5}\right)
+=\frac{2\pi m^5}{15}.
+\]
+Volumen al rotar en torno a $OY$ (método de capas cilíndricas):
+\[
+V_{OY}=2\pi\int_{0}^{m}x(mx-x^2)\,dx
+=2\pi\int_{0}^{m}(mx^2-x^3)dx.
+\]
+\[
+V_{OY}=2\pi\left[\frac{mx^3}{3}-\frac{x^4}{4}\right]_{0}^{m}
+=2\pi m^4\left(\frac{1}{3}-\frac{1}{4}\right)
+=\frac{\pi m^4}{6}.
+\]
+Igualando volúmenes $V_{OX}=V_{OY}$:
+\[
+\frac{2\pi m^5}{15}=\frac{\pi m^4}{6}
+\;\Rightarrow\;
+m=\frac{5}{4}.
+\]
+Área encerrada entre las curvas:
+\[
+A=\int_{0}^{m}(mx-x^2)\,dx.
+\]
+Con $m=\tfrac{5}{4}$,
+\[
+A=\left[\frac{mx^2}{2}-\frac{x^3}{3}\right]_{0}^{5/4}
+=\frac{125}{384}.
+\]
+
+
+
+\color{black}
+
+
+
+    \item Dada la elipse de ecuación
+    \[
+    \frac{x^2}{2} + y^2 = 1,
+    \]
+    encuentre el volumen del manto generado al rotar esta elipse en torno al eje $OX$ entre $x = -1$ y $x = 1$.
+
+\color{blue}
+\textbf{Sol:} 
+De la elipse
+\[
+\frac{x^2}{2}+y^2=1
+\]
+se obtiene
+\[
+y^2=1-\frac{x^2}{2}.
+\]
+Al rotar alrededor del eje $OX$ se obtiene
+\[
+V=\pi\int_{-1}^{1} y^2\,dx
+=\pi\int_{-1}^{1}\left(1-\frac{x^2}{2}\right)dx.
+\]
+\[
+V=\pi\left[x-\frac{x^3}{6}\right]_{-1}^{1}.
+\]
+\[
+V=\pi\left[\left(1-\frac{1}{6}\right)-\left(-1+\frac{1}{6}\right)\right]
+=\frac{5\pi}{3}
+\]
+\color{black}
+
+\begin{enumerate}
+
+
+\item Calcule las siguientes primitivas usando integraci\'on por partes
+\begin{enumerate}
+    \item $\displaystyle \int x \cos(2x) dx$
+
+\color{blue}
+\textbf{Sol:} $$
+\begin{aligned}
+\text{Sea } u &= x \quad \Rightarrow \quad du = dx \\
+dv &= \cos(2x)\,dx \quad \Rightarrow \quad v = \frac{1}{2} \sen(2x) \\[6pt]
+\int x \cos(2x)\,dx 
+&= uv - \int v\,du \\
+&= x \cdot \frac{1}{2} \sen(2x) - \int \frac{1}{2} \sen(2x)\,dx \\[6pt]
+&= \frac{x}{2} \sen(2x) - \frac{1}{2} \int \sen(2x)\,dx \\
+&= \frac{x}{2} \sen(2x) + \frac{1}{4} \cos(2x) + C
+\end{aligned}
+$$
+\color{black}
+
+    
+    \item $\displaystyle \int x \arctan(x) dx$  
+
+\color{blue}
+\textbf{Sol:} $$
+\begin{aligned}
+\text{Sea } u &= \arctan(x) \ \Rightarrow \ du = \frac{1}{1 + x^2} \, dx \\
+dv &= x\,dx \ \Rightarrow \ v = \frac{x^2}{2} \\[6pt]
+\int x \arctan(x)\,dx 
+&= uv - \int v\,du \\
+&= \frac{x^2}{2} \cdot \arctan(x) - \int \frac{x^2}{2} \cdot \frac{1}{1 + x^2} \, dx \\[6pt]
+&= \frac{x^2}{2} \arctan(x) - \frac{1}{2} \int \frac{x^2}{1 + x^2} \, dx \\
+&= \frac{x^2}{2} \arctan(x) - \frac{1}{2} \int \left(1 - \frac{1}{1 + x^2}\right) dx \\
+&= \frac{x^2}{2} \arctan(x) - \frac{1}{2} \left( x - \arctan(x) \right) + C \\
+&= \frac{x^2}{2} \arctan(x) - \frac{x}{2} + \frac{1}{2} \arctan(x) + C \\[6pt]
+&= \left( \frac{x^2}{2} + \frac{1}{2} \right) \arctan(x) - \frac{x}{2} + C
+\end{aligned}
+$$
+\color{black}
+
+    
+    \item $\displaystyle \int \ln^2(x) dx$ 
+
+\color{blue}
+\textbf{Sol:} $$
+\begin{aligned}
+\text{Sea } u &= \ln^2(x) \ \Rightarrow \ du = \frac{2\ln(x)}{x}\,dx \\
+dv &= dx \ \Rightarrow \ v = x \\[6pt]
+\int \ln^2(x)\,dx 
+&= uv - \int v\,du \\
+&= x \ln^2(x) - \int x \cdot \frac{2\ln(x)}{x}\,dx \\
+&= x \ln^2(x) - 2 \int \ln(x)\,dx \\
+&= x \ln^2(x) - 2(x \ln(x) - x) + C \\
+&= x \ln^2(x) - 2x \ln(x) + 2x + C
+\end{aligned}
+$$
+
+\color{black}
+
+    
+    \item $\displaystyle \int x^3 \ln(x) dx$
+
+\color{blue}
+\textbf{Sol:} $$
+\begin{aligned}
+\text{Sea } u &= \ln(x) \ \Rightarrow \ du = \frac{1}{x} dx \\
+dv &= x^3\,dx \ \Rightarrow \ v = \frac{x^4}{4} \\[6pt]
+\int x^3 \ln(x)\,dx 
+&= uv - \int v\,du \\
+&= \frac{x^4}{4} \ln(x) - \int \frac{x^4}{4} \cdot \frac{1}{x}\,dx \\
+&= \frac{x^4}{4} \ln(x) - \frac{1}{4} \int x^3\,dx \\
+&= \frac{x^4}{4} \ln(x) - \frac{1}{4} \cdot \frac{x^4}{4} + C \\
+&= \frac{x^4}{4} \ln(x) - \frac{x^4}{16} + C
+\end{aligned}
+$$
+\color{black}
+
+    
+    \item $\displaystyle \int \sen(x) e^{2x} dx$
+
+\color{blue}
+\textbf{Sol:}  
+\begin{align*}
+\text{Sea } & u = e^{2x}, \quad dv = \sen(x) \, dx \\
+& du = 2 e^{2x} \, dx, \quad v = -\cos(x) \\
+\end{align*}
+
+\vspace{-1cm}
+Reemplazando
+\vspace{-0.5cm}
+
+\begin{align*}
+\int \sen(x) e^{2x} \, dx &= - e^{2x} \cos(x) + 2 \underset{I}{\int e^{2x} \sen(x) \, dx} \\
+\end{align*}
+\vspace{-1cm}
+Resolviendo $I$
+\vspace{-0.5cm}
+\begin{align*}
+\text{Sea} \ & u = e^{2x}, \quad dv = \cos(x) \, dx \\
+& du = 2 e^{2x} \, dx, \quad v = \sen(x) \\
+ I &= \sen(x) e^{2x} - 2 \int e^{2x} \sen(x) \, dx \\
+\therefore \quad \int \sen(x) e^{2x} \, dx &= - e^{2x} \cos(x) + 2 \left( \sen(x) e^{2x} -2 \int e^{2x} \sen(x) \, dx\right) \\
+\int \sen(x) e^{2x} \, dx &= - e^{2x} \cos(x) + 2 \sen(x) e^{2x} -4 \int e^{2x} \sen(x) \, dx \\
+5\int \sen(x) e^{2x} \, dx &= - e^{2x} \cos(x) + 2 \sen(x) e^{2x} \\
+\text{Finalmente} \quad \int \sen(x) e^{2x} \, dx &= - \frac{e^{2x} \cos(x)}{5} + \frac{2}{5} \sen(x) e^{2x} + C
+\end{align*}
+\color{black}
+
+
+    
+    \item $\displaystyle \int \frac{xe^{x}}{(1+x)^{2}}dx. $
+
+\color{blue}
+\textbf{Sol:} $$
+\begin{aligned}
+\text{Sea } t &= 1 + x \quad \Rightarrow \quad dt = dx, \quad x = t - 1 \\[6pt]
+\int \frac{x e^{x}}{(1+x)^2} dx 
+&= \int \frac{(t - 1) e^{t - 1}}{t^2} dt \\
+&= \int \frac{(t - 1)}{t^2} e^{t - 1} dt = \int \left( \frac{t}{t^2} - \frac{1}{t^2} \right) e^{t - 1} dt \\
+&= \int \left( \frac{1}{t} - \frac{1}{t^2} \right) e^{t - 1} dt = e^{-1} \int \left( \frac{1}{t} - \frac{1}{t^2} \right) e^{t} dt \\
+&= e^{-1} \int \left( \frac{1}{t} e^{t} - \frac{1}{t^2} e^{t} \right) dt
+\end{aligned}
+$$
+\color{black}
+
+    
+\end{enumerate}
+\end{enumerate}
+
+
+\item Seguramente recuerda la fórmula para el volumen
+de una pirámide. Entonces demuestrela: 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Imagenes/piramides.png}
+    \caption{pirámide de base cuadrada (a. izq) y pirámide de base irregular (b. der)}
+\end{figure}
+
+\color{blue}
+\textbf{Sol:} ver el siguiente video https://www.youtube.com/watch?v=6rynOsZppEE (si hago la pauta de esto no se va a entender).
+\color{black}
+
+\item Considere la función $f : [0, \frac{1}{2}] \to \mathbb{R}$ definida por
+$$
+f(x) = -\ln(1 - x^2)
+$$
+Sea $A$ la región del plano limitada por la curva $f(x)$ y el eje $OX$ para $x \in [0, \frac{1}{2}]$.
+\begin{enumerate}
+    \item[(a)] Calcule el área de la región $A$.
+
+\color{blue}
+    \textbf{Sol:} El área de la región $A$ viene dada por
+\[
+A=\int_{0}^{1/2} -\ln(1-x^2)\,dx.
+\]
+Aplicamos integración por partes
+\[
+u=-\ln(1-x^2), \qquad dv=dx,
+\implies
+du=\frac{2x}{1-x^2}\,dx, \qquad v=x.
+\]
+\[
+\int -\ln(1-x^2)\,dx
+= -x\ln(1-x^2)-\int \frac{2x^2}{1-x^2}\,dx.
+\]
+tenemos que
+\[
+\frac{2x^2}{1-x^2}=-2+\frac{2}{1-x^2},
+\]
+\[
+\int -\ln(1-x^2)\,dx
+= -x\ln(1-x^2)+2x-2\,\operatorname{artanh}(x)+C.
+\]
+
+Evaluando entre $0$ y $\tfrac12$:
+\[
+A=\left[-x\ln(1-x^2)+2x-2\,\operatorname{artanh}(x)\right]_{0}^{1/2}.
+\]
+\[
+\operatorname{artanh}\!\left(\tfrac12\right)=\tfrac12\ln 3,
+\]
+\[
+A=-\tfrac12\ln\!\left(\tfrac34\right)+1-\ln 3
+=1+\ln 2-\tfrac32\ln 3.
+\]
+Por lo tanto, el área de la región $A$ es
+\[
+A=1+\ln 2-\tfrac{3}{2}\ln 3.
+\]
+    \color{black}
+    \item[(b)] Calcule el volumen del sólido de revolución que se obtiene al rotar la región $A$ en torno al eje $OY$.
+
+\color{blue}
+\textbf{Sol:} \[
+\begin{aligned}
+V_{OY} &= 2\pi \int_{a}^{b} x f(x) \, dx \implies V_{OY} = 2\pi \int_{0}^{1/2} -x \ln(1-x^2) \, dx \\
+&\quad \text{c.v. } u = 1-x^2 \\
+&\quad du = -2x \, dx \implies V_{OY} = \pi \int_{1}^{3/4} \ln(u) \, du = \dots \\
+&\quad u(0)=1, \ u(1/2)=3/4 \\
+\dots &= -\pi \Big( u \ln u - u \Big) \bigg|_{1}^{3/4} \\
+&= \pi \Big( u - u \ln(u) \Big) \bigg|_{3/4}^{1} \\
+&= \pi \left( 1 - \underbrace{1 \ln(1)}_{0} - \frac{3}{4} + \frac{3}{4} \ln\left(\frac{3}{4}\right) \right) \\
+&= \pi \left( \frac{1}{4} + \frac{3}{4} \ln\left(\frac{3}{4}\right) \right) > 0
+\end{aligned}
+\]
+\color{black}
+
+    
+\end{enumerate}
+\item Calcule el \'area encerrada entre las curvas $y = 15 - x^2$ e $y = x^4 - 5$.
+
+\color{blue}
+\textbf{Sol:} hallamos los puntos de intersección
+\[
+15 - x^2 = x^4 - 5,
+\implies
+x^4 + x^2 - 20 = 0.
+\]
+Sea $u = x^2$
+\[
+u^2 + u - 20 = 0,
+\]
+con $u = 4$ y $u = -5$. Luego como $u = x^2 \ge 0$
+\[
+x^2 = 4 \Rightarrow x = \pm 2.
+\]
+luego en el intervalo $[-2,2]$ la parábola $y=15-x^2$ está por encima de
+$y=x^4-5$, esto pues considerando la diferencia entre las funciones
+\[
+(15-x^2)-(x^4-5)=20-x^2-x^4.
+\implies \text{Sea }
+g(x)=20-x^2-x^4.
+\]
+En $[-2,2]$ se tiene
+\[
+g(x)\ge 0,
+\]
+se puede comprobar con la tabla de signosla inferior es. Como la función inferior es
+$y = x^4 - 5$. Luego el área buscada es
+\[
+A = \int_{-2}^{2} \left[(15 - x^2) - (x^4 - 5)\right]\,dx
+= \int_{-2}^{2} (20 - x^2 - x^4)\,dx.
+\]
+Como el integrando es una función par,
+\[
+A = 2 \int_{0}^{2} (20 - x^2 - x^4)\,dx.
+\implies 
+\int (20 - x^2 - x^4)\,dx
+= 20x - \frac{x^3}{3} - \frac{x^5}{5}.
+\]
+\[
+A = 2\left[20(2) - \frac{2^3}{3} - \frac{2^5}{5}\right]
+= 2\left(40 - \frac{8}{3} - \frac{32}{5}\right).
+\]
+\[
+A = \frac{928}{15}.
+\]
+\color{black}
+
+
+
+\item Determine el \'area entre las curvas $y = f(x) = x^3 - x^2$ e $y = g(x) = 2x$ en el intervalo $[-2, 2]$. %con pauta examen 2023-2
+
+\color{blue}
+\textbf{Sol:} Primero buscamos los puntos donde las curvas se intersectan resolviendo la ecuación
+\[
+f(x)=x^3-x^2=2x=g(x),
+\]
+la cual se factoriza como
+\[
+f(x)-g(x)=x(x-2)(x+1)=0.
+\]
+Así, las curvas se intersectan en $x=-1$, $x=0$ y $x=2$. La función $g$ es mayor que $f$ en los intervalos $[-2,-1]$ y $[0,2]$, por lo que el área buscada es
+\[
+A=\int_{-2}^{2} |f(x)-g(x)|\,dx
+= \int_{-2}^{-1} |f(x)-g(x)|\,dx
++ \int_{-1}^{0} |f(x)-g(x)|\,dx
++ \int_{0}^{2} |f(x)-g(x)|\,dx.
+\]
+Como $g(x)\ge f(x)$ en los intervalos considerados, se tiene
+\[
+A=\int_{-2}^{-1} (g(x)-f(x))\,dx
+- \int_{-1}^{0} (g(x)-f(x))\,dx
++ \int_{0}^{2} (g(x)-f(x))\,dx.
+\]
+Una primitiva particular de $g(x)-f(x)$ es
+\[
+F(x)=-\frac{x^4}{4}+\frac{x^3}{3}+x^2.
+\]
+Por el Teorema Fundamental del Cálculo,
+\[
+A=\left[F(x)\right]_{-2}^{-1}
+-\left[F(x)\right]_{-1}^{0}
++\left[F(x)\right]_{0}^{2}.
+\]
+\[
+A=F(-1)-F(-2)-F(0)+F(-1)+F(2)-F(0)
+=F(2)-F(-2)+2F(-1)-2F(0).
+\]
+Finalmente, usando
+\[
+F(-2)=-\frac{8}{3}, \quad
+F(2)=\frac{8}{3}, \quad
+F(0)=0, \quad
+F(-1)=\frac{5}{12},
+\]
+se obtiene
+\[
+A=\frac{16}{3}+\frac{5}{6}=\frac{37}{6}.
+\]
+
+\color{black}
+
+\item Considere las funciones
+$$ f(x) = x^{2}-1 \quad \text{y} \quad g(x) = -x^{2}+1. $$
+Se pide:
+\begin{enumerate}
+\item Bosquejar las gr\'aficas de $f$ y $g$ y determinar los puntos en donde se intersectan.
+
+\color{blue}
+\begin{figure}[H]
+    \centering    \includegraphics[width=0.35\linewidth]{Imagenes/bosquejo.png}
+\end{figure}
+Donde la curva verde es la gráfica de $f$ y la azul es la de $g$. Para hallar
+los puntos de intersección se iguala $f(x)=g(x)$, de donde
+\[
+x^2-1=-x^2+1 \;\Rightarrow\; x^2=1 \;\Rightarrow\; x=\pm 1.
+\]
+Como $f(\pm 1)=g(\pm 1)=0$, las gráficas de $f$ y $g$ se intersectan en los
+puntos
+\[
+(-1,0) \quad \text{y} \quad (1,0).
+\]
+
+\color{black}
+
+\item Calcular el área encerrada (delimitada entre los puntos de intersección) por las funciones $f(x)$ y $g(x)$.
+
+\color{blue}
+\textbf{Sol:} El área es
+\[
+\text{Área}
+= \int_{-1}^{1} (g(x)-f(x))\,dx
+= \int_{-1}^{1} \bigl(-x^2+1-(x^2-1)\bigr)\,dx.
+\]
+\[
+\text{Área}
+= \int_{-1}^{1} (-2x^2+2)\,dx.
+\]
+\[
+\text{Área}
+= \left(-\frac{2}{3}x^3+2x\right)\Big|_{-1}^{1}
+= \left(-\frac{2}{3}+2\right)-\left(\frac{2}{3}-2\right)
+= \frac{8}{3}.
+\]
+
+\color{black}
+\end{enumerate}
+
+\begin{enumerate}
+\item 
+Cálcule
+\begin{enumerate}
+    \item El \'area que encierra la funci\'on $\cos(t)$ en $0$ y $2\pi$.
+
+\color{blue}
+\textbf{Sol:} La función \(\cos(t)\) es positiva en \([0, \frac{\pi}{2}), (\frac{3\pi}{2},\frac{5\pi}{2})\) y negativa en \((\frac{\pi}{ 2},\frac{3\pi}{2}).(\frac{5\pi}{2},2\pi)\), tenemos que tener cuidado de sumar área negativa, por lo tanto, como en dichos intervalos, el área es simétrica con respecto al eje $x$, tenemos que 
+el área es
+\[
+A = 4 \int_0^{\pi/2} \cos(t) dt = 2 \left( \sen\left(\frac{\pi}{2}\right) - \sen(0) \right) = 4 \cdot 1 = 4.
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Imagenes/integral_cos.png}
+    \caption{Integral pedida, tenemos que considerar $\displaystyle 4 \int_0^{\pi/2} \cos(t) dt$ para que no se nos cancele el área.}
+    \label{fig:placeholder}
+\end{figure}
+\color{black}
+
+    \item El \'area de una circunferencia de radio $R$.
+
+\color{blue}
+\textbf{Sol:} 
+Tenemos que queremos calcular el área del círculo de radio $R$ centrado en el origen:
+\[
+D = \{(x,y) \in \mathbb{R}^2 : x^2 + y^2 \leq R^2 \}.
+\]
+Para esto consideramos su ecuación de circunferencia en $\R^2$.
+$$
+x^2 + y^2 = R^2 \Rightarrow
+y = \sqrt{R^2 - x^2}
+$$
+En este último despeje, tenemos la mitad de la circuferencia a la que queremos calcularle el área. Por lo tanto el área total va a ser
+$$A = 2 \int_{-R}^{R} \sqrt{R^2 - x^2} \, dx
+$$
+Esta integral es del tipo trigonométrica. Luego
+\begin{align*}
+\text{Sea } x &= R \sen(\theta) \\
+dx &= R \cos(\theta) \, d\theta
+\end{align*}
+Cambiamos los límites de Integración:
+\begin{multicols}{2}
+\begin{itemize}
+    \item Límite Superior ($x=R$):
+    \begin{align*}
+    x = R &\Rightarrow R = R \sen(\theta) \\
+          &\Rightarrow 1 = \sen(\theta) \\
+          &\Rightarrow \theta = \frac{\pi}{2}
+    \end{align*}
+    \item Límite Inferior ($x=-R$):
+    \begin{align*}
+    x = -R &\Rightarrow -R = R \sen(\theta) \\
+           &\Rightarrow -1 = \sen(\theta) \\
+           &\Rightarrow \theta = -\frac{\pi}{2}
+    \end{align*}
+\end{itemize}
+\end{multicols}
+\begin{multicols}{2}
+\begin{align*}
+\therefore \, A &= 2 \int_{-\pi/2}^{\pi/2} \sqrt{R^2 - R^2 \sen^2(\theta)} \cdot R \cos(\theta) \, d\theta \\
+&= 2 \int_{-\pi/2}^{\pi/2} \sqrt{R^2(1 - \sen^2(\theta))} \cdot R \cos(\theta) \, d\theta \\
+&= 2 \int_{-\pi/2}^{\pi/2} \sqrt{R^2 \cos^2(\theta)} \cdot R \cos(\theta) \, d\theta \\
+&= 2 \int_{-\pi/2}^{\pi/2} R \cos(\theta) \cdot R \cos(\theta) \, d\theta \\
+&= 2 \int_{-\pi/2}^{\pi/2} R^2 \cos^2(\theta) \, d\theta\\
+&= 2 R^2 \int_{-\pi/2}^{\pi/2} \cos^2(\theta) \, d\theta \\
+&= 2 R^2 \int_{-\pi/2}^{\pi/2} \frac{1 + \cos(2\theta)}{2} \, d\theta \\
+&= 2 R^2 \left[ \frac{1}{2}\theta + \frac{1}{4}\sen(2\theta) \right]_{-\pi/2}^{\pi/2} \\
+&= 2 R^2 \left[ \left(\frac{\pi}{4} + \frac{1}{4}\sen(\pi)\right) - \left(-\frac{\pi}{4} + \frac{1}{4}\sen(-\pi)\right) \right] \\
+&= 2 R^2 \left[ \left(\frac{\pi}{4} + 0\right) - \left(-\frac{\pi}{4} + 0\right) \right] \\
+&= 2 R^2 \left(\frac{\pi}{4} - \left(-\frac{\pi}{4}\right)\right) \\
+&= 2 R^2 \left(\frac{\pi}{2}\right) = \pi R^2
+\end{align*}
+\includegraphics[width=1\linewidth]{Imagenes/c_variable_y_circulo.png}
+\end{multicols}
+\color{black}
+
+    \item El volumen de una esfera de radio $R$.
+
+\color{blue}
+\textbf{Sol:} Consideramos la semi circunferencia por encima del eje $x$ de la esfera dada por
+\[
+y = \sqrt{R^2 - x^2}, \quad x \in [-R, R].
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes/semi_circunferencia.png}
+    \caption{Semi circunferencia en $\R^2$ para $R=1$}
+    \label{fig:placeholder}
+\end{figure}
+Al girar esta curva alrededor del eje \(x\), el volumen del sólido de revolución es
+\[
+V = \pi \int_{-R}^R \left( \sqrt{R^2 - x^2} \right)^2 dx = \pi \int_{-R}^R (R^2 - x^2) \, dx.
+\]
+\[
+V = \pi \left[ R^2 x - \frac{x^3}{3} \right]_{-R}^R = \pi \left( R^3 - \frac{R^3}{3} - (-R^3 + \frac{R^3}{3}) \right) = \pi \left( \frac{2R^3}{3} + \frac{2R^3}{3} \right) = \frac{4\pi R^3}{3}.
+\]
+\begin{multicols}{2}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Imagenes/semi_circunferencia_2.png}
+    \label{fig:placeholder}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Imagenes/semi_circunferencia_3.png}
+    \label{fig:placeholder}
+\end{figure}
+\end{multicols}
+En estas imagenes vemos que la idea del solido de revolución es partir con la media circunferencia, rotarla en el eje $x$ y proyectarla en el eje $z$ para así obtener el volumen de la esfera en $\R^3$, que para este ejemplo consideré el radio $R=1$. 
+\color{black}
+
+    \item El volumen de una pir\'amide de base cuadrada de lado $a$ y de altura $h$.
+
+\color{blue}
+\textbf{Sol:} Propuesto, ver el video de matefacil en puesto en la descripción del pdf.
+\color{black}
+    
+    \item Calcular el \'area del toro, es decir del cuerpo generado al rotar una circunferencia de radio $r$ y de centro en $(0,R)$ ($R>r$), en torno al eje $OX$ (como en la figura).
+    
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes/untoro.jpg}
+    \caption{Un toro}
+    \label{fig:placeholder}
+\end{figure}
+\color{blue}
+\textbf{Sol:} Sea una circunferencia de radio \( r \) con centro en el punto \( (0, R) \), donde \( R > r \).
+
+La ecuación de la circunferencia es:
+\[
+x^2 + (y - R)^2 = r^2.
+\]
+
+Despejamos \( y \):
+\[
+y(x) = R \pm \sqrt{r^2 - x^2}, \quad x \in [-r, r].
+\]
+
+Para obtener el área superficial generada al rotar esta curva alrededor del eje \(OX\), usamos la fórmula del área de superficie de revolución:
+\[
+A = 2\pi \int_{-r}^r y(x) \sqrt{1 + \left( \frac{dy}{dx} \right)^2} \, dx.
+\]
+
+Como la curva es simétrica respecto al eje \( y = R \), basta con usar solo la mitad superior:
+\[
+y(x) = R + \sqrt{r^2 - x^2}, \quad \text{entonces } \frac{dy}{dx} = \frac{-x}{\sqrt{r^2 - x^2}}.
+\]
+
+Entonces:
+\[
+\left( \frac{dy}{dx} \right)^2 = \frac{x^2}{r^2 - x^2}, \quad
+1 + \left( \frac{dy}{dx} \right)^2 = \frac{r^2}{r^2 - x^2}.
+\]
+
+Sustituimos en la fórmula del área:
+\[
+A = 2\pi \int_{-r}^r \left(R + \sqrt{r^2 - x^2}\right) \cdot \sqrt{\frac{r^2}{r^2 - x^2}} \, dx.
+\]
+
+\[
+A = 2\pi r \int_{-r}^r \left( \frac{R + \sqrt{r^2 - x^2}}{\sqrt{r^2 - x^2}} \right) dx = 2\pi r \int_{-r}^r \left( \frac{R}{\sqrt{r^2 - x^2}} + 1 \right) dx.
+\]
+Ahora resolvemos cada parte:
+\begin{multicols}{2}
+\begin{itemize}
+    \item \(\displaystyle \int_{-r}^r \frac{dx}{\sqrt{r^2 - x^2}} = \pi\)
+    \item \(\displaystyle \int_{-r}^r dx = 2r\)
+\end{itemize}
+\end{multicols}
+Entonces:
+\[
+A = 2\pi r \left( R \cdot \pi + 2r \right) = 2\pi r (R\pi + 2r).
+\]
+\color{black}
+
+
+    
+\end{enumerate}
+\end{enumerate}
+\end{document}

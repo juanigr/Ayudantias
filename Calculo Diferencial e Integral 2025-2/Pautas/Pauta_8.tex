@@ -1,0 +1,418 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{framed}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=1.5cm,top=0.9cm,right=1.5cm, bottom=1.4cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+% Page
+\oddsidemargin -0.4in
+\textwidth 7in
+\topmargin -0.6in
+\textheight 9.1in
+\parindent 0em
+\parskip 1ex
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+% fin macros
+
+% Comandos más usados
+% Conjuntos
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R} \times \mathbb{R}}
+% Flechas
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+\newcommand{\pmi}{\Longleftarrow}
+% Trigonométricas
+\newcommand{\sen}{\text{sen}}
+
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Prueba con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+	
+	\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+	\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+	
+	\begin{minipage}{11.5 cm}
+         \vspace{-6mm}
+		\begin{flushleft}
+			\vspace{1mm}
+			\textbf{ING1002-2 Cálculo Diferencial e Integral}\\
+			\textbf{Profesor:}  Gonzalo Flores G.  \\
+			\textbf{Ayudante:}  Juan I. Riquelme \& Cristian Acevedo R. \\
+		\end{flushleft}
+	\end{minipage}
+	
+	\begin{picture}(2,3)
+		\put(430,9.5){\includegraphics[scale=0.22]{Imagenes/UOH.png}}
+	\end{picture}
+	\vspace{-6mm}
+	\begin{center}
+		\LARGE \bf{Enunciado Ayudantía 8}
+	\end{center}
+    \vspace{-8.5mm}
+    \begin{center}
+		4 de diciembre de 2025
+	\end{center}
+
+\begin{enumerate}[\textbf{P\arabic{enumi}.}]
+\item las siguientes funciones, encuentre el polinomio de Taylor de orden $n$ en torno al punto $x_0$, $T_f^n(x)$:
+
+\vspace{-0.5cm}
+\begin{enumerate}
+    \item Taylor de orden 3 de \( f(x) = \dfrac{x^2}{1 - x} \) en torno a \( x = 3 \)
+
+\color{blue}
+\textbf{Sol:}
+\[
+f(x)=\frac{x^2}{1-x},\quad f'(x)=\frac{2x(1-x)+x^2}{(1-x)^2}=\frac{2x-x^2}{(1-x)^2},
+\]
+\[
+f''(x)=\frac{2(1-x)^2-(2x-x^2)2(1-x)(-1)}{(1-x)^4}
+=\frac{2(1-x)^2+2(2x-x^2)(1-x)}{(1-x)^4}
+=\frac{2(1-x+x^2)}{(1-x)^3},
+\]
+\[
+f'''(x)=\frac{d}{dx}\left(\frac{2(1-x+x^2)}{(1-x)^3}\right)
+=\frac{2[-(1-x)^3+3(1-x+x^2)(1-x)^2]}{(1-x)^6}
+=\frac{4(2-x)}{(1-x)^4}.
+\]
+Evaluamos en \(x_0=3\):
+\[
+f(3)=\frac{9}{1-3}=-\tfrac{9}{2},\quad
+f'(3)=\frac{2(3)-9}{(1-3)^2}=\frac{-3}{4},\quad
+f''(3)=\frac{2(1-3+9)}{(1-3)^3}=\frac{14}{-8}=-\tfrac{7}{4},
+\]
+\[
+f'''(3)=\frac{4(2-3)}{(1-3)^4}=\frac{-4}{16}=-\tfrac{1}{4}.
+\]
+Por tanto, el polinomio de Taylor de orden 3 es
+\[
+T_3(x) = -\tfrac{9}{2} - \tfrac{3}{4}(x-3) - \tfrac{7}{8}(x-3)^2 - \tfrac{1}{24}(x-3)^3.
+\]
+\color{black}
+    
+    \item \color{blue}
+\textbf{[Desarrollo Propuesto].-} \color{black} Taylor de orden 5 de 
+$ f(x) = \ln(1+x) $
+centrado en $x = 0$. Encuentre un valor aproximado de $\ln(2)$.
+\color{blue}
+Este desarrollo es solo para el \textbf{orden $n=2$.}, queda propuesto el de orden $n=5.$
+\[
+f'(x) = \frac{1}{1+x}, \quad f''(x) = -\frac{1}{(1+x)^2}
+\]
+Evaluamos en $x=0$:
+\[
+f(0) = 0, \quad f'(0) = 1, \quad f''(0) = -1
+\]
+Por tanto, el polinomio de Taylor de orden 2 es:
+\[
+P_2(x) = f(0) + f'(0)x + \frac{f''(0)}{2}x^2 = x - \frac{x^2}{2}
+\]
+Para aproximar $\ln(2)$, usamos $x=1$:
+\[
+\ln(2) \approx P_2(1) = 1 - \frac{1}{2} = \frac{1}{2}
+\]
+\color{black}
+\end{enumerate}
+
+
+
+\item Use el método de Newton para estimar el cero de $f(x) = \exp(x) + x + x^2$ con tres iteraciones.
+\color{blue}
+Quería hacer una aclaración, en la ayudantía les mostré como calcular un cero de $f$ usando el método de newton, que se hace con esta formula:
+$$
+x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}
+$$
+Desarrollando de esta manera:
+\[
+f(x) = e^x + x + x^2,
+\]
+\[
+f'(x) = e^x + 1 + 2x.
+\]
+punto inicial:
+\[
+x_0 = 0.
+\]
+\(x_0 = 0\):
+\[
+f(0) = e^0 + 0 + 0 = 1,
+\]
+\[
+f'(0) = e^0 + 1 + 0 = 2.
+\]
+\(x_1\):
+\[
+x_1 = x_0 - \frac{f(0)}{f'(0)}
+    = 0 - \frac{1}{2}
+    = -0.5.
+\]
+Evaluamos en \(x_1 = -0.5\):
+\[
+f(-0.5) = e^{-0.5} - 0.5 + 0.25 \approx 0.35653,
+\]
+\[
+f'(-0.5) = e^{-0.5} + 1 - 1 = e^{-0.5} \approx 0.60653.
+\]
+Cálculo de \(x_2\):
+\[
+x_2 = -0.5 - \frac{0.35653}{0.60653}
+     \approx -1.08808.
+\]
+Evaluamos en \(x_2 \approx -1.08808\):
+\[
+f(-1.08808) = e^{-1.08808} -1.08808 + 1.18393 \approx 0.43263,
+\]
+\[
+f'(-1.08808) = e^{-1.08808} + 1 - 2.17616 \approx -0.83937.
+\]
+
+Cálculo de \(x_3\):
+\[
+x_3 = -1.08808 - \frac{0.43263}{-0.83937}
+     \approx -0.57278.
+\]
+Los valores del método de Newton son:
+\[
+x_1 = -0.5, \qquad
+x_2 = -1.08808, \qquad
+x_3 = -0.57278, \quad \ldots
+\]
+Se observa que no hay convergencia, ya que la función:
+\[
+f(x) = e^x + x + x^2
+\]
+satisface:
+\[
+f(x) > 0 \quad \text{para todo } x \in \mathbb{R},
+\]
+por lo cual no posee ceros reales, entonces solo nos aproximamos al cero de $f$ a pesar de que nunca lleguemos exactamente a el, esto es un aspecto importante de los métodos númericos, por más que no podamos llegar al punto que queremos, podemos acercarnos a el tanto como queramos con las iteraciones del método de newton, si se cumplen las condiciones apropiadas de $f$.
+
+Volviendo a lo del inicio, en realidad la ayudantía debería decir estimar un cero de $f$ y no el mínimo, pues para el mínimo se usa:
+$$
+x_{k+1} = x_k - \frac{f'(x_k)}{f''(x_k)}
+$$
+Para este caso tenemos que utilizando la fórmula de recurrencia:
+$$x_{k+1} = x_k - \frac{f'(x_k)}{f''(x_k)}$$ La función es: $f(x) = e^x + x + x^2$, derivamos
+    $$f'(x) = e^x + 1 + 2x$$
+    $$f''(x) = e^x + 2$$
+Dado que $f''(x) > 0$ para todo $x \in \mathbb{R}$, $x_0 = 0$, (recordar que la idea es que este sea cercano al valor que queremos estimar).
+$k=0$.
+Evaluamos en $x_0 = 0$:
+$$f'(0) = e^0 + 1 + 2(0) = 1 + 1 = 2$$
+$$f''(0) = e^0 + 2 = 1 + 2 = 3$$
+Cálculo de $x_1$:
+$$x_1 = x_0 - \frac{f'(x_0)}{f''(x_0)} = 0 - \frac{2}{3}$$
+$$x_1 = -\frac{2}{3}$$
+Evaluamos en $x_1 = -\frac{2}{3}$:
+$$f'\left(-\frac{2}{3}\right) = e^{-2/3} + 1 + 2\left(-\frac{2}{3}\right) = e^{-2/3} - \frac{1}{3}$$
+$$f''\left(-\frac{2}{3}\right) = e^{-2/3} + 2$$
+$x_2$:
+$$x_2 = x_1 - \frac{f'(x_1)}{f''(x_1)} \approx -2/3 - \frac{e^{-2/3} - 1/3}{e^{-2/3} + 2}\approx -0.73832$$
+Evaluamos en $x_2 \approx -0.73832$:
+$$f'(x_2) \approx e^{-0.73832} + 1 + 2(-0.73832) \approx 0.47805 + 1 - 1.47664 \approx 0.00141$$
+$$f''(x_2) \approx e^{-0.73832} + 2 \approx 0.47805 + 2 \approx 2.47805$$
+$x_3$:
+$$x_3 = x_2 - \frac{f'(x_2)}{f''(x_2)} \approx -0.73832 - \frac{0.00141}{2.47805}$$
+$$x_3 \approx -0.73832 - 0.00057$$
+$$x_3 \approx -0.73889 \quad \text{luego} \ x_3, \text{es un punto cercano al mínimo de }f.$$
+\color{black}
+
+\item Para $f(x) = x^3 - x^2$:
+    \begin{itemize}
+        \item[a)] Exprese la suma de Riemann de $f$ en el intervalo $[0, 2]$.
+
+        
+\color{blue}
+\textbf{Sol:} La Suma de Riemann $R_n$ para una partición equiespaciada en $[a, b]$ se define como:
+$$
+R_n = \sum_{i=1}^{n} f(x_i) \Delta x
+$$
+\begin{itemize}
+    \item Intervalo: $[a, b] = [0, 2]$
+    \item Ancho del subintervalo ($\Delta x$):
+    $$
+    \Delta x = \frac{b-a}{n} = \frac{2-0}{n} = \frac{2}{n}
+    $$
+    \item Punto de Muestra (Extremo Derecho $x_i$):
+    $$
+    x_i = a + i \Delta x = 0 + i \left(\frac{2}{n}\right) = \frac{2i}{n}
+    $$
+\end{itemize}
+Evaluamos la función $f(x) = x^3 - x^2$ en $x_i$:
+$$
+f(x_i) = f\left(\frac{2i}{n}\right) = \left(\frac{2i}{n}\right)^3 - \left(\frac{2i}{n}\right)^2
+$$
+$$
+f(x_i) = \frac{8i^3}{n^3} - \frac{4i^2}{n^2}
+$$
+Sustituimos $f(x_i)$ y $\Delta x$ en la Suma de Riemann:
+$$
+R_n = \sum_{i=1}^{n} \left( \frac{8i^3}{n^3} - \frac{4i^2}{n^2} \right) \cdot \frac{2}{n} = \sum_{i=1}^{n} \left( \frac{16i^3}{n^4} - \frac{8i^2}{n^3} \right)
+$$
+\color{black}
+        \item[b)] Calcule el límite $n \to \infty$ de la suma de Riemann.
+
+        
+\color{blue}
+\textbf{Sol:} $$
+\lim_{n \to \infty} R_n = \lim_{n \to \infty} \sum_{i=1}^{n} \left( \frac{16i^3}{n^4} - \frac{8i^2}{n^3} \right)
+$$
+Separamos las sumas y usamos las fórmulas $\sum i^3 = \frac{n^2(n+1)^2}{4}$ y $\sum i^2 = \frac{n(n+1)(2n+1)}{6}$:
+\begin{align*}
+\lim_{n \to \infty} R_n &= \lim_{n \to \infty} \left[ \frac{16}{n^4} \sum_{i=1}^{n} i^3 - \frac{8}{n^3} \sum_{i=1}^{n} i^2 \right] \\
+&= \lim_{n \to \infty} \left[ \frac{16}{n^4} \cdot \frac{n^2(n+1)^2}{4} - \frac{8}{n^3} \cdot \frac{n(n+1)(2n+1)}{6} \right] \\
+&= \lim_{n \to \infty} \left[ 4 \frac{(n+1)^2}{n^2} - \frac{4}{3} \frac{(n+1)(2n+1)}{n^2} \right] \\
+&= \lim_{n \to \infty} \frac{4}{n^2}\left[  (n+1)^2 - \frac{1}{3} (n+1)(2n+1) \right] \\
+&= \lim_{n \to \infty} \frac{4}{n^2}\left[ \frac{3}{3} (n+1)^2 - \frac{1}{3} (n+1)(2n+1) \right] \\
+&= \lim_{n \to \infty} \frac{4}{3n^2}\left[  3(n+1)^2 -(n+1)(2n+1) \right] \\
+&= \lim_{n \to \infty} \frac{4}{3n^2}\left[  3n^2+6n+3 -(2n^2+3n+1) \right] \\
+&= \lim_{n \to \infty} \frac{4}{3n^2}\left[  n^2-3n+2 \right] \\
+&= \lim_{n \to \infty} \frac{4}{3}\left[  \frac{n^2-3n+2}{n^2} \right] \\
+&= \lim_{n \to \infty} \frac{4}{3}\left[  1-\frac{3}{n}+\frac{2}{n^2} \right] \\
+&= \frac{4}{3} \\
+\end{align*}
+\textbf{Nota:} En la ayudantía cuando hago el cálculo de 
+$$
+= \lim_{n \to \infty} \frac{4}{3n^2}\left[  3(n+1)^2 -(n+1)(2n+1) \right]
+$$
+en la ayudantía habia puesto
+$$= \lim_{n \to \infty} \frac{3\cdot4}{n^2}\left[  3(n+1)^2 -(n+1)(2n+1) \right] $$
+Mil disculpas por eso, en al final terminaría dando 12 pero eso es incorrecto, pues comparando con otro método:
+\[
+\int_0^2 (x^3 - x^2)\,dx.
+\]
+Dado que
+\[
+\int x^3\,dx = \frac{x^4}{4}, 
+\qquad
+\int x^2\,dx = \frac{x^3}{3}.
+\]
+\[
+\int_0^2 (x^3 - x^2)\,dx
+=
+\left[ \frac{x^4}{4} - \frac{x^3}{3} \right]_0^2.
+\]
+Por TFC
+\[
+\frac{2^4}{4} - \frac{2^3}{3}
+= \frac{16}{4} - \frac{8}{3}
+= 4 - \frac{8}{3}
+= \frac{12}{3} - \frac{8}{3}
+= \frac{4}{3}.
+\]
+Lo cual es el valor verdadero de la integral que queríamos calcular.
+\color{black}
+
+
+
+    \end{itemize}
+\item Si $x \sen(\pi x) = \displaystyle \int_0^{x^2} f(t)\, dt$, donde $f$ es una función continua, encuentre $f(4)$.
+
+
+\color{blue}
+\textbf{Sol:} Derivamos a ambos lados y aplicamos TFC \begin{align*}
+x \sen(\pi x) &= \int_0^{x^2} f(t)\,dt \\
+\frac{d}{dx}\left(x \sen(\pi x)\right) &= \frac{d}{dx} \left( \int_0^{x^2} f(t)\,dt \right) \\
+\sen(\pi x) + \pi x \cos(\pi x) &= f(x^2) \cdot 2x \\
+\frac{\sen(\pi x) + \pi x \cos(\pi x)}{2x} &= f(x^2) \\
+f(4) &= \frac{\sen(2\pi) + 2\pi \cos(2\pi)}{2 \cdot 2} = \frac{0 + 2\pi(1)}{4} = \frac{\pi}{2}.
+\end{align*}
+\textbf{Nota:} la función $f(x^2)$ pasa a ser $f(x)$ pues $x^2$ pasa a ser variable independiente.
+\color{black}
+
+\item  Calcule el valor del l\'imite
+$$ \lim_{x\to 0} \frac{\displaystyle\int_0^{x^2} \sen(t^2)dt}{1 - e^{x^6}} $$
+
+
+\color{blue}
+\textbf{Sol:} Aplicamos regla de L'Hopital y TFC: \begin{align*}
+\lim_{x \to 0} \frac{\int_0^{x^2} \sen(t^2)\,dt}{1 - e^{x^6}} 
+&\xrightarrow{L'h} \lim_{x \to 0} \frac{2x \cdot \sen(x^4)}{-6x^5 e^{x^6}} \\
+&= \lim_{x \to 0} \frac{2 \sen(x^4)}{-6x^4 e^{x^6}} \\
+&\xrightarrow{L'h} \lim_{x \to 0} \frac{8x^3 \cos(x^4)}{-24x^3 e^{x^6} - 36x^9 e^{x^6}} \\
+&= \frac{8 \cdot 1}{-24 \cdot 1} = -\frac{1}{3}.
+\end{align*}
+
+\color{black}
+\newpage
+\subsection*{Algunas fórmulas importantes}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes/tfc.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Imagenes/3a569818-7699-46ef-902b-b0ebb8996a91.jpg}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Imagenes/91b97700-b93d-4615-b4e9-b2c12b270fb6.jpg}
+\end{figure}
+\end{enumerate}
+\end{document}
+\item  Considere la función
+    \[
+    f(x) = \sen(x^2).
+    \]
+    Calcule un polinomio de Taylor $T_f$ de orden 3 para $f$ centrado en $\bar{x} = 0$. Pruebe que existe $\xi \in (0, x)$ tal que
+    \[
+    f(x) = T_f(x) + \frac{f^{(3)}(\xi)x^3}{3!}.
+    \]
+
+
+\item Encuentre un desarrollo limitado para $\sen(x) + \cos(x)$ en torno a 0, cuyo error máximo de aproximación en el intervalo $(-\pi/2, \pi/2)$ sea inferior a $10^{-3}$.
+
+\item Utilice el m\'etodo de Newton para aproximar una ra\'{\i}z de cada una de las siguientes funciones, realizando tres iteraciones
+\begin{enumerate}
+    \item $f(x) = x^2 - 2$
+    \item $f(x) = \cos(x) - x$
+\end{enumerate}
+
+\item \begin{enumerate}
+    \item Demuestre que entre todos los rectángulos con diagonal dada $d=1$, el que tiene mayor área, es el cuadrado.
+    \item Dos lados de un tri\'angulo tienen longitudes $a$ y $b$, y el \'angulo entre ellos es $\theta$ ¿Qu\'e valor de $\theta$ maximizar\'a el \'area del tri\'angulo?
+\end{enumerate}
+
+\item \textbf{[Propuesto].-} Una compañía vende máquinas para realizar moños de regalo, a $P$ pesos cada una, la función de demanda de estas máquinas está dada por:
+$$
+P(q) = 300 - 0,02q
+$$
+El costo de producción de cada máquina está dado por \$30 cada una y la compañía tiene un costo fijo de \$9000 pesos al año. Hallar la cantidad de máquinas que debe producir la compañía para maximizar las ganancias en un año.

@@ -1,0 +1,353 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{framed}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{float}
+\usepackage{anysize}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=1.5cm,top=0.9cm,right=1.5cm, bottom=1.4cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+% Page
+\oddsidemargin -0.4in
+\textwidth 7in
+\topmargin -0.6in
+\textheight 9.1in
+\parindent 0em
+\parskip 1ex
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+% fin macros
+
+% Comandos más usados
+% Conjuntos
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R} \times \mathbb{R}}
+% Flechas
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+\newcommand{\pmi}{\Longleftarrow}
+% Trigonométricas
+\newcommand{\sen}{\text{sen}}
+
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Prueba con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+	
+	\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+	\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+	
+	\begin{minipage}{11.5 cm}
+         \vspace{-6mm}
+		\begin{flushleft}
+			\vspace{1mm}
+			\textbf{ING1002-2 Cálculo Diferencial e Integral}\\
+			\textbf{Profesor:}  Gonzalo Flores G.  \\
+			\textbf{Ayudante:}  Juan I. Riquelme \\
+		\end{flushleft}
+	\end{minipage}
+	
+	\begin{picture}(2,3)
+		\put(430,9.5){\includegraphics[scale=0.22]{Imagenes/UOH.png}}
+	\end{picture}
+	\vspace{-7mm}
+	\begin{center}
+		\LARGE \bf{Ayudantía 1: Límites}
+	\end{center}
+    \vspace{-5.5mm}
+    \begin{center}
+		28 de Agosto de 2025
+	\end{center}
+
+\begin{enumerate}[\textbf{P\arabic{enumi}.}]
+\item \noindent Determine, si existe, el valor de los siguientes l\'{\i}mites:
+\begin{enumerate}
+\item $\displaystyle \lim_{x \to -1} \frac{x^3 + 1}{x^2 - 1}$
+
+\vspace{0.2cm}
+\color{blue}
+    \noindent{\bf Sol:}
+\[
+\lim_{x \to -1} \frac{x^3 + 1}{x^2 - 1}
+= \lim_{x \to -1} \frac{(x + 1)(x^2 - x + 1)}{(x + 1)(x - 1)}
+= \lim_{x \to -1} \frac{x^2 - x + 1}{x - 1}
+= \frac{(-1)^2 - (-1) + 1}{-1 - 1} = \frac{3}{-2} = -\frac{3}{2}
+\]
+\color{black}
+
+\item $\displaystyle \lim_{x \to 0} x^3 \sen\left(\frac{1}{x}\right)$   
+
+\vspace{0.2cm}
+\color{blue}
+    \noindent{\bf Sol:} 
+\[
+\text{Como } -1 \leq \sin\left(\frac{1}{x}\right) \leq 1, \text{ entonces } -x^3 \leq x^3 \sin\left(\frac{1}{x}\right) \leq x^3 
+\]
+Luego
+\[
+\lim_{x \to 0} -x^3 = 0 = \lim_{x \to 0} x^3 \implies
+\lim_{x \to 0} x^3 \sin\left(\frac{1}{x}\right) = 0 \quad\quad \textcolor{blue}{\text{(Por teorema del Sandwich)}}
+\]
+\color{black}
+
+\item $\displaystyle \lim_{x \to 0} \frac{\sqrt{x+2} - \sqrt{2}}{x}$
+
+\vspace{0.2cm}
+\color{blue}
+\textbf{Sol:} Multiplicamos arriba y abajo por el conjugado del numerador $\sqrt{x+2} + \sqrt{2}$
+\[
+\Rightarrow \lim_{x \to 0} \frac{\sqrt{x+2} - \sqrt{2}}{x}
+= \lim_{x \to 0} \frac{\sqrt{x+2} - \sqrt{2}}{x}  \cdot \left( \frac{\sqrt{x+2} + \sqrt{2}}{\sqrt{x+2} + \sqrt{2}} \right)
+= \lim_{x \to 0} \frac{(x+2) - 2}{x(\sqrt{x+2} + \sqrt{2})}
+\]
+\[= \lim_{x \to 0} \frac{x}{x(\sqrt{x+2} + \sqrt{2})}
+= \lim_{x \to 0} \frac{1}{\sqrt{x+2} + \sqrt{2}} = \frac{1}{\sqrt{2} + \sqrt{2}} = \frac{1}{2\sqrt{2}} \quad \quad \textcolor{blue}{(Evaluando)}
+\]
+\color{black}
+\item $\displaystyle \lim_{x \to 0} \frac{1 - \cos(\pi x)}{3x^2} $
+
+\vspace{0.2cm}
+\color{blue}
+\noindent{\bf Sol:} Usamos el límite notable
+\[
+\lim_{u \to 0} \frac{1 - \cos(u)}{u^2} = \frac{1}{2}
+\]
+Sea el cambio de variable \( u = \pi x \):
+\begin{align*}
+\lim_{x \to 0} \frac{1 - \cos(\pi x)}{3x^2}
+&= \frac{1}{3} \cdot \lim_{x \to 0} \frac{1 - \cos(\pi x)}{x^2} = \frac{1}{3} \cdot \lim_{x \to 0} \left( \frac{1 - \cos(\pi x)}{(\pi x)^2} \cdot \pi^2 \right) \\
+&= \frac{1}{3} \cdot \pi^2 \cdot \lim_{u \to 0} \frac{1 - \cos(u)}{u^2} = \frac{1}{3} \cdot \pi^2 \cdot \frac{1}{2} \\
+&= \frac{\pi^2}{6}
+\end{align*}
+\color{black}
+\end{enumerate}
+
+\item \textbf{[Subida aparte]}
+\item Considere la siguiente función $f$ definida en los reales sin el cero.
+$$f(x) = \dfrac{x^2-1}{x^2+x}$$
+    \begin{enumerate}
+        \item Realice una pequeña tabla de valores de $f$ cerca del cero.
+        
+  Por ejemplo, evaluando \( f(x) \) en algunos valores positivos y negativos cercanos a cero (excluyendo \( x = 0 \), ya que no está en el dominio):
+
+\color{blue} \textbf{Sol:} Evaluamos valores de $x$ cerca de 0 para conjeturar el límite.
+        \[
+        \begin{array}{|c|c|}
+        \hline
+        x & f(x) = \dfrac{x^2 - 1}{x^2 + x} \\
+        \hline
+        -0.1 & \dfrac{(-0.1)^2 - 1}{(-0.1)^2 + (-0.1)}  \approx 11 \\
+        -0.01 & \dfrac{0.0001 - 1}{0.0001 - 0.01}   \approx 101 \\
+        -0.001 & \dfrac{10^{-6} - 1}{10^{-6} - 0.001}   \approx 1001 \\
+        \hline
+        0.001 & \dfrac{10^{-6} - 1}{10^{-6} + 0.001}  \approx -999 \\
+        0.01 & \dfrac{0.0001 - 1}{0.0001 + 0.01} \approx -99 \\
+        0.1 & \dfrac{0.01 - 1}{0.01 + 0.1}\approx -9 \\
+        \hline
+        \end{array}
+        \]
+        Se observa que:
+        \begin{multicols}{2}
+            \begin{itemize}
+            \item Cuando \( x \to 0^- \), \( f(x) \to +\infty \)
+            \item Cuando \( x \to 0^+ \), \( f(x) \to -\infty \)
+        \end{itemize}
+        \end{multicols}
+\color{black}
+        
+        \item Calcule las asintotas verticales y horizontales de la función $f$.
+
+\color{blue}
+\textbf{Sol:} 
+
+        \begin{itemize}
+        \item \textbf{Asíntotas verticales:}
+        El denominador se anula cuando:
+        \[
+        x^2 + x = 0 \Rightarrow x(x + 1) = 0 \Rightarrow x = 0 \text{ o } x = -1
+        \]
+        Para determinar si hay asíntotas verticales en esos puntos, analizamos los límites laterales
+        \begin{itemize}
+            \item En \( x = 0 \):
+            \[
+            \lim_{x \to 0^-} f(x) = \lim_{x \to 0^-} \frac{x^2 - 1}{x^2 + x} = \frac{-1}{0^-} = +\infty
+            \]
+            \[
+            \lim_{x \to 0^+} f(x) = \lim_{x \to 0^+} \frac{x^2 - 1}{x^2 + x} = \frac{-1}{0^+} = -\infty
+            \]
+            Por lo tanto, \( x = 0 \) es una \textbf{asíntota vertical}.
+        \end{itemize}
+        \item \textbf{Asíntotas Horizontales:}
+        Una vez realizada la división de polinomios tenemos
+        $$
+        \frac{x^2 - 1}{x^2 + x} = 1- \frac{1}{x}
+        $$
+        Con 1 el cociente, luego $y=1$ es asíntota horizontal.
+        \end{itemize}
+\color{black}
+
+        \item Con lo anterior y utilizando tabla de signos bosqueje $f$.
+
+\color{blue}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Intervalo & \( (-\infty, 0) \) & \( (0, 1) \) & \( (1, \infty) \) \\
+\hline
+\( x - 1 \) & \(-\) & \(-\) & \(+\) \\
+\hline
+\( x \)     & \(-\) & \(+\) & \(+\) \\
+\hline
+\(\dfrac{x - 1}{x} \) & \(+\) & \(-\) & \(+\) \\
+\hline
+\end{tabular}
+\end{center}
+A partir de la tabla de signos y que tenemos asíntota vertical en $x=0$ y asíntota horizontal en $y=1$, tenemos que la gráfica de la función es la siguiente
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Imagenes/P3_Ayudantía_1_CDI.jpg}
+    \caption{}
+    \label{fig:placeholder}
+\end{figure}
+
+    \end{enumerate}
+
+
+\item Considere la función $h:\R\to\R$ definida por
+
+$$h(t) = \left\{
+    \begin{array}{cc}
+       ct^2+2t  & \text{Si $t<2$} \\
+        t^3-ct & \text{Si $t\geq2$}
+    \end{array}
+\right.$$
+
+donde $c$ es una constante a determinar.
+    \begin{enumerate}
+        \item Determine el valor de $c$ para que $\displaystyle \lim_{t \to 2} h(t)$ exista.
+
+\color{blue}
+    Para que el límite exista, debe cumplirse que:
+    \[
+    \lim_{t \to 2^-} h(t) = \lim_{t \to 2^+} h(t)
+    \]
+    Calculamos los límites laterales:
+    \[
+    \lim_{t \to 2^-} h(t) = \lim_{t \to 2^-} (ct^2 + 2t) = 4c + 4
+    \]
+    \[
+    \lim_{t \to 2^+} h(t) = \lim_{t \to 2^+} (t^3 - ct) = 8 - 2c
+    \]
+    Igualando ambos:
+    \[
+    4c + 4 = 8 - 2c \Rightarrow 6c = 4 \Rightarrow c = \frac{2}{3}
+    \]
+
+\color{black}
+
+        \item Bosqueje $h$.
+
+\color{blue}
+\textbf{Sol:} Una vez tenemos que $c=\frac{2}{3}$, gráficamos $h(t)$ para $t<2$ y $t>2$.
+\color{black}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Imagenes/P4_Ayudantía_1_CDI.jpg}
+    \caption{}
+    \label{fig:placeholder}
+\end{figure}
+
+        
+    \end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
+
+Por la identidad fundamental: $\sen^2(x)+\cos^2(x)=1$
+$$ \lim_{x\to0} \frac{1 - \cos^{2}(\pi x)}{3x^{2}} = \lim_{x\to0} \frac{\sin^{2}(\pi x)}{3x^{2}}= \lim_{x\to0} \frac{\sin^{2}(\pi x)}{3x^{2}} \cdot \textcolor{red}{\frac{\pi}{\pi}}= \lim_{x\to0} \frac{\sin^{2}(\pi x)}{3x^{2}}=\frac{1}{3}\lim_{u\to0}\left(\frac{\sin(\pi x)}{\pi x}\right)^2\pi $$
+Usando el l\'imite notable $\displaystyle \lim_{x \to 0}\frac{\sen(x)}{x}=1$:
+$$
+=\frac{1}{3}\left(\lim_{u\to0}\frac{\sin(\pi x)}{\pi x}\right)^2\pi =\frac{1}{3} \pi
+$$
+\color{black}
+
+\item $\displaystyle 
+\lim_{x \to 3} \frac{9 - x^2}{5 - \sqrt{x^2 + 16}}
+$
+
+\vspace{0.2cm}
+\color{blue}
+\textbf{Sol:}
+\begin{align*}
+\lim_{x \to 3} \frac{9 - x^2}{5 - \sqrt{x^2 + 16}} 
+&= \lim_{x \to 3} \frac{(3 - x)(3 + x)}{5 - \sqrt{x^2 + 16}} = \lim_{x \to 3} \frac{-(x - 3)(x + 3)}{5 - \sqrt{x^2 + 16}} \\
+&\text{Multiplicamos por el conjugado: } \frac{5 + \sqrt{x^2 + 16}}{5 + \sqrt{x^2 + 16}} \\
+&= \lim_{x \to 3} \frac{-(x - 3)(x + 3)(5 + \sqrt{x^2 + 16})}{(5 - \sqrt{x^2 + 16})(5 + \sqrt{x^2 + 16})} = \lim_{x \to 3} \frac{-(x - 3)(x + 3)(5 + \sqrt{x^2 + 16})}{25 - (x^2 + 16)} \\
+&= \lim_{x \to 3} \frac{-(x - 3)(x + 3)(5 + \sqrt{x^2 + 16})}{9 - x^2} = \lim_{x \to 3} \frac{-(x - 3)(x + 3)(5 + \sqrt{x^2 + 16})}{-(x^2 - 9)} \\
+&= \lim_{x \to 3} (5 + \sqrt{x^2 + 16}) = 5 + \sqrt{9 + 16} \\&= 5 + \sqrt{25} = 5 + 5 = 10
+\end{align*}
+\color{black}
+
+\item $\displaystyle \lim_{x \to +\infty} \left( \sqrt{3x^2 + 8x + 6} - \sqrt{3x^2 + 3x + 6} \right)$   
+
+ \vspace{0.2cm}
+ \color{blue}
+     \noindent{\bf Sol:}
+ \[
+ \lim_{x \to +\infty} \left( \sqrt{3x^2 + 8x + 6} - \sqrt{3x^2 + 3x + 6} \right)
+ = \lim_{x \to +\infty} \frac{5x}{\sqrt{3x^2 + 8x + 6} + \sqrt{3x^2 + 3x + 6}}
+ \]
+ \[
+ = \lim_{x \to +\infty} \frac{5}{\sqrt{3 + \frac{8}{x} + \frac{6}{x^2}} + \sqrt{3 + \frac{3}{x} + \frac{6}{x^2}}}
+= \frac{5}{2\sqrt{3}}
+ \]
+\color{black}
+
+    \item $\displaystyle \lim_{x \to +\infty} \frac{e^{3x} - e^{-3x}}{e^{3x} + e^{-3x}}$
+    
+ \vspace{0.2cm}
+ \color{blue}
+  \noindent{\bf Sol:} Vamos a multiplicar el númerador y el denominador por $e^{-3x}$
+ $$
+\lim_{x \to +\infty} \frac{e^{3x} - e^{-3x}}{e^{3x} + e^{-3x}} \cdot \left(\dfrac{e^{-3x}}{e^{-3x}}\right) = \lim_{x \to +\infty} \frac{1 - e^{-6x}}{1 + e^{-6x}}
+$$
+Evaluando
+\[
+ = \frac{1 - 0}{1 + 0} = 1
+\]
+\color{black}

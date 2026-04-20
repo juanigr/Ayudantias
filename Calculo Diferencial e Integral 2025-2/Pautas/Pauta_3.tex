@@ -1,0 +1,399 @@
+\documentclass[letterpaper,12pt]{article}
+\oddsidemargin -1.0cm \textwidth 16.5cm
+%\usepackage[latin1]{inputenc}
+%\usepackage[spanish]{babel}
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{tcolorbox}
+\usepackage{comment}
+%\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{anyfontsize}
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{listings}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[left=1.5cm,top=2cm,right=1.5cm, bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolor}{rgb}{0.95,0.95,0.92}
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+	\definecolor{ballblue}{rgb}{0.13, 0.67, 0.8}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolor},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\tiende}{\rightarrow}
+\newcommand{\borel}{\mathcal{B}}
+\newcommand{\proba}{\mathbb{P}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\partes}{\mathcal{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{V}ar}
+\newcommand{\1}{\mathbbm{1}}
+% fin macros
+
+
+%\fancypagestyle{plain}{%
+%\fancyhf{}
+%\lhead{\footnotesize\itshape\bfseries\rightmark}
+%\rhead{\footnotesize\itshape\bfseries\leftmark}}
+%\pagestyle{plain}
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Ayudantía con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+
+%Encabezado
+\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+\[
+\vspace{-1.7cm}
+\]
+
+\begin{minipage}{11.5 cm}
+\begin{flushleft}
+\hspace*{-0.55cm}\textbf{ING1002-2  Cálculo Diferencial e Integral}\\
+\hspace*{-0.7cm} \textbf{Profesor:} Gonzalo Flores G.\\
+\hspace*{-0.7cm} \textbf{Ayudantes:} Juan I. Riquelme \& Cristian Acevedo R.\\
+\end{flushleft}\end{minipage}
+
+\begin{picture}(2,3)
+\put(425,-8){\includegraphics[scale=0.23]{Imagenes/logo_uoh_2.png}}
+\end{picture}
+
+\vspace{-0.2cm}
+\begin{center}
+\LARGE\textbf{Ayudantía 3: Repaso CC1}\\
+\large {\fontsize{13}{14}\selectfont 11 de Septiembre de 2025}
+\end{center}
+\vspace{-0.2cm}
+\begin{enumerate}[label=\textbf{P\arabic*.}, itemsep=0cm]
+\item Estudie, usando las propiedades y/o el Teorema del Sandwich, los siguientes límites:
+
+\begin{enumerate}
+    \item[a)] \textbf{[Ejemplo Extra]} \( \displaystyle \lim_{x \to 0} x^2 \sen\left(\frac{7}{x}\right) \)
+
+    \color{blue}
+    \textbf{Sol:} 
+Sabemos que para cualquier valor de \( x \), la función \( \sen\left( \frac{7}{x} \right) \) oscila entre -1 y 1:
+\[
+-1 \leq \sen\left( \frac{7}{x} \right) \leq 1.
+\]
+Por lo tanto, multiplicando ambos lados de la desigualdad por \( x^2 \), obtenemos:
+\[
+- x^2 \leq x^2 \cdot \sen\left( \frac{7}{x} \right) \leq x^2.
+\]
+Ahora, calculamos los límites de \( -x^2 \) y \( x^2 \) cuando \( x \) tiende a 0:
+\[
+\lim_{x \to 0} (-x^2) = 0 \quad \text{y} \quad 
+\lim_{x \to 0} (x^2) = 0
+\]
+    \color{black}
+    
+    \item $\displaystyle \lim_{x \to 0} \frac{x^2}{\sqrt{\cos(x)} - 1}$
+
+\vspace{0.2cm}
+\color{blue}
+\textbf{Sol:}
+\[
+\lim_{x \to 0} \frac{x^2}{\sqrt{\cos(x)} - 1}
+= \lim_{x \to 0} \left( \frac{x^2}{\sqrt{\cos(x)} - 1} \cdot \frac{\sqrt{\cos(x)} + 1}{\sqrt{\cos(x)} + 1} \right)
+= \lim_{x \to 0} \frac{x^2(\sqrt{\cos(x)} + 1)}{\cos(x) - 1}
+\]
+\[
+= \lim_{x \to 0} \left(\sqrt{\cos(x)+1}  \right)\left(-\frac{1-\cos(x)}{x^2}\right)^{-1} 
+= \left(\lim_{x \to 0}\sqrt{\cos(x)} + 1 \right)\left(-\lim_{x \to 0} \frac{1-\cos(x)}{x^2}\right)^{-1} 
+\]
+dado el límite notable $\displaystyle \lim_{x \to 0} \frac{1-\cos(x)}{x^2}=\frac{1}{2}$
+\[
+\left(\lim_{x \to 0}\sqrt{\cos(x)} + 1 \right)\left(-\lim_{x \to 0} \frac{1-\cos(x)}{x^2}\right)^{-1} = \left(\lim_{x \to 0}\sqrt{\cos(x)} +1 \right) \cdot (-2) = 2 \cdot (-2) =-4
+\]
+\color{black}
+    \item $\displaystyle \lim_{u \to 0} \frac{\tan(u)}{u}$
+    
+\vspace{0.2cm}
+\color{blue}
+    \noindent{\bf Sol:} 
+\[
+\lim_{u \to 0} \frac{\tan(u)}{u} = \lim_{u \to 0} \frac{\sin(u)}{u \cos(u)} = \left( \lim_{u \to 0} \frac{\sin(u)}{u} \right) \cdot \left( \lim_{u \to 0} \frac{1}{\cos(u)} \right) = 1 \cdot 1 = 1
+\]
+\color{black}
+\end{enumerate}
+
+\item \textbf{[Ejemplo Extra]} Demuestre, usando la definición con \( \varepsilon \) y \( \delta \), que
+
+\begin{enumerate}
+\item $\displaystyle \lim_{x \to 4} \frac{3x}{4} + 2 = 5.$
+
+\color{blue}
+    \textbf{Sol:} Sea \( f(x) = \frac{3x}{4} + 2 \). Entonces:
+\[
+\lim_{x \to 4} f(x) = 5
+\quad \Leftrightarrow \quad
+\forall \varepsilon > 0,\, \exists \delta > 0 : 
+0 < |x - 4| < \delta \Rightarrow |f(x) - 5| < \varepsilon
+\]
+Calculamos la expresión \( |f(x) - 5| \):
+\[
+|f(x) - 5| = \left| \frac{3x}{4} + 2 - 5 \right| = \left| \frac{3x}{4} - 3 \right| = \left| \frac{3}{4}(x - 4) \right| = \frac{3}{4}|x - 4|
+\]
+Entonces, para que \( |f(x) - 5| < \varepsilon \), basta con que:
+\[
+\frac{3}{4}|x - 4| < \varepsilon \quad \Rightarrow \quad |x - 4| < \frac{4}{3} \varepsilon
+\]
+Así, podemos tomar:
+\[
+\delta = \frac{4}{3} \varepsilon
+\]
+Entonces, si \( 0 < |x - 4| < \delta \), se cumple que:
+\[
+|f(x) - 5| = \frac{3}{4}|x - 4| < \frac{3}{4} \cdot \delta = \frac{3}{4} \cdot \frac{4}{3} \varepsilon = \varepsilon
+\]
+Esto prueba que existe \( \delta > 0 \) con la propiedad requerida. Como \( \varepsilon \) es arbitrario, se concluye que:
+\[
+\lim_{x \to 4} \left( \frac{3x}{4} + 2 \right) = 5,
+\]
+    \color{black}
+\item $\displaystyle \lim_{x \to -10} \frac{5x+90}{2} = 20$
+
+\color{blue}
+    \textbf{Sol:} Sea \( f(x) = \frac{5x+90}{2} \). Entonces:
+\[
+\lim_{x \to -10} f(x) = 20
+\quad \Leftrightarrow \quad
+\forall \varepsilon > 0,\, \exists \delta > 0 : 
+0 < |x - (-10)| < \delta \Rightarrow |f(x) - 20| < \varepsilon
+\]
+Calculamos la expresión \( |f(x) - 20| \):
+\[
+|f(x) - 20| = \left| \frac{5x + 90}{2} - 20 \right|
+= \left| \frac{5x + 90 - 40}{2} \right|
+= \left| \frac{5x + 50}{2} \right|
+= \left| \frac{5(x + 10)}{2} \right|
+= \frac{5}{2} |x + 10|
+\]
+Entonces, para que \( |f(x) - 20| < \varepsilon \), basta con que:
+\[
+\frac{5}{2} |x + 10| < \varepsilon \quad \Rightarrow \quad |x + 10| < \frac{2}{5} \varepsilon
+\]
+Así, podemos tomar:
+\[
+\delta = \frac{2}{5} \varepsilon
+\]
+Entonces, si \( 0 < |x + 10| < \delta \), se cumple que:
+\[
+|f(x) - 20| = \frac{5}{2} |x + 10| < \frac{5}{2} \cdot \delta = \frac{5}{2} \cdot \frac{2}{5} \varepsilon = \varepsilon
+\]
+Esto prueba que existe \( \delta > 0 \) con la propiedad requerida. Como \( \varepsilon \) es arbitrario, se concluye que:
+\[
+\lim_{x \to -10} \frac{5x + 90}{2} = 20
+\]
+    \color{black}
+
+\end{enumerate}
+\item 
+\begin{enumerate}
+    \item Dada la siguiente función
+    \vspace{-0.3cm}
+    \[
+    f(x) = 
+    \begin{cases} 
+\vspace{0.2cm}
+
+    2x + 1, & x \geq 0 \\
+
+    \dfrac{a(\cos(5x) - 1)}{x \sen(5x)}, & x < 0
+    \end{cases}
+    \]
+    Determine el valor de \( a \) tal que \( f \) sea continua en \( x = 0 \).
+
+\color{blue}
+\textbf{Sol:}
+Para que la función $f(x)$ sea continua en $x = 0$, se debe cumplir:
+\[
+\lim_{x \to 0^-} f(x) = f(0) = \lim_{x \to 0^+} f(x).
+\]
+Procedamos a calcular los límites laterales. Comenzamos con el límite por la izquierda:
+\[
+\lim_{x \to 0^-} \frac{a(\cos(5x)-1)}{x \sin(5x)} = \lim_{x \to 0^-} \frac{a(\cos(5x)-1)}{x \sin(5x)} \cdot \frac{\cos(5x)+1}{\cos(5x)+1} = \lim_{x \to 0^-} \frac{a(\cos^2(5x) - 1)}{x \sin(5x)(\cos(5x)+1)}.
+\]
+Usando la identidad trigonométrica
+\[
+\cos^2(\theta) - 1 = -\sin^2(\theta),
+\]
+el límite nos queda de la siguiente manera:
+\[
+\lim_{x \to 0^-} \frac{a(\cos^2(5x)-1)}{x \sin(5x)(\cos(5x)+1)} = \lim_{x \to 0^-} \frac{-a \sin^2(5x)}{x \sin(5x)(\cos(5x)+1)}.
+\]
+Ahora, cancelamos un factor $\sin(5x)$ y multiplicamos por 5 en numerador y denominador,
+\[
+\lim_{x \to 0^-} \frac{-a \sin(5x)}{x \sin(5x)(\cos(5x)+1)} = \lim_{x \to 0^-} \frac{-a \sin(5x)}{x (\cos(5x)+1)} = \lim_{x \to 0^-} \frac{-a5 \sin(5x)}{5x(\cos(5x)+1)}.
+\]
+Hacemos el cambio de variable $u = 5x$ y usando que $\lim_{u \to 0} \frac{\sin u}{u} = 1$, nos queda que
+\[
+\lim_{x \to 0^-} f(x) = \frac{-5a}{2}.
+\]
+Ahora, calculamos el límite por la derecha
+\[
+\lim_{x \to 0^+} f(x) = \lim_{x \to 0^+} 2x + 1 = 1 = f(0).
+\]
+Igualando los límites laterales para garantizar la continuidad en $x = 0$
+\[
+\frac{-5a}{2} = 1 \Rightarrow a = -\frac{2}{5}.
+\]
+Por tanto, para que $f$ se continua en $x = 0$ el valor de $a$ debe ser $\boxed{-\frac{2}{5}}$.
+\color{black}
+    
+    \item Sea
+    \[
+    g(x) = \dfrac{4x^2}{\sqrt{x^2 - 1}}.
+    \]
+    Determine las asíntotas verticales de \( g \).
+    
+    \color{blue}
+    \textbf{Sol:} Para determinar las asíntotas verticales, analizamos el dominio de la función: La raíz cuadrada en el denominador impone la condición:
+\[
+x^2 - 1 > 0 \quad \Rightarrow \quad x < -1 \quad \text{o} \quad x > 1.
+\]
+Entonces,
+\[
+\text{Dom}(g) = (-\infty, -1) \cup (1, \infty)
+\]
+De donde, los candidatos a ser asíntotas verticales son \(x = -1\) y \(x = 1\).
+Evaluamos los límites laterales:
+\[
+\lim_{x \to 1^+} \frac{4x^2}{\sqrt{x^2 - 1}} = +\infty, \qquad 
+\lim_{x \to -1^-} \frac{4x^2}{\sqrt{x^2 - 1}} = +\infty
+\]
+Por tanto, \(x = -1\) y \(x = 1\) son asíntotas verticales.
+    \color{black}
+\end{enumerate}
+\item \begin{enumerate}
+    \item Sea \( a > 2 \). Pruebe que siempre existe \( x_1 \in \left( \frac{a}{2}, a \right) \) tal que
+\[
+x_1 + \frac{1}{x_1} = a.
+\]
+\color{blue}
+    \textbf{Sol:} Podemos definir la siguiente función
+\[
+f(x) = x + \frac{1}{x} - a, \quad x > 0.
+\]
+Claramente \( f \) es una función continua para \( x > 0 \). Si se aplica el TVI, pero no se hace explícito que se aplica sobre una función continua, no se debe dar. Además, notemos que
+\[
+f\left( \frac{a}{2} \right) = \frac{a}{2} + \frac{2}{a} - a = \frac{4 - a^2}{2a}.
+\]
+Como \( a > 2 \), se cumple que \( f\left( \frac{a}{2} \right) < 0 \).
+Por otro lado
+\[
+f(a) = a + \frac{1}{a} - a = \frac{1}{a}.
+\]
+Como \( a > 2 \), se cumple que \( f(a) > 0 \).
+Luego, por Teorema del Valor Intermedio, se concluye que existe \( x_1 \in \left( \frac{a}{2}, a \right) \) tal que
+\[
+f(x_1) = 0.
+\]
+En otras palabras, existe \( x_1 \in \left( \frac{a}{2}, a \right) \) tal que
+\[
+x_1 + \frac{1}{x_1} - a = 0.
+\]
+
+    \color{black}
+\item Usando el método de la bisección, muestra que cuando \( a = 4 \), el valor correspondiente \( x_1 \) cumple que \( 3.5 < x_1 < 3.8 \).
+
+\color{blue}
+    \textbf{Sol:} Podemos definir la siguiente función
+\[
+f(x) = x + \frac{1}{x} - 4, \quad x > 0.
+\]
+Notamos que \( f(2) = -\frac{3}{2} < 0 \) y además \( f(4) = \frac{1}{4} > 0 \). Por lo tanto \( x_1 \in (2, 4) \).
+Podemos volver a hacer el mismo procedimiento otra vez (pero en el punto medio). En este caso, obtenemos que
+\[
+f(3) = 3 + \frac{1}{3} - 4 = -\frac{2}{3} < 0
+\]
+El Teorema del Valor Intermedio garantiza que \( x_1 \in (3, 4) \).
+
+Volviendo a hacer el mismo procedimiento de elegir el punto medio se obtiene que
+\[
+f(3{,}5) = \frac{7}{2} + \frac{2}{7} - 4 = -\frac{3}{14} < 0.
+\]
+Luego, \( x_1 \in (3{,}5, 4) \)
+Si hacemos el procedimiento otra vez en el punto medio se obtiene que
+\[
+f(3{,}75) = \frac{15}{4} + \frac{4}{15} - 4 = \frac{1}{60}
+\]
+Por lo tanto, se tiene que \( x_1 \in (3{,}5, 3{,}75) \),  
+que es la respuesta deseada.
+
+    \color{black}
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.5\linewidth]{Imagenes/WhatsApp Image 2025-09-10 at 22.27.03.jpeg}
+    \caption{Éxito para el sabado!}
+    \label{fig:placeholder}
+\end{figure}
+
+\end{enumerate}
+\end{document}
+
+\item Usando el método de la bisección, muestre que todo polinomio de grado 3 tiene al menos una raíz real. Encuentre un valor aproximado con 1 decimal de un número \( x \in \mathbb{R} \) tal que  $x^3 + x^2 = -1.$
+
+\color{blue}
+    \textbf{Sol:}
+    \color{black}

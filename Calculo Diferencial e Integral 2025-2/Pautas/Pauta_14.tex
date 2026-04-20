@@ -1,0 +1,538 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{framed}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=1.5cm,top=0.9cm,right=1.5cm, bottom=1.4cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+% Page
+\oddsidemargin -0.4in
+\textwidth 7in
+\topmargin -0.6in
+\textheight 9.1in
+\parindent 0em
+\parskip 1ex
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+% fin macros
+
+% Comandos más usados
+% Conjuntos
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R} \times \mathbb{R}}
+% Flechas
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+\newcommand{\pmi}{\Longleftarrow}
+% Trigonométricas
+\newcommand{\sen}{\text{sen}}
+
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Prueba con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+	
+	\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+	\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+	
+	\begin{minipage}{11.5 cm}
+         \vspace{-6mm}
+		\begin{flushleft}
+			\vspace{1mm}
+			\textbf{ING1002-2 Cálculo Diferencial e Integral}\\
+			\textbf{Profesor:}  Gonzalo Flores G.  \\
+			\textbf{Ayudante:}  Juan I. Riquelme \& Cristian Acevedo R. \\
+		\end{flushleft}
+	\end{minipage}
+	
+	\begin{picture}(2,3)
+		\put(430,9.5){\includegraphics[scale=0.22]{Imagenes/UOH.png}}
+	\end{picture}
+	\vspace{-6mm}
+	\begin{center}
+		\LARGE \bf{Ayudantía 14: Largo de Curva} %Teorema Fundamental del Cálculo
+	\end{center}
+    \vspace{-5.2mm}
+    \begin{center}
+		22 de enero de 2026
+	\end{center}
+\begin{enumerate}[\textbf{P\arabic{enumi}.}]
+% Control 3, MA-1002 C´alculo Diferencial e Integral
+%Semestre 2021/2 (27 de Noviembre)
+
+\item Considere la función 
+$\displaystyle
+f(x) = \frac{(2 + x^2)^{3/2}}{3} \ \text{donde} \ x \in [1, 2].
+$
+Calcule el largo de la curva de ecuación \( y = f(x) \), donde \( 
+x \in [1, 2] \).
+
+\color{blue}
+\textbf{Sol:} \[
+f'(x) = \frac{1}{2} \sqrt{2 + x^2}\cdot (2x)=x\sqrt{2 + x^2}
+\]
+Luego $
+1 + [f'(x)]^2 = 1 + 2x^2 + x^4.
+$
+de donde $
+\sqrt{1 + [f'(x)]^2} = 1 + x^2.$
+\[
+ds = \sqrt{1 + [f'(x)]^2}\, dx = (1 + x^2)\, dx.
+\]
+Así:
+\[
+L = \int_1^2 (1 + x^2)\, dx = \left. x + \frac{x^3}{3} \right|_1^2 = 10/3
+\]
+
+\color{black}
+
+\item Estudie la convergencia de las siguientes integrales impropias
+
+\begin{enumerate}
+    \item$\displaystyle 
+    \int_{1}^{\infty} \frac{\ln(x)}{x^3} \, dx
+    $
+    
+\color{blue}
+\textbf{Sol:} Es impropia cuando $x \to \infty$ (primera especie). Como $\displaystyle \lim_{x\to\infty} \frac{\ln(x)}{x} = 0$, para $x$ suficientemente grande se puede hacer el siguiente acotamiento:
+\[
+0 \le \frac{\ln(x)}{x^3} = \frac{\ln(x)}{x \cdot x^2} \le \frac{1}{x^2}
+\]
+por criterio de comparación, la integral impropia es convergente igual que $\displaystyle \int_1^\infty \frac{1}{x^2} dx$.
+
+ También se puede obtener usando la definición e integrar por partes:
+\begin{align*}
+\int_1^\infty \frac{\ln(x)}{x^3} dx &= \lim_{x\to\infty} \int_1^x \frac{\ln(t)}{t^3} dt \\
+\intertext{por partes: $u = \ln(t)$, $u' = \frac{1}{t}$; $v' = t^{-3}$, $v = -\frac{1}{2}t^{-2}$}
+&= \lim_{x\to\infty} \left( \frac{\ln(t)}{2t^2} \right)_x^1 + \frac{1}{2} \int_1^x \frac{1}{t^3} dt \\
+&= \lim_{x\to\infty} \left( -\frac{\ln(x)}{2x^2} \right) - \frac{1}{4} \frac{1}{t^2} \bigg|_1^x \\
+&= \lim_{x\to\infty} \left( -\frac{\ln(x)}{2x^2} \right) + \frac{1}{4} \left( 1 - \frac{1}{x^2} \right) = \frac{1}{4}
+\end{align*}
+\color{black} 
+    \item
+    $\displaystyle 
+    \int_{0}^{\infty} \frac{e^{-x}}{\sqrt[3]{x}(2x + 3)} \, dx
+    $
+    
+    \color{blue}
+    \textbf{Sol:} Es impropia cuando $x \to \infty$ y cuando $x \to 0^+$ (tercera especie = primera especie + segunda especie).
+
+\noindent Cuando $x \to 0^+$, se tiene que $\displaystyle \frac{e^{-x}}{2x+3} \to \frac{1}{3}$ por lo tanto por criterio de comparación por cuociente, con $\displaystyle g(x) = \frac{1}{x^{1/3}}$, la integral impropia $\displaystyle \int_{0+}^1 \frac{e^{-x}}{\sqrt[3]{x}(2x+3)}dx$ es convergente igual que $\displaystyle \int_{0+}^1 \frac{1}{x^{1/3}}dx$.
+
+\noindent Cuando $x \to +\infty$, se tiene que $\displaystyle \frac{e^{-x}}{\sqrt[3]{x}(2x+3)} \le \frac{1}{x^{4/3}}$ por lo tanto por criterio de comparación, con $\displaystyle g(x) = \frac{1}{x^{4/3}}$, la integral impropia $\displaystyle \int_1^\infty \frac{e^{-x}}{\sqrt[3]{x}(2x+3)}dx$ es convergente igual que $\displaystyle \int_1^\infty \frac{1}{x^{4/3}}dx$.
+    \color{black}
+    
+    \item $\displaystyle \int_{2}^{\infty} \frac{\sqrt{x - 2}}{x^2 - 4} \, dx$
+
+\color{blue}
+\textbf{Sol:} Es una integral de ``tercera especie'', igual a la suma de $I_1 + I_2$, donde
+\[
+I_1 = \int_{2^+}^3 \frac{\sqrt{x-2}}{x^2-4} dx, \qquad I_2 = \int_3^\infty \frac{\sqrt{x-2}}{x^2-4} dx
+\]
+\noindent La integral $I_1$ converge igual que $\displaystyle \int_{2^+}^3 \frac{dx}{(x-2)^{1/2}}$ ya que
+\[
+\lim_{x\to 2^+} \frac{\frac{\sqrt{x-2}}{x^2-4}}{\frac{1}{(x-2)^{1/2}}} = \lim_{x\to 2^+} \frac{x-2}{x^2-4} = \frac{1}{4} \neq 0.
+\]
+\noindent La integral $I_2$ también converge igual que $\displaystyle \int_1^\infty \frac{dx}{x^{3/2}}$ ya que
+\[
+\lim_{x\to\infty} \frac{\frac{\sqrt{x-2}}{x^2-4}}{1/x^{3/2}} = \lim_{x\to\infty} \frac{x^{3/2}\sqrt{x-2}}{x^2-4} = \lim_{x\to\infty} \frac{\sqrt{1-2/x}}{1-4/x^2} = 1 \neq 0.
+\] 
+\color{black}
+
+
+    \item $\displaystyle  \int_{1}^{2} \frac{1}{x^2 \sqrt{x^2 - 1}} \, dx$
+
+\color{blue}
+\textbf{Sol:} \noindent La integral converge igual que $\displaystyle \int_{1^+}^2 \frac{dx}{(x-1)^{1/2}}$ ya que
+\[
+\lim_{x\to 1^+} \frac{\frac{1}{x^2\sqrt{x^2-1}}}{\frac{1}{(x-1)^{1/2}}} = \lim_{x\to 1^+} \frac{1}{x^2\sqrt{x+1}} = \frac{1}{\sqrt{2}} \neq 0.
+\] 
+\color{black}
+    
+    \item $\displaystyle \int_{0}^{\infty} \frac{1 + x}{1 + x^2} \, dx$ %pauta impropias
+
+\color{blue}
+\textbf{Sol:} La integral diverge igual que $\displaystyle \int_1^\infty \frac{dx}{x}$ ya que
+\[
+\lim_{x\to\infty} \frac{\frac{1+x}{1+x^2}}{1/x} = \lim_{x\to\infty} \frac{x + x^2}{1 + x^2} = 1 \neq 0.
+\]
+\color{black}
+    
+    \item $\displaystyle \int_0^1 \frac{\ln(x)}{\sqrt{x}} \, dx$
+
+\color{blue}
+\textbf{Sol:} Tomamos $a \in (0, 1)$ y usando integración por partes obtenemos
+\begin{align*}
+\int_{a}^{1} \frac{\ln(x)}{\sqrt{x}} \, dx &= \frac{2}{3} x^{3/2} \ln(x) \bigg|_{a}^{1} - \int_{a}^{1} \frac{2}{3} x^{3/2} \frac{1}{x} \, dx \\
+&= -\frac{2}{3} a^{3/2} \ln(a) - \frac{2}{3} \int_{a}^{1} x^{1/2} \, dx \\
+&= -\frac{2}{3} a^{3/2} \ln(a) - \frac{2}{3} \frac{2}{3} x^{3/2} \bigg|_{a}^{1} \\
+&= -\frac{2}{3} a^{3/2} \ln(a) - \frac{4}{9} (1 - a^{3/2}).
+\end{align*}
+Usando L'Hopital se prueba que la primera parte converge a 0, por lo que la integral impropia es convergente y vale $-\frac{4}{9}$.
+\color{black}
+
+    
+\end{enumerate}
+
+\item  Sea \( R \) la región encerrada entre el eje \( OX \) y la función 
+$
+\displaystyle f(x) = \frac{x}{\sqrt[4]{1 - x^2}} \ \text{con} \ 0 \leq x < 1.
+$
+Escriba la integral impropia que permite calcular el volumen del sólido obtenido por la rotación de \( R \) en torno al eje \( OX \). Estudie la convergencia de dicha integral.
+
+\color{blue}
+\textbf{Sol:} Para calcular el volumen se debe estudiar la integral:
+\[
+V_{OX} = \int_0^{1^-} \frac{\pi x^2 dx}{\sqrt{1-x^2}}
+\]
+\noindent Cuando $x \to 1^-$ basta comparar la integral anterior, con la integral de la función $g(x) = \frac{1}{\sqrt{1-x}}$ ya que:
+\[
+\lim_{x\to 1^-} \frac{\frac{\pi x^2}{\sqrt{1-x^2}}}{\frac{1}{\sqrt{1-x}}} = \lim_{x\to 1^-} \frac{\pi x^2}{\sqrt{1+x}} = \frac{\pi}{\sqrt{2}} \in (0, \infty)
+\]
+Por lo tanto la integral $V_{OX}$ es convergente igual que $\displaystyle \int_0^{1^-} \frac{dx}{(1-x)^{1/2}}$.
+ También  se pueden obtener haciendo el cambio de variables $x = \sen(\varphi)$
+\begin{align*}
+\int_0^{1^-} \frac{\pi x^2 dx}{\sqrt{1-x^2}} &= \int_0^{\pi/2} \frac{\pi \sen^2(\varphi) \cos(\varphi) d\varphi}{\cos(\varphi)} \\[1em]
+&= \int_0^{\pi/2} \pi \sen^2(\varphi) d\varphi = \pi \frac{1}{2} \cdot \frac{\pi}{2}; \qquad \text{Fórmula conocida} = \frac{1}{2} \cdot L \\[1em]
+&= \frac{\pi^2}{4}
+\end{align*}
+\color{black}
+
+\item 
+Encuentre los valores de \( a, b \in \mathbb{R} \) tales que:
+ $\displaystyle
+\int_{1}^{\infty} \left( \frac{2x^2 + bx + a}{x(2x + a)} - 1 \right) \, dx = 1.$
+
+\color{blue}
+\textbf{Sol:} Escribimos la función como una fracción para comparar los grados del numerador y denominador. Como:
+\[
+\frac{2x^2 + bx + a}{x(2x+a)} - 1 = \frac{(b-a)x + a}{x(2x+a)}
+\]
+Claramente los dos polinomios, el de denominador y numerador tienen el mismo grado a no ser que $b-a = 0$, luego para que la integral tenga opción de converger, necesitamos que $a = b$. Así nuestra integral se convierte en:
+\[
+\int_{1}^{\infty} \frac{2x^2 + bx + a}{x(2x+a)} - 1 \, dx = \int_{1}^{\infty} \frac{a}{x(2x+a)}
+\]
+Usando fracciones simples:
+\begin{align*}
+\int_{1}^{\infty} \frac{a}{x(2x+a)} &= \int_{1}^{\infty} \frac{1}{x} - \frac{2}{2x+a} \\
+&= \ln(x) - \ln(2x+a) \\
+&= \ln\left(\frac{x}{2x+a}\right) \bigg|_{1}^{\infty} \\
+&= \lim_{x\to\infty} \ln\left(\frac{x}{2x+a}\right) - \ln\left(\frac{1}{2+a}\right)
+\end{align*}
+Como el logaritmo es una función continua:
+\[
+\lim_{x\to\infty} \ln\left(\frac{x}{2x+a}\right) - \ln\left(\frac{1}{2+a}\right) = \ln\left(\frac{2+a}{2}\right)
+\]
+Luego queremos que:
+\[
+\ln \frac{2+a}{2} = 1 \iff a = b = 2e - 2
+\] 
+\color{black}
+
+
+%\textbf{Observación:} Primero analice qué relación debe existir entre \( a \) y \( b \) para que la integral sea convergente, y luego para esos valores calcule la misma para determinar los valores de \( a \) y \( b \).
+\item Considere la curva \( C \) definida por la ecuación
+$\displaystyle
+x^{\frac{2}{3}} + y^{\frac{2}{3}} = a^{\frac{2}{3}}, \ a > 0 \text{ fijo}.
+$ Calcule la longitud del arco en el primer cuadrante.
+
+\color{blue}
+\textbf{Sol:} Para calcular la longitud del arco en el primer cuadrante primero es importante despejar $y$ en función de $x$. Haciendo esto nos queda:
+\begin{align*}
+x^{2/3} + y^{2/3} &= a^{2/3} \\
+y^{2/3} &= a^{2/3} - x^{2/3} \\
+y &= (a^{2/3} - x^{2/3})^{3/2}.
+\end{align*}
+Donde la última igualdad queda con $y$, no con $-y$. Esto, pues estamos en el primer cuadrante. Ahora, aplicaremos el cálculo de longitud de la curva. Veamos que esto solo tiene sentido con $0 \le x \le a$, pues:
+\begin{itemize}
+    \item $x$ está en el primer cuadrante ($x \ge 0$)
+    \item $a^{2/3} - x^{2/3} \ge 0$, pues está dentro de una raíz cuadrada ($y = (\sqrt{a^{2/3} - x^{2/3}})^3 \in \mathbb{R}$). De modo que $x^{2/3} \le a^{2/3}$, luego $x^2 \le a^2$ y finalmente $x \le a$ ($x \ge 0$, pues estamos en el primer cuadrante).
+\end{itemize}
+Así, lo siguiente será obtener el siguiente cálculo:
+\[
+L(C) = \int_{0}^{a} \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
+\]
+Para esto, falta obtener $\frac{dy}{dx}$:
+\begin{align*}
+\frac{dy}{dx} &= ((a^{2/3} - x^{2/3})^{3/2})' \\
+&= \frac{3}{2} \cdot (a^{2/3} - x^{2/3})^{1/2} \cdot \left(-\frac{2}{3}x^{-1/3}\right) \\
+&= (a^{2/3} - x^{2/3})^{1/2} \cdot (-x^{-1/3}) \\
+&= -((a/x)^{2/3} - 1)^{1/2}
+\end{align*}
+Así, ahora:
+\begin{align*}
+L(C) &= \int_{0}^{a} \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx \\
+&= \int_{0}^{a} \sqrt{1 + \left(-((a/x)^{2/3} - 1)^{1/2}\right)^2} dx \\
+&= \int_{0}^{a} \sqrt{1 + ((a/x)^{2/3} - 1)} dx \\
+&= \int_{0}^{a} \sqrt{(a/x)^{2/3}} dx \\
+&= \int_{0}^{a} (a/x)^{1/3} dx \\
+&= \frac{3}{2} a^{1/3} x^{2/3} \bigg|_{0}^{a} \\
+&= \frac{3}{2} a^{1/3} a^{2/3} = \frac{3a}{2}
+\end{align*}
+\color{black}
+
+%ontrol-3-impropias_y_longitudMA1002-O2022
+\item Calcule la longitud de la curva definida por $
+f(x) = -\ln(\cos(x))
+$
+en el intervalo \( [0, \frac{\pi}{4}] \).
+
+\color{blue}
+\textbf{Sol:} La longitud de curva se calcula como
+\[
+\int_{0}^{\pi/4} \sqrt{1 + [f'(x)]^2} dx,
+\]
+por lo que comenzamos calculando $\sqrt{1 + [f'(x)]^2}$. Tenemos que
+\[
+f'(x) = -\frac{1}{\cos(x)}(-\sin(x)) = \frac{\sin(x)}{\cos(x)} = \tan(x).
+\]
+Así,
+\[
+1 + [f'(x)]^2 = 1 + \tan^2(x) = \sec^2(x),
+\]
+de donde
+\[
+\sqrt{1 + [f'(x)]^2} = \sqrt{\sec^2(x)} = |\sec(x)|.
+\]
+Como $x \in [0, \pi/4]$, $\sec(x)$ es positiva, por lo que la última expresión es igual a $\sec(x)$.
+La longitud de la curva entonces es
+\begin{align*}
+\int_{0}^{\pi/4} \sec(x) dx &= \ln(\tan(x) + \sec(x)) \bigg|_{0}^{\pi/4} \\
+&= \ln(\tan(\pi/4) + \sec(\pi/4)) - \ln(\tan(0) + \sec(0)) \\
+&= \ln(1 + \sqrt{2}) - \ln(0 + 1) \\
+&= \ln(1 + \sqrt{2}) - \ln(1) \\
+&= \ln(1 + \sqrt{2}).
+\end{align*}
+\color{black}
+
+%´ alculo Diferencial e Integral MA1002-2023-1 Control 3
+\item Sea \( f : [0, 1] \rightarrow \mathbb{R} \) dada por
+$\displaystyle
+f(x) = 2x^{3/2}.
+$
+Calcule la longitud de la curva que define \( f \).
+
+\color{blue}
+\textbf{Sol:} (Propuesto)
+\color{black}
+
+\item Una hormiga, que se encuentra inicialmente en el origen, sube una montaña que está descrita en alto, ancho y profundidad a través de las ecuaciones $x(t) = t^2 \cos(t)$, $y(t) = t^2 \sen(t)$, $z(t) = \frac{1}{\sqrt{3}}t^3$. Determine la distancia al plano $OXY$ que se encuentra la hormiga cuando ha recorrido una distancia $d = \frac{14}{3}$ por la montaña.
+
+\color{blue}
+\textbf{Sol:} (propuesto)
+\color{black}
+    
+
+
+\item Considere la curva $\mathcal{C}$ en $\mathbb{R}^{2}$ definida param\'etricamente por:
+$$ x(t) = \sen(2t), \quad y(t) = -\cos(2t), \quad \frac{\pi}{3} \leq t \leq \pi. $$
+Calcular la longitud de curva de $\mathcal{C}$.
+
+\noindent \textbf{\color{blue}Sol:}
+\begin{center}
+    {\color{blue}
+    $\dfrac{dx}{dt} = 2 \cos(2t), \quad \dfrac{dy}{dt} = 2 \sen(2t).$
+    }
+\end{center}
+\begin{align*}
+{\color{blue}\text{Longitud}} \quad {\color{blue}=} &\quad {\color{blue} \int_{\pi/3}^{\pi} \sqrt{(dx/dt)^2 + (dy/dt)^2} } \\
+{\color{blue}=} &\quad {\color{blue} \int_{\pi/3}^{\pi} \sqrt{4 \cos^2(2t) + 4 \sen^2(2t)} \, dt } \\
+{\color{blue}=} &\quad {\color{blue} \int_{\pi/3}^{\pi} 2 \, dt } \\
+{\color{blue}=} &\quad {\color{blue} 2t \big|_{\pi/3}^{\pi} } \\
+{\color{blue}=} &\quad {\color{blue} 2(\pi - \pi/3) = \frac{4\pi}{3}. }
+\end{align*}
+
+\color{black}
+
+
+\item Considere la espiral de ecuación paramétrica $x(t) = e^{2t} \cos(t), y(t) = e^{2t} \sen(t)$.
+\begin{enumerate}
+    \item  Encuentre el largo $L$ de la curva obtenida al variar el parámetro $t$ desde $0$ hasta $2\pi$.
+
+\color{blue}
+\textbf{Sol:} (propuesto)
+\color{black}
+    
+    \item Determine $t_0$ tal que la longitud de la curva obtenida al variar $t$ desde $0$ hasta $t_0$ sea igual a la mitad de $L$.
+
+\color{blue}
+\textbf{Sol:} (propuesto)
+\color{black}
+
+\item Calcule las siguientes integrales impropias y determine si son o no convergentes:
+    \begin{enumerate}
+        \item $\displaystyle \int_0^{\infty} \frac{x^2}{\sqrt{1 + x^3}} \, dx$
+
+\color{blue}
+\textbf{Sol:} Cambio de variable
+\[
+u=1+x^3 \;\Rightarrow\; du=3x^2\,dx.
+\]
+\[
+\int_0^{\infty}\frac{x^2}{\sqrt{1+x^3}}\,dx
+=\frac{1}{3}\int_{1}^{\infty} u^{-1/2}\,du.
+\]
+\[
+\frac{1}{3}\int u^{-1/2}du
+=\frac{1}{3}\cdot 2u^{1/2}
+=\frac{2}{3}\sqrt{u}.
+\]
+
+\[
+\lim_{b\to\infty}\frac{2}{3}\big(\sqrt{b}-1\big)=\infty.
+\]
+tenemos que la integral es \textbf{divergente}.
+\color{black}
+        
+        \item $\displaystyle \int_0^1 \ln(x)dx$
+
+\color{blue}
+\textbf{Sol:} $\displaystyle \int_{0}^{1} \ln(x) \, dx \quad \leadsto$ es de tipo 2 ya que $\displaystyle \lim_{x \to 0} \ln(x) \to -\infty$
+Calculemos directo:
+\begin{align*}
+\int_{0}^{1} \ln(x) \, dx &= \lim_{a \to 0} \int_{a}^{1} \ln(x) \, dx \\
+&= \lim_{a \to 0} (x \ln(x) - x) \bigg|_{a}^{1} \\
+&= \lim_{a \to 0} \left[ (1 \ln(1) - 1) - (a \ln(a) - a) \right] \\
+&= -1
+\end{align*}
+para el límite auxiliar:
+\[
+\begin{aligned}
+\lim_{a \to 0} a \ln(a) &= \lim_{a \to 0} \frac{\ln(a)}{\frac{1}{a}} \\
+&\stackrel{L'H}{=} \lim_{a \to 0} \frac{\frac{1}{a}}{-\frac{1}{a^2}} \\
+&= \lim_{a \to 0} (-a) = 0
+\end{aligned}
+\]
+Por lo tanto, el resultado es $-1$. \textbf{¡Converge!}
+\color{black}
+        
+        \item $\displaystyle \int_0^{\infty} \frac{dx}{x(x+\sqrt{x})}$
+
+\color{blue}
+\textbf{Sol:} $\displaystyle \int_{0}^{\infty} \frac{dx}{x(x+\sqrt{x})} = \int_{0}^{a} \frac{dx}{x(x+\sqrt{x})} + \int_{a}^{\infty} \frac{dx}{x(x+\sqrt{x})} \quad \text{con } a > 0$.  Si $a = 1$, estudiemos $(I)$:
+\[ \underbrace{\int_{0}^{1} \frac{dx}{x(x+\sqrt{x})}}_{(I)} + \underbrace{\int_{1}^{\infty} \frac{dx}{x(x+\sqrt{x})}}_{(J)} \]
+Estudiemos (I): Para $x \in [0, 1]$, se cumple que $x \leq \sqrt{x}$.
+\[ \implies \frac{1}{x(x+\sqrt{x})} \geq \frac{1}{x(\sqrt{x}+\sqrt{x})} = \frac{1}{2x \cdot x^{1/2}} = \frac{1}{2} x^{-3/2} \]
+Entonces:
+\[ \implies \int_{0}^{1} \frac{1}{x(x+\sqrt{x})} \, dx \geq \int_{0}^{1} \frac{1}{2} \frac{1}{x^{3/2}} \, dx \]
+Como $\frac{3}{2} > 1$ (en el límite inferior), la integral de la derecha \textbf{diverge}.
+
+$\therefore \displaystyle \int_{0}^{1} \frac{1}{x(x+\sqrt{x})} \, dx$ diverge $\displaystyle \implies \int_{0}^{\infty} \frac{1}{x(x+\sqrt{x})} \, dx$ también.
+\color{black}
+        
+        \item $\displaystyle \int_{0}^\infty \frac{\arctan(x)}{x^2} \, dx$
+
+\color{blue}
+\textbf{Sol:} $\displaystyle \int_{0}^{\infty} \frac{\arctan(x)}{x^2} \, dx \ \text{es} \ \text{mixta}$
+\noindent $\displaystyle = \underbrace{\int_{0}^{1} \frac{\arctan(x)}{x^2} \, dx}_{\text{2\textsuperscript{a} especie}} + \underbrace{\int_{1}^{\infty} \frac{\arctan(x)}{x^2} \, dx}_{\text{1\textsuperscript{a} especie}}$
+\quad 
+
+\begin{minipage}[t]{0.4\textwidth}
+\textit{En cociente el límite es $x \to 0$ pues en 0 explota la función.}
+\end{minipage}
+\noindent Veamos esta (la de 2\textsuperscript{a} especie),
+
+usemos \textbf{criterio del cociente}:
+\[
+\lim_{x \to 0} \frac{\left( \frac{\arctan(x)}{x^2} \right)}{\frac{1}{x}} = \lim_{x \to 0} \frac{\arctan(x)}{x} \stackrel{L'H}{=} \lim_{x \to 0} \frac{\frac{1}{x^2+1}}{1} = 1 \neq 0
+\]
+\noindent Por lo tanto $\displaystyle \int_{0}^{1} \frac{\arctan(x)}{x^2} \, dx$ \textbf{diverge} ya que $\displaystyle \int_{0}^{1} \frac{1}{x} \, dx$ \textbf{diverge}. $\implies \displaystyle \int_{0}^{\infty} \frac{\arctan(x)}{x^2} \, dx$ también \textbf{diverge}.
+\color{black}
+        
+    \end{enumerate}
+
+\item Para el siguiente conjunto $S = \{(x, y) : x \geq 0, 0 \leq y \leq \lambda e^{-\lambda x}, \lambda > 0\}$, trace su región, y determine si esta es finita o no.
+
+\color{blue}
+\textbf{Sol:} El conjunto dado es
+\[
+S = \{(x,y) : x \ge 0, \; 0 \le y \le \lambda e^{-\lambda x}, \; \lambda>0\}.
+\]
+Para cada $x \ge 0$, $y$ varía entre $0$ y $y=\lambda e^{-\lambda x}$. La curva superior es una función exponencial decreciente que parte de $y=\lambda$ en $x=0$ y tiende a $0$ cuando $x\to\infty$. La curva inferior es $y=0$ (eje $OX$).
+La región $S$ es
+\[
+\begin{tikzpicture}[scale=1.0]
+\draw[->] (-0.2,0) -- (6,0) node[right] {$x$};
+\draw[->] (0,-0.2) -- (0,3) node[above] {$y$};
+\draw[thick,domain=0:5,smooth,samples=100] plot (\x,{2*exp(-0.5*\x)}) node[right] {$y=\lambda e^{-\lambda x}$};
+\draw[fill=blue!20,domain=0:5,smooth,samples=100] 
+  plot (\x,{2*exp(-0.5*\x)}) -- (5,0) -- (0,0) -- cycle;
+\end{tikzpicture}
+\]
+calculamos su área:
+\[
+A = \int_0^{\infty} \lambda e^{-\lambda x}\,dx = \left[-e^{-\lambda x}\right]_0^{\infty} = 1.
+\]
+Conclusión: la región es \textbf{finita} y tiene área $1$.
+\color{black}
+
+\item \textbf{[Propuesto].-} Calcule, si es que existe, el área de bajo de la curva
+$$f(x)=\frac{x}{(1+x^2)^{3/2}}$$
+En el primer cuadrante.
+
+\color{blue}
+\textbf{Sol:} Nos piden $A = \displaystyle \int_{0}^{\infty} f(x) \, dx = \int_{0}^{\infty} \frac{x}{(1+x^2)^{3/2}} \, dx$
+Vayamos directo a calcular. Obs: es de \textbf{1era especie}.
+\begin{align*}
+\int_{0}^{\infty} \frac{x}{(1+x^2)^{3/2}} \, dx &= \lim_{b \to \infty} \int_{0}^{b} \frac{x}{(1+x^2)^{3/2}} \, dx \quad \leadsto \text{hacer desaparecer la raíz} \\
+&\text{Cambio de variable:} \\
+&u^2 = 1+x^2 \implies 2u \, du = 2x \, dx \implies u \, du = x \, dx \\
+&\text{Límites:} \\
+&\text{Si } x \to \infty \implies u \to \infty \\
+&\text{Si } x = 0 \implies u = 1 \\
+\\
+&= \lim_{b \to \infty} \int_{1}^{b} \frac{u \, du}{(u^2)^{3/2}} \\
+&= \lim_{b \to \infty} \int_{1}^{b} \frac{u \, du}{u^3} \\
+&= \lim_{b \to \infty} \int_{1}^{b} \frac{du}{u^2} \quad \text{es del tipo } \frac{1}{x^p} \text{ con } p=2 > 1, \text{ por lo que converge.} \\
+&= \lim_{b \to \infty} \left( \frac{u^{-2+1}}{-2+1} \right) \bigg|_{1}^{b} \\
+&= \lim_{b \to \infty} \left( -\frac{1}{u} \right) \bigg|_{1}^{b} = \lim_{b \to \infty} \left[ -\frac{1}{b} - \left( -\frac{1}{1} \right) \right] \\
+&= 1
+\end{align*}
+\color{black}
+    
+    
+\end{enumerate}
+
+% \item Calcule, si es que existe, el área de bajo de la curva
+% $$f(x)=\frac{x}{(1+x^2)^{3/2}}$$
+% En el primer cuadrante.
+\end{enumerate}
+
+
+
+
+\end{document}

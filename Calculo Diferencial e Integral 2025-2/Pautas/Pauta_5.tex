@@ -1,0 +1,505 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{framed}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=1.5cm,top=0.9cm,right=1.5cm, bottom=1.4cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+% Page
+\oddsidemargin -0.4in
+\textwidth 7in
+\topmargin -0.6in
+\textheight 9.1in
+\parindent 0em
+\parskip 1ex
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+% fin macros
+
+% Comandos más usados
+% Conjuntos
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R} \times \mathbb{R}}
+% Flechas
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+\newcommand{\pmi}{\Longleftarrow}
+% Trigonométricas
+\newcommand{\sen}{\text{sen}}
+
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Prueba con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+	
+	\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+	\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+	
+	\begin{minipage}{11.5 cm}
+         \vspace{-6mm}
+		\begin{flushleft}
+			\vspace{1mm}
+			\textbf{ING1002-2 Cálculo Diferencial e Integral}\\
+			\textbf{Profesor:}  Gonzalo Flores G.  \\
+			\textbf{Ayudante:}  Juan I. Riquelme \& Cristian Acevedo R. \\
+		\end{flushleft}
+	\end{minipage}
+	
+	\begin{picture}(2,3)
+		\put(430,9.5){\includegraphics[scale=0.22]{Imagenes/UOH.png}}
+	\end{picture}
+	\vspace{-3mm}
+	\begin{center}
+		\LARGE \bf{Ayudantía 5: Regla de Fermat}
+	\end{center}
+
+\vspace{0.3cm}
+\begin{enumerate}[\textbf{P\arabic{enumi}.}]
+% \item Calcule las derivadas de las siguientes funciones:
+% \begin{enumerate}
+%     \item \( y = e^{\sqrt{\tan(x^2)}} \)
+%     \item \( y = \dfrac{\sen(3x)}{x + \ln(x)} \)
+% \end{enumerate}
+% \item Pruebe que $\forall x, y \in \mathbb{R}$ se tiene que
+% $$ |\cos(x) - \cos(y)| \le |x-y| $$
+
+\item Encuentre la derivada de la funci\'on $g'(y)$, identific\'andola como una funci\'on inversa $g(y) = f^{-1}(y)$. Posteriormente, eval\'ue el valor de esta derivada en el punto $y_0$ especificado:
+\begin{enumerate}
+    \item $g(y) = \ln y$, $y_0 = e$.
+
+\color{blue}
+\textbf{Sol:} La función $g(y) = \ln y$ es la inversa de $f(x) = e^x$.
+
+    Sabemos que si $g^{-1} = f$, entonces:
+    \[
+    g'(y) = \frac{1}{f'(x)} \quad \text{donde } x = g(y)
+    \]
+    Como $x = \ln y$, entonces:
+    \[
+    g'(y) = \frac{1}{f'(x)} = \frac{1}{e^x} = \frac{1}{y}
+    \]
+    Evaluamos en $y_0 = e$:
+    \[
+    g'(e) = \frac{1}{e}
+    \]
+\color{black}
+    \item $h(y) = \arcsen y$, $y_0 = 1/2$.
+
+\color{blue}
+\textbf{Sol:} Similar a la parte anterior, $h(y) = \arcsen y$ es la inversa de $f(x) = \sen x$. Sabemos que si $h^{-1} = f$, entonces:
+\[
+h'(y) = \frac{1}{f'(x)} \quad \text{donde } x = h(y)
+\]
+Como $x = \arcsen y$, entonces:
+\[
+h'(y) = \frac{1}{\cos x} = \frac{1}{\sqrt{1 - \sen^2 x}} = \frac{1}{\sqrt{1 - y^2}}
+\]
+Evaluamos en $y_0 = \frac{1}{2}$:
+\[
+h'\left( \frac{1}{2} \right) = \frac{1}{\sqrt{1 - \left( \frac{1}{2} \right)^2}} = \frac{1}{\sqrt{1 - \frac{1}{4}}} = \frac{1}{\sqrt{\frac{3}{4}}} = \frac{1}{\frac{\sqrt{3}}{2}} = \frac{2}{\sqrt{3}}
+\]
+\color{black}
+    
+    \item $l(y) = \sqrt[3]{y}$, $y_0 = 32$.
+
+\color{blue}
+\textbf{Sol:}
+La función $l(y) = \sqrt[3]{y}$ es la inversa de $f(x) = x^3$. Como $x = \sqrt[3]{y}$, entonces:
+\[
+f'(x) = 3x^2 \quad \Rightarrow \quad l'(y) = \frac{1}{3x^2} = \frac{1}{3 (\sqrt[3]{y})^2}
+\]
+Evaluamos en $y_0 = 32$:
+\[
+l'(32) = \frac{1}{3 (\sqrt[3]{32})^2} = \frac{1}{3 \cdot 4^2} = \frac{1}{3 \cdot 16} = \frac{1}{48}
+\]
+\color{black}
+    
+\end{enumerate}
+
+\item Considere la función \( y = f(x) \) definida implícitamente por la ecuación
+\[
+x^3 \sen y + y = 4x,
+\]
+para \( x \) en un intervalo apropiado en torno a 0. Encuentre la ecuación de la recta tangente a \( f \) en el punto \( x = 0 \). \textit{Indicación: Use derivada implícita.}
+
+\color{blue}
+\textbf{Sol:} Calculemos \( y'\) como derivada implícita:
+\[
+\frac{d}{dx}(x^3 \sen y + y) = \frac{d}{dx}(4x) \Rightarrow 3x^2 \sen y + x^3 \cos y y' + y' = 4
+\]
+\[
+\Rightarrow (x^3 \cos y + 1)y' = 4 - 3x^2 \sen y \Rightarrow y' = \frac{4 - 3x^2 \sen y}{x^3 \cos y + 1}.
+\]
+Debemos calcular la recta tangente a \( f \) en \( x = 0 \). Para este valor se tiene que \( y = 0 \) (reemplazar $x=0$ en la ecuación). Así, la pendiente de la recta tangente en ese punto es
+\[
+m = y'(0) = \frac{4 - 3 \cdot 0^2 \sen 0}{0^3 \cos 0 + 1} = 4.
+\]
+Concluimos que la recta tangente buscada es \( y = 4x \).
+\color{black}
+
+\item Se desea construir una caja rectangular con base cuadrada sin tapa superior de un volumen interior de 1000. ¿Cuáles deben ser las dimensiones de la caja para minimizar su superficie? ¿Cuál es la superficie mínima? Para responder a estas preguntas siga los siguientes pasos.
+
+\begin{enumerate}
+    \item Si \( x \) es el lado del cuadrado basal inferior e \( y \) es la altura de la caja, escriba una ecuación para el área total de la caja en términos de \( x \) e \( y \).
+
+\color{blue}
+\textbf{Sol:} El área total de la caja es
+    \[
+    A = x^2 + 4xy 
+    \]
+\color{black}
+
+    \item Escriba una ecuación en \( x \) e \( y \) que establezca que el volumen interior de la caja es 1000 y despeje en dicha ecuación \( y \) como función de \( x \).
+
+\color{blue}
+\textbf{Sol:} La ecuación que establece que el volumen interior de la caja es 1000 es
+    \[
+    x^2 y = 1000 
+    \]
+    y despejando \( y \) como función de \( x \) tenemos \( y(x) = \frac{1000}{x^2} \).
+\color{black}
+
+    \item Escriba el área total de la caja como una función de \( x \), es decir, una expresión para \( A(x) \).
+
+\color{blue}
+\textbf{Sol:} El área total como función de \( x \) queda
+    \[
+    A(x) = x^2 + 4x \frac{1000}{x^2} = x^2 + \frac{4000}{x}
+    \]
+\color{black}
+    
+    \item  Pruebe que \( x = 10 \sqrt[3]{2} \) es un mínimo de \( A \).
+
+\color{blue}
+\textbf{Sol:} Dada la naturaleza del problema el dominio de \( A \) es \( (0, \infty) \). Calculamos la derivada de \( A \) respecto a \( x \) obteniendo
+    \[
+    A'(x) = 2x - \frac{4000}{x^2}
+    \]
+    e igualando a 0 obtenemos el punto crítico \( x = 10 \sqrt[3]{2} \). Ahora podemos analizar el crecimiento de \( A \) vía el signo de \( A' \)
+    \[
+    \begin{array}{c|cc}
+    & (0, 10 \sqrt[3]{2}) & (10 \sqrt[3]{2}, \infty) \\ \hline
+    A'(x) & - & + \\
+    A & \searrow & \nearrow \\
+    \end{array}
+    \]
+    con lo que \( x = 10 \sqrt[3]{2} \) es mínimo global de \( A \).
+
+    Alternativamente podemos usar el criterio de la segunda derivada:
+    \[
+    A''(x) = 2 + \frac{8000}{x^3} \implies A''(10 \sqrt[3]{2}) > 0,
+    \]
+\color{black}
+\item Concluya
+
+\color{blue}
+\textbf{Sol:}
+Las dimensiones de la caja para que la superficie sea mínima son \( x = 10 \sqrt[3]{2} \) e \( y = \frac{10}{\sqrt[3]{2}} = 5 \sqrt[3]{2} \) y la superficie mínima es
+\[
+A(10 \sqrt[3]{2}) = 100 \sqrt[3]{4} + 4 \cdot 10 \sqrt[3]{2} \cdot 5 \sqrt[3]{2} = 300 \sqrt[3]{4}
+\]
+\color{black}
+
+\end{enumerate}
+
+\item Considere la función $f(x) = (x + 1) \ln \left( \left| \frac{x + 1}{x} \right| \right)$, definida en $\R \setminus \{0\}$.
+\begin{enumerate}
+    \item Encuentre ceros y signos de $f$.
+    
+\color{blue}
+\textbf{Sol:} En el caso de los ceros de $f$, esto ocurre si $(x + 1) = 0$ o $\ln \left| \frac{x + 1}{x} \right| = 0$.
+ El caso $x + 1 = 0 \implies x = -1$ pero este valor está fuera del dominio de $f$. El caso $\ln \left| \frac{x + 1}{x} \right| = 0$ sucede cuando $\left| \frac{x + 1}{x} \right| = 1$. Para resolver esta ecuación con valor absoluto, tenemos dos casos:
+  $$\frac{x + 1}{x} = 1 \implies x + 1 = x \implies 1 = 0 \quad \text{(Sin solución).}$$ 
+  Luego para
+$$\frac{x + 1}{x} = -1 \implies\ x = -1/2$$. 
+Concluimos que el único cero de la función es $x = -1/2$.
+
+Para los signos de $f$, analizamos los signos en los intervalos definidos por los puntos críticos $-1, 0$ y el cero $-1/2$. Esto lo hacemos por la tabla de signos.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Signo de $f(x)$} & \textbf{$(-\infty, -1)$} & \textbf{$(-1, -1/2)$} & \textbf{$(-1/2, 0)$} & \textbf{$(0, \infty)$} \\
+\hline
+$(x+1)$ & $-$ & $+$ & $+$ & $+$ \\
+\hline
+$\ln(\frac{x+1}{x})$ & $-$ & $-$ & $+$ & $+$ \\
+\hline
+$\mathbf{(x+1) \cdot \ln(\frac{x+1}{x})}$ & $\mathbf{+}$ & $\mathbf{-}$ & $\mathbf{+}$ & $\mathbf{+}$ \\
+\hline
+\end{tabular}
+\end{center}
+En resumen tenemos que, $f(x) > 0$ (positiva) en $(-\infty, -1) \cup (-1/2, 0) \cup (0, \infty)$, $f(x) < 0$ (negativa) en $(-1, -1/2)$.
+\color{black}
+    
+    \item Estudie las asíntotas horizontales de $f$, (\textbf{hint:} use el cambio de variable $u=1/x$). Encuentre los límites laterales cuando $x \to 0^{\pm}$ y repare la función para que sea continua estudiando las asíntotas verticales. 
+    
+    \color{blue}
+\textbf{Sol:} Para las asíntotas horizontales calculamos
+\[
+\lim_{x \to \pm\infty} (x + 1) \ln \left| \frac{x + 1}{x} \right|
+\]
+lo cual nos presenta una indeterminación del tipo $\infty \cdot 0$. Usamos la sustitución $t = 1/x$. Cuando $x \to \pm\infty$, $t \to 0$.
+
+Luego el límite pasa a ser:
+\[
+\lim_{t \to 0} \left( \frac{1 + t}{t} \right) \ln|1+t|
+\]
+Resolviendo con $l'hopital$, derivamos arriba y abajo y tiramos limite:
+$$
+\lim_{t \to 0} \left( \frac{1 + t}{t} \right) \ln|1+t| \xrightarrow{l'hopital}\lim_{t \to 0} \frac{\ln|1+t|+1}{1}= \ln|1+0|+1=1
+$$
+Entonces la asíntota horizontal es $\mathbf{y = 1}$.
+
+Calculamos los límites laterales:
+\[
+\lim_{x \to 0^{\pm}} (x + 1) \ln \left| \frac{x + 1}{x} \right|
+\]
+En ambos casos tenemos que el límite es $1 \cdot (+\infty) = +\infty$, pues el logaritmo tiende a infinito cuando le pasamos valores muy pequeños. Entonces $x=0$ es una asíntota vertical de $f(x)$.
+
+Ahora vemos que la función tiene dos discontinuidades, $x=0$ y $x=-1$. Para el caso $x=0$, como $\displaystyle \lim_{x \to 0} f(x) = \infty$, esta es discontinuidad no es reparable. Luego en $x=-1$, estudiamos el límite:
+    \[
+    \lim_{x \to -1} (x + 1) \ln \left| \frac{x + 1}{x} \right|
+    \]
+    Esto es una indeterminación $0 \cdot (-\infty)$. Usemos el cambio de variable $u = x+1$.
+    \[
+    \lim_{u \to 0} u \ln \left| \frac{u}{u-1} \right| = \lim_{u \to 0} (u \ln|u| - u \ln|u-1|)
+    \]
+    Ahora para resolver cada uno de los límites vamos a usar l'hopital, tenemos que 
+    $$
+    \lim_{u \to 0} u \ln|u|=  \lim_{u \to 0} \frac{\ln|u|}{1/u} \xrightarrow{l'hopital} \lim_{u \to 0} \frac{\frac{1}{u}}{-1/u^2} =\lim_{u \to 0} -u  = 0
+    $$
+    $$
+     \lim_{u \to 0} -u \ln|u-1| = \lim_{u \to 0} \frac{\ln|u-1|}{1/u} \xrightarrow{l'hopital} \lim_{u \to 0} \frac{\frac{1}{u-1}}{-1/u^2} = 0$$
+Por lo tanto la discontinuidad en $x=-1$ es removible o reparable, ya que el límite existe y es $0$. Definamos entonces $f(x)$ como
+\[
+f(x) = 
+\begin{cases} 
+    (x + 1) \ln \left| \frac{x + 1}{x} \right| & \text{si } x \in \mathbb{R} \setminus \{-1, 0\} \\
+    0 & \text{si } x = -1 
+\end{cases}
+\]
+\color{black}
+    
+    \item Use el Teorema del valor medio en la función auxiliar $g(x) = \ln|x|$ en el intervalo $[x, x + 1]$ para probar que
+    \[
+    \frac{1}{x + 1} < \ln \left( \frac{x + 1}{x} \right) < \frac{1}{x}, \quad \forall x \in (-\infty, -1) \cup (0, \infty).
+    \]
+    
+    \color{blue}
+\textbf{Sol:} Sea la función $g(x) = \ln|x|$ definida en $[a, b] = [x, x + 1]$.
+El (TVM) requiere que $g(x)$ sea derivable en $(x, x + 1)$, $g(x) = \ln|x|$ ya es es continua y derivable en todo $\mathbb{R} \setminus \{0\}$, y el dominio de $x$ es $(-\infty, -1) \cup (0, \infty)$. Luego existe un $c \in (x, x + 1)$ tal que
+\[
+g'(c) = \frac{g(b) - g(a)}{b - a} = \frac{g(x + 1) - g(x)}{(x + 1) - x}
+\]
+En efecto, obtenemos
+\[
+\frac{1}{c} = \frac{\ln \left| \frac{x + 1}{x} \right|}{1} \implies \frac{1}{c} = \ln \left| \frac{x + 1}{x} \right|
+\]
+Además podimos comprobar en la parte a) que $f$ en $(-\infty , -1) \cup (0, \infty)$ es positiva y es decrecientes por la parte d), luego se satisface satisfacen $\frac{1}{x+1} < 1/x$, luego existe la imagen de $f'(c)$, cumple que
+\[
+g(x+1)= \frac{1}{x + 1} < \frac{1}{c} < \frac{1}{x} = g(x)
+\]
+por lo tanto
+\[
+\frac{1}{x + 1} < \ln \left( \frac{x + 1}{x} \right) < \frac{1}{x}
+\]
+ para todo $x \in (-\infty, -1) \cup (0, \infty)$.
+\color{black}
+    
+    \item Calcule la primera derivada de $f$.
+    
+\color{blue}
+\textbf{Sol:} Aplicando la regla del producto:
+\begin{align*}
+f'(x) &= (1) \cdot \ln \left| \frac{x + 1}{x} \right| + (x + 1) \cdot \left[ \frac{-1}{x(x + 1)} \right] \\
+f'(x) &= \ln \left| \frac{x + 1}{x} \right| - \frac{(x + 1)}{x(x + 1)} \\
+f'(x) &= \ln \left| \frac{x + 1}{x} \right| - \frac{1}{x}
+\end{align*}
+\color{black}
+    
+    \item Use el resultado de la parte \fbox{c} para concluir sobre el crecimiento de $f$ en $(-\infty, -1)$ y en $(0, \infty)$.
+    
+\color{blue}
+\textbf{Sol:} De la parte (d) sabemos que:
+    \[
+    f'(x) = \ln \left| \frac{x + 1}{x} \right| - \frac{1}{x}
+    \]
+    La parte (c) probó que para $x \in (-\infty, -1) \cup (0, \infty)$:
+    \[
+    \frac{1}{x + 1} < \ln \left( \frac{x + 1}{x} \right) < \frac{1}{x}
+    \]
+    \[
+    \ln \left( \frac{x + 1}{x} \right) < \frac{1}{x}
+    \]
+    Si restamos $\frac{1}{x}$ a la desigualdad, obtenemos:
+    \[
+    \ln \left( \frac{x + 1}{x} \right) - \frac{1}{x} < 0
+    \]
+    Por lo que $f'(x) < 0$ (negativa) en todo el dominio de interés. Entonces la función $f(x)$ es \textbf{estrictamente decreciente} en el intervalo $(-\infty, -1)$ y también en el intervalo $(0, \infty)$.
+
+\color{black}
+    
+    \item Bosqueje el gráfico de $f$.
+
+
+\color{blue}
+\textbf{Sol:} Dados los incisos anteriores tenemos asíntotas horizontales y verticales, intervalos de crecimiento y decrecimiento de la función y puntos críticos, por lo tanto el gráfico de $f$ queda dado por:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes/grafico ay 5.png}
+    \caption{Gráfico de $f$}
+    \label{fig:placeholder}
+\end{figure}
+\color{black}
+    
+\end{enumerate}
+
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes/calamidad.png}
+    \label{fig:placeholder}
+\end{figure}
+
+\end{document}
+
+
+\item Considere la función 
+\[
+f(x) = x \sqrt{x} - x^2.
+\]
+\begin{enumerate}
+    \item Encuentre el dominio de \( f \).
+
+    \color{blue}
+    \textbf{Sol:}
+    La función está definida cuando $\sqrt{x}$ está definida, es decir, cuando $x \geq 0$. Entonces, el dominio es: $[0, \infty)$
+    \color{black}
+    
+    \item Encuentre los mínimos y máximos de esta función.
+
+    \color{blue}
+    \textbf{Sol:}
+    Derivamos e igualamos a cero la función para comprobar la regla de fermat:
+    \[
+    f(x) = x x^{1/2} - x^2 = x^{3/2} - x^2
+    \]
+    \[
+    f'(x) = \frac{3}{2}x^{1/2} - 2x
+    \]
+    sacamos los puntos críticos:
+    \[
+    \frac{3}{2}x^{1/2} -2x=0
+    \]
+    \[
+    \frac{3}{2\sqrt{x}} = 2 \Rightarrow \frac{3}{2} = 2\sqrt{x} \Rightarrow \sqrt{x} = \frac{3}{4} \Rightarrow x = \left( \frac{3}{4} \right)^2 = \frac{9}{16}
+    \]
+    Evaluamos el signo de $f'(x)$ para determinar si hay máximo o mínimo:
+
+    - Si $x < \frac{9}{16} \Rightarrow f'(x) > 0$, si $x > \frac{9}{16}$, $f'(x) < 0$, (probar con $x=1/2 < 9/16$ y $x=1>9/16$.
+
+    Por lo tanto, hay un \textbf{máximo local} en $x = \frac{9}{16}$.
+
+    Calculamos el valor máximo:
+    \[
+    f\left( \frac{9}{16} \right) = \frac{9}{16} \cdot \sqrt{ \frac{9}{16} } - \left( \frac{9}{16} \right)^2 = \frac{9}{16} \cdot \frac{3}{4} - \frac{81}{256} = \frac{27}{64} - \frac{81}{256}
+    \]
+    \[
+    = \frac{108}{256} - \frac{81}{256} = \frac{27}{256}
+    \]
+    \color{black}
+    
+\end{enumerate}
+
+\item Sea un paralelepipedo de lados $a,b,c$ donde se cumple que $2a+c=8$ y $a-b=2$, hallar el máximo volumen que pueda alcanzar el paralelepipedo.
+
+\color{blue}
+\textbf{Sol:} Recordemos que el volumen de un paralelepípedo es:
+\[
+V = abc
+\]
+Luego usamos las restricciones para armar la función objetivo:
+\[
+c = 8 - 2a, \quad b = a - 2
+\]
+Sustituimos en la expresión del volumen:
+\[
+V(a) = a (a - 2)(8 - 2a)
+= 12a^2 - 2a^3 - 16a
+\]
+Derivamos para encontrar el máximo:
+\[
+V'(a) = 24a - 6a^2 - 16
+\]
+Igualamos a cero:
+\[
+24a - 6a^2 - 16 = 0 \quad \Rightarrow \quad -6a^2 + 24a - 16 = 0
+\]
+\[
+3a^2 - 12a + 8 = 0
+\]
+Luego
+\[
+a = \frac{12 \pm \sqrt{(-12)^2 - 4 \cdot 3 \cdot 8}}{2 \cdot 3} = \frac{12 \pm \sqrt{144 - 96}}{6} = \frac{12 \pm \sqrt{48}}{6}
+\]
+\[
+= \frac{12 \pm 4\sqrt{3}}{6} = \frac{4(3 \pm \sqrt{3})}{6} = \frac{2(3 \pm \sqrt{3})}{3}
+\]
+Nos quedamos con el valor que hace a, b y c positivos:
+\[
+a = \frac{2(3 + \sqrt{3})}{3}
+\]
+Para comprobar que el valor de $a$ que calculamos corresponde efectivamente a un máximo, vemos que por el criterio de la segunda derivada:
+$$
+A''(a)=-12a+24 \Rightarrow A''(a)=-12(2/3(3+\sqrt3))+24>0 
+$$
+Luego, efectivamente $\displaystyle a = \frac{2(3 + \sqrt{3})}{3}$ es un máximo local de $A(a)$. Ahora calculamos \( b \) y \( c \):
+\[
+b = a - 2 = \frac{2(3 + \sqrt{3})}{3} - 2 = \frac{2(3 + \sqrt{3}) - 6}{3} = \frac{2\sqrt{3}}{3}
+\]
+\[
+c = 8 - 2a = 8 - \frac{4(3 + \sqrt{3})}{3} = \frac{24 - 12 - 4\sqrt{3}}{3} = \frac{12 - 4\sqrt{3}}{3}
+\]
+Entonces, el volumen máximo es:
+\[
+V = abc = \left( \frac{2(3 + \sqrt{3})}{3} \right) \left( \frac{2\sqrt{3}}{3} \right) \left( \frac{12 - 4\sqrt{3}}{3} \right)
+\]
+Es el volumen máximo bajo las condiciones dadas.
+\color{black}

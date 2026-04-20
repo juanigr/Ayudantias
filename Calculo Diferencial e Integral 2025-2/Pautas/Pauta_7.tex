@@ -1,0 +1,297 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{framed}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=1.5cm,top=-0.9cm,right=1.5cm, bottom=1.4cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+% Page
+\oddsidemargin -0.4in
+\textwidth 7in
+\topmargin -0.6in
+\textheight 9.1in
+\parindent 0em
+\parskip 1ex
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+% fin macros
+
+% Comandos más usados
+% Conjuntos
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R} \times \mathbb{R}}
+% Flechas
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+\newcommand{\pmi}{\Longleftarrow}
+% Trigonométricas
+\newcommand{\sen}{\text{sen}}
+
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Prueba con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+	
+	\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+	\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+	
+	\begin{minipage}{11.5 cm}
+         \vspace{-6mm}
+		\begin{flushleft}
+			\vspace{1mm}
+			\textbf{ING1002-2 Cálculo Diferencial e Integral}\\
+			\textbf{Profesor:}  Gonzalo Flores G.  \\
+			\textbf{Ayudante:}  Juan I. Riquelme \& Cristian Acevedo R. \\
+		\end{flushleft}
+	\end{minipage}
+	
+	\begin{picture}(2,3)
+		\put(430,9.5){\includegraphics[scale=0.22]{Imagenes/UOH.png}}
+	\end{picture}
+	\vspace{-7mm}
+	\begin{center}
+		\LARGE \bf{Ayudantía 7: Optimización en $\R$}
+	\end{center}
+    \vspace{-2.5mm}
+
+\begin{enumerate}[\textbf{P\arabic{enumi}.}]
+\item Considere la función $f: [-1, 1] \to \mathbb{R}$ dada por $f(x) = x^3 + 4x^2 + x + 1$ para $x \in [-1, 1]$.
+Pruebe que $f$ es convexa.
+
+\color{blue}
+\textbf{Sol:} Calculamos $f'(x) = 3x^2 + 8x + 1$ y $f''(x) = 6x + 8$ y notamos que para $x \in [-1, 1]$ se cumple $x \ge -1$ y así $f''(x) \ge 2$. Con esto se deduce que $f$ es convexa.
+\color{black}
+
+\item Determine los intervalos de crecimiento y decrecimiento, los intervalos de convexidad y concavidad, puntos críticos y puntos de inflexión, para las siguientes funciones
+\begin{enumerate}[a)]
+    \item $y = \text{arctan}(x)$.
+
+\color{blue}
+\textbf{Sol:} El dominio de $f$ son todos los reales. Calculamos la primera Derivada ($f'$):
+$$f'(x) = \frac{1}{1 + x^2}$$ no existen puntos donde $f'(x)=0$ (puntos críticos). Luego como $f'(x) > 0$ en todo el dominio, la función es estrictamente creciente en $(-\infty, \infty)$. Sacamos la segunda derivada para determinar los intervalos de concavidad y convexidad, analizando el signo de esta misma.
+$$f''(x) = -\frac{2x}{(1 + x^2)^2}$$
+
+Puntos de Inflexión:
+$$f''(x) = 0 \iff -2x = 0 \iff x = 0$$
+Punto de Inflexión: $(0, \text{arctan}(0)) = (0, 0)$.
+
+Intervalos de Concavidad:
+$f''(x) > 0$ (Cóncava hacia arriba) para $x < 0$. Intervalo: $(-\infty, 0)$.
+$f''(x) < 0$ (Cóncava hacia abajo) para $x > 0$. Intervalo: $(0, \infty)$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Imagenes/arctan.png}
+    \caption{$\arctan(x)$}
+    \label{fig:placeholder}
+\end{figure}
+\color{black}
+    
+    \item $y = x - 2\text{arcsen}(x)$.
+
+\color{blue}
+\textbf{Sol:} Aquí tenemos que el dominio de $f$ es el intervalo $[-1,1]$, pues el seno toma valores entre $0$ y $1$. Calculamos la primera derivada.
+$$f'(x) = 1 - \frac{2}{\sqrt{1 - x^2}} = \frac{\sqrt{1 - x^2} - 2}{\sqrt{1 - x^2}}$$
+
+Puntos Críticos:
+$f'(x) = 0$ no tiene solución real, por lo que los puntos críticos se encuentran en los extremos del dominio: $x = -1$ y $x = 1$, (teorema del valor extremo). Para los intervalos de Crecimiento/Decrecimiento:
+En $(-1, 1)$, $0 < \sqrt{1 - x^2} \le 1$. Por lo tanto, $\sqrt{1 - x^2} - 2$ es siempre negativo.
+Como $f'(x) < 0$ en $(-1, 1)$, la función es estrictamente decreciente en $[-1, 1]$. Ahora analizamos los intervalos de convexidad y concavidad
+$$f''(x) = -\frac{2x}{(1 - x^2)^{3/2}}$$
+
+Puntos de Inflexión:
+$$f''(x) = 0 \iff -2x = 0 \iff x = 0$$
+Punto de Inflexión: $(0, 0)$.
+Analizando el signo de $f''(x)$ en $(-1, 1)$:
+\begin{itemize}
+    \item $f''(x) > 0$ (Cóncava hacia arriba) para $x < 0$. Intervalo: $[-1, 0)$.
+    \item $f''(x) < 0$ (Cóncava hacia abajo) para $x > 0$. Intervalo: $(0, 1]$.
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{Imagenes/arcsen.png}
+    \caption{$x-2\arcsen(x)$}
+    \label{fig:placeholder}
+\end{figure}
+\color{black}
+    
+    \item $y = x \ln x$.
+
+    \color{blue}
+    \textbf{Sol:} El dominio de $f$ es $\mathbf{(0, \infty)}$.
+$$f'(x) = \ln x + 1$$
+Punto Crítico:
+$$f'(x) = 0 \iff \ln x = -1 \iff x = e^{-1} = \frac{1}{e}$$
+\begin{itemize}
+    \item Decrecimiento: $\mathbf{(0, 1/e)}$ (donde $f'(x) < 0$).
+    \item Crecimiento: $\mathbf{(1/e, \infty)}$ (donde $f'(x) > 0$).
+\end{itemize}
+tenemos mínimo local: $\left(\frac{1}{e}, -\frac{1}{e}\right)$ (también se puede puede usar el criterio de la segunda derivada, pero yo lo hago así ya que estudiamos el crecimiento y decrecimiento de $f$ en $\R$). Calculamos los puntos de inflexión:
+$$f''(x) = 0 \iff \frac{1}{x} = 0$$
+No hay solución. Por lo tanto, no hay puntos de inflexión.
+
+\textbf{Convexidad/Concavidad:}
+Como el dominio es $(0, \infty)$, $x$ es siempre positivo.
+$$f''(x) = \frac{1}{x} > 0 \quad \text{para todo } x \in (0, \infty)$$
+Finalmente solo tenemos convexidad en $(0, \infty)$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\linewidth]{Imagenes/xlnx.png}
+    \caption{$x\ln(x)$}
+    \label{fig:placeholder}
+\end{figure}
+
+    \color{black}
+    \item $y = x^3 - 3x^2 + 3x + 2$ \textbf{(Propuesto).}
+    \item $y = e^x/x$ \textbf{(Propuesto).}
+\end{enumerate}
+\item  La figura muestra un rectángulo inscrito en un triángulo rectángulo isósceles, cuya hipotenusa mide $2$ unidades de largo.
+    \begin{enumerate}
+        \item Exprese la coordenada $y$ de $P$ en términos de $x$. (Sugerencia: Escriba una ecuación para la recta $AB$).
+
+\color{blue}
+\textbf{Hint:} Recordar que un triángulo isosceles es aquel con 2 lados iguales, usar pitagoras para hallar que las coordenadas de A y B son $(1,0)$ y $(0,1)$ respectivamente. Con esto se llega a que la $P$ pasa por la siguiente ecuación de recta:
+$$
+y-y_1=\frac{y_2-y_1}{x_2-x_1}(x-x_1) \implies y - 0=\frac{1-0}{0-1}(x-1) \implies y=-x+1
+$$
+Luego de sabemos que la recta pasa por $P$, por lo que su coordenada está definida por $(x,-x+1)$.
+
+\color{black}
+
+        \item Exprese el área del rectángulo en términos de $x$.
+
+    \color{blue}
+    \textbf{Sol:} tenemos que el rectangulo tiene como base $2x$ y altura la coordenada en $y$ de $P$, ósea $-x+1$, por lo tanto tenemos
+    $$
+    A(x)=(2x)(-x+1)=-2x^2+2x
+    $$
+    \color{black}
+        \item ¿Cuál es la mayor área posible del rectángulo y cuáles son sus dimensiones?
+
+\color{blue}
+    \textbf{Sol:} Finalmente optimizamos $A(x)$:
+    \begin{itemize}
+        \item Puntos críticos: $A'(x)=0 \Rightarrow-4x+2=0 \Rightarrow x=1/2$.
+        \item Clasificamos el punto como mínimo o máximo, por la segunda derivada, $A'(x)=-2<0$, entonces  $x=1/2$ es máximo local de $A(x)$, en particular máximo global pues las cuadráticas tienen un único punto mínimo o máximo.
+        \item Calculamos las dimensiones sustituyendo $x=1:$, base: $2x =2(1/2)=1$ y áltura $-x+1=-1/2+1=1/2$, calculamos el área máxima multiplicando: base $\cdot$altura = $(1)(1/2)=1/2$ .
+    \end{itemize}
+
+\color{black}
+        
+    \end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes/triangulo.png}
+\end{figure}
+    
+\end{enumerate}
+ \newgeometry{top=1.8cm, bottom=1.4cm, left=1cm, right=1cm} % NUEVOS márgenes
+
+\begin{tcolorbox}[title = Resumen, colframe=cyan!80!black, colback=cyan!5!white, boxrule=0.8pt, arc=4pt, auto outer arc]
+
+\begin{multicols}{2}
+
+\begin{defi}[Puntos críticos de una función] Sea $f : A \subseteq \mathbb{R} \to \mathbb{R}$ una función, donde $A$ es su dominio. Sea $\bar{x} \in A$.
+\begin{itemize}
+    \item Diremos que $\bar{x}$ es un punto de \textbf{mínimo global} de $f$, si $f(\bar{x}) \le f(x)$ para todo $x \in A$.
+    De manera análoga se define un punto de \textbf{máximo global} de $f$.
+    
+    \item Diremos que $\bar{x}$ es un punto de \textbf{mínimo local} de $f$ si $\exists \delta > 0$ tal que
+    \[
+    f(\bar{x}) \le f(x) \quad \forall x \in A \cap [\bar{x} - \delta, \bar{x} + \delta].
+    \]
+    De manera análoga se define un punto de \textbf{máximo local} de $f$.
+\end{itemize}
+\end{defi}
+Si se cumple cualquiera de los 4 casos, diremos que $\bar{x}$ es un punto crítico o extremo de la función $f$.
+
+\begin{teo}
+Si $\bar{x} \in A$ es un punto crítico de una función $f : A \subseteq \mathbb{R} \to \mathbb{R}$, y $f$ es derivable en $\bar{x}$, entonces $f'(\bar{x}) = 0$.
+\end{teo}
+
+\begin{teo}
+Si $f$ es diferenciable en $a$, entonces $f$ es continua en $a$.
+\end{teo}
+\begin{teo}[Teorema del Valor Extremo (de Weierstrass)]
+Si $f$ es \textbf{continua} en $[a, b]$, entonces $f$ alcanza máximo y mínimo absolutos en $[a, b]$.\end{teo}
+
+\begin{teo}[Regla de l’Hôpital] Sean $f, g : (a, b) \to \mathbb{R}$ derivables en $(a, b)$, tales que
+\[
+\lim_{x \to a^+} f(x) = \lim_{x \to a^+} g(x) = L
+\]
+con $L = 0$ o $L = \pm\infty$, y $g'(x) \neq 0$ para todo $x \in (a, b)$. Entonces
+\[
+\lim_{x \to a^+} \frac{f(x)}{g(x)} = \lim_{x \to a^+} \frac{f'(x)}{g'(x)}
+\]
+siempre que este último límite exista.
+\end{teo}
+
+\begin{teo} Sea $f : [a, b] \to \mathbb{R}$ continua en $[a, b]$ y derivable en $(a, b)$. Si $f'(x) \ge 0$ (resp. $\le 0$) para todo $x \in (a, b)$, entonces $f$ es creciente (resp. decreciente) en $[a, b]$. Si la desigualdad es estricta, la monotonía es igualmente estricta.
+\end{teo}
+
+\begin{prop}
+    Sea $f : (a, b) \to \mathbb{R}$, $k$ veces derivable en $\bar{x} \in (a, b)$, con $f'(\bar{x}) = \dots = f^{[k-1]}(\bar{x}) = 0$ y $f^{[k]}(\bar{x}) \neq 0, k \ge 2$. Entonces hay 3 casos posibles:
+\begin{enumerate}
+    \item Si $k$ es par y $f^{[k]}(\bar{x}) > 0$, $\bar{x}$ es un \textbf{mínimo local}.
+    \item Si $k$ es par y $f^{[k]}(\bar{x}) < 0$, $\bar{x}$ es un \textbf{máximo local}.
+    \item Si $k$ es impar, $\bar{x}$ es un \textbf{punto de inflexión}.
+\end{enumerate}
+\end{prop}
+
+
+\end{multicols}
+\end{tcolorbox}
+
+\textbf{\textbullet\ Derivadas Conocidas}
+\begin{multicols}{3}
+\begin{enumerate}
+    \item \( (c)' = 0 \)
+    \item \( (x^\alpha)' = \alpha x^{\alpha - 1} \)
+    \item \( (\ln(x))' = \dfrac{1}{x} \)
+    \item \( (e^x)' = e^x \)
+    \item \( (\sen(x))' = \cos(x) \)
+    \item \( (\cos(x))' = -\sen(x) \)
+    \item \( (\tan(x))' = \sec^2(x) \)
+    \item $(\sec(x))' = \sec(x)\tan(x)$
+    \item $(\cot(x))' = -\csc^2(x)$
+    \item $(\csc(x))' = -\csc(x)\cot(x)$
+    \item \( (\arcsen(x))' = \dfrac{1}{\sqrt{1 - x^2}} \)
+    \item \( (\arccos(x))' = \dfrac{-1}{\sqrt{1 - x^2}} \)
+    \item \( (\arctan(x))' = \dfrac{1}{1 + x^2} \)
+\end{enumerate}
+\end{multicols}
+\end{document}
