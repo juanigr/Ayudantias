@@ -1,0 +1,478 @@
+\documentclass[letterpaper,12pt]{article}
+\oddsidemargin -1.0cm \textwidth 16.5cm
+%\usepackage[latin1]{inputenc}
+%\usepackage[spanish]{babel}
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{tcolorbox}
+\usepackage{comment}
+%\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{anyfontsize}
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{listings}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[left=1.5cm,top=2cm,right=1.5cm, bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolor}{rgb}{0.95,0.95,0.92}
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+	\definecolor{ballblue}{rgb}{0.13, 0.67, 0.8}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolor},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\tiende}{\rightarrow}
+\newcommand{\borel}{\mathcal{B}}
+\newcommand{\proba}{\mathbb{P}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\partes}{\mathcal{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{V}ar}
+\newcommand{\1}{\mathbbm{1}}
+% fin macros
+
+
+%\fancypagestyle{plain}{%
+%\fancyhf{}
+%\lhead{\footnotesize\itshape\bfseries\rightmark}
+%\rhead{\footnotesize\itshape\bfseries\leftmark}}
+%\pagestyle{plain}
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Ayudantía con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+
+%Encabezado
+\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+\[
+\vspace{-1.7cm}
+\]
+
+\begin{minipage}{11.5 cm}
+\begin{flushleft}
+\hspace*{-0.55cm}\textbf{ING1002-2  Cálculo Diferencial e Integral}\\
+\hspace*{-0.7cm} \textbf{Profesor:} Gonzalo Flores G.\\
+\hspace*{-0.7cm} \textbf{Ayudante:} Juan I. Riquelme \& Cristian Acevedo R.\\
+\end{flushleft}\end{minipage}
+
+\begin{picture}(2,3)
+\put(425,-8){\includegraphics[scale=0.23]{Imagenes/logo_uoh_2.png}}
+\end{picture}
+
+\vspace{-0.2cm}
+\begin{center}
+\LARGE\textbf{Ayudantía 2: Continuidad}\\
+\large {\fontsize{13}{14}\selectfont 4 de Septiembre de 2025}
+\end{center}
+\vspace{-0.2cm}
+\begin{enumerate}[label=\textbf{P\arabic*.}, itemsep=0cm]
+\item \textbf{[Ejercicio Extra].} Determine si existe el l\'{\i}mite
+$$ \lim_{x \to 0} \frac{|2x - 1| - |2x + 1|}{x} $$
+
+\color{blue}
+\textbf{Sol:} Partamos recordando la definición del valor absoluto:
+\[
+|x| =
+\begin{cases}
+x & \text{si } x \geq 0 \\
+-x & \text{si } x < 0
+\end{cases}
+\]
+Comprobemos que los límites laterales coinciden.
+
+Cuando \(x \to 0^\pm\), \(2x - 1\) es negativo, en cambio \(2x + 1\) es positivo, entonces:
+\[
+\lim_{x \to 0^\pm} \frac{|2x - 1| - |2x + 1|}{x}
+= \lim_{x \to 0} \frac{-(2x - 1) - (2x + 1)}{x}
+\]
+\(|2x - 1|\) pasa a ser negativo por definición de valor absoluto y por lo explicado anteriormente, luego
+\[
+\lim_{x \to 0^+} \frac{-(2x - 1) - (2x + 1)}{x}
+= \lim_{x \to 0^+} \frac{-4x}{x}
+= \lim_{x \to 0^+} -4 = -4
+\]
+\color{black}
+
+\item 
+Considere la función
+\[
+f(x) = \begin{cases}
+\vspace{0.15cm}
+\dfrac{x^2 - x}{x - 1} & \text{si } x < 1 \\
+1 & \text{si } x = 1 \\
+\dfrac{x - 1}{\sin(x - 1)} & \text{si } x > 1
+\end{cases}
+\]
+Determine si $f$  es continua o no en $x = 1.$ 
+
+\color{blue}
+\textbf{Sol:}
+\[
+\lim_{x \to 1^-} f(x) = \lim_{x \to 1^-} \frac{x^2 - x}{x - 1} = \lim_{x \to 1^-} \frac{x(x-1)}{x-1} = \lim_{x \to 1^-} x = x.
+\]
+\[
+\lim_{x \to 1^+} f(x) = \lim_{x \to 1^+} \frac{x-1}{\sin(x-1)} \\
+= \lim_{u \to 0^+} \frac{u}{\sin(u)} 
+\]
+cambio de variable $u = x-1$
+\[
+= \lim_{u \to 0^+} \frac{1}{\frac{\sin u}{u}} \\
+= \frac{1}{\lim_{u \to 0^+} \frac{\sin u}{u}} = 1 \quad (\text{lim. notable } \lim_{x \to 0} \frac{\sin x}{x} = 1)
+\]
+$$\text{Como } \lim_{x \to 1^-} f(x) = \lim_{x \to 1^+} f(x) = f(1) = 1, \text{ concluimos que } f \text{ es continua en } 1.$$
+\color{black}
+
+
+\item Considere la función $f(x)=\dfrac{1}{1+x^2}$
+
+\begin{enumerate}
+    \item Considere los puntos $x=1/2$ y $x=1/3$, evalúelos en $f$ y calcule la distancia de $f(x)$ a 1 en cada caso.
+
+
+\color{blue}
+\textbf{Sol:}
+Tenemos $f(1/2) = \frac{1}{1+1/4} = \frac{4}{5}$ y su distancia a 1 es
+\[
+|f(1/2) - 1| = \left| 1 - \frac{4}{5} \right| = \frac{1}{5} = 0.2
+\]
+y $f(1/3) = \frac{1}{1+\frac{1}{9}} = \frac{9}{10}$ y su distancia a 1 es
+\[
+|f(1/3) - 1| = \left| 1 - \frac{9}{10} \right| = 0.1
+\]
+\color{black}
+    
+    \item Pruebe usando la definición $\varepsilon-\delta$ de límite que
+\[
+\lim_{x \to 0} f(x) = 1.
+\]
+\noindent
+\textbf{Indicaci\'on:} Puede usar que $\frac{1}{1+x^2} \leq 1$ para todo $x \in \mathbb{R}$.
+
+\color{blue}
+\textbf{Sol:}
+Dado $\varepsilon > 0$ buscamos $\delta > 0$ tal que si $0 < |x - 1| < \delta$ se cumple
+\[
+\left| \frac{1}{1+x^2} - 1 \right| < \varepsilon.
+\]
+Esta última desigualdad es equivalente a
+\[
+\frac{x^2}{1+x^2} = x^2 \frac{1}{1+x^2} < \varepsilon.
+\]
+Notamos que el factor $\frac{1}{1+x^2}$ es menor o igual a 1 de modo que si garantizamos que $x^2 < \varepsilon$ (o equivalentemente $|x| < \sqrt{\varepsilon}$) logramos lo requerido. Para esto basta tomar $\delta = \sqrt{\varepsilon}$ obteniendo la implicancia buscada. En efecto, $|x| < \delta$ implica $|x|^2 = x^2 < \varepsilon$ y
+\[
+\frac{x^2}{1+x^2} \leq x^2 < \varepsilon.
+\]
+\textbf{Solución alternativa:}
+Sea $\varepsilon > 0$. Tenemos
+\[
+|f(x) - 1| = \left| \frac{1}{1+x^2} - 1 \right| = \left| \frac{x^2}{1+x^2} \right| = \left| \frac{x}{1+x^2} \right| |x - 0|.
+\]
+Acotemos $g(x) = \frac{x}{1+x^2}$. Supongamos
+\[
+|x| = |x - 0| \leq 1.
+\]
+Entonces $-1 \leq x \leq 1$. Por la indicación sabemos que $\frac{1}{1+x^2} \leq 1$, entonces
+\[
+x \leq 1, \quad \frac{1}{1+x^2} \leq 1 \implies \frac{x}{1+x^2} \leq 1,
+\]
+\[
+-1 \leq x, \quad 0 \leq \frac{1}{1+x^2} \implies -1 \leq \frac{x}{1+x^2}.
+\]
+Entonces $|g(x)| \leq 1$ para $|x| \leq 1$. Para finalizar tomamos $\delta = \min\{1, \varepsilon\}$
+\color{black}
+
+\end{enumerate}
+
+\item Para  
+$$f(x) = 
+\begin{cases}
+\vspace{0.2cm}
+\alpha & \text{si } x = 1 \\
+\dfrac{\sen(\pi x)}{x - 1} & \text{si } x \ne 1
+\end{cases} $$
+Calcule el valor de \( \alpha \) para que \( f \) sea continua.
+
+\color{blue}
+
+\textbf{Sol:} Para que \( f \) sea continua en \( x = 1 \), debe cumplirse:
+\[
+\lim_{x \to 1} f(x) = f(1) = \alpha.
+\]
+Calculamos el límite:
+\[
+\lim_{x \to 1} \frac{\sen(\pi x)}{x - 1}.
+\]
+Hacemos el cambio de variable \( h = x - 1 \), entonces \( x = 1 + h \) y cuando \( x \to 1 \), \( h \to 0 \):
+\[
+\lim_{h \to 0} \frac{\sen(\pi (1 + h))}{h} = \lim_{h \to 0} \frac{\sen(\pi + \pi h)}{h}.
+\]
+Usamos la identidad \( \sen(\pi + \theta) = -\sen(\theta) \):
+\[
+= \lim_{u \to 0} \frac{-\sen(\pi u)}{u} = \lim_{u \to 0} \frac{-\sen(\pi u)}{u} \cdot  \frac{\pi}{\pi} =-\pi.
+\]
+\color{black}
+
+\item Demostrar que la ecuaci\'on
+$$ x^2 \cos(x) - 7 \sin(x) - 10 = 0 $$
+tiene una ra\'{\i}z entre $0$ y $2\pi$.
+
+\color{blue}
+\textbf{Sol:} Definamos la función
+\[
+f(x) = x^2 \cos(x) - 7 \sin(x) - 10,
+\]
+que es continua en \([0, 2\pi]\) por ser combinación de funciones continuas.
+Razonemos por TVI, evaluando $f(x)$ en $x=0$ y $x=2\pi$, (no necesariamente siempre tiene que ser los extremos del intervalo):
+\[
+f(0) = 0^2 \cos(0) - 7 \sin(0) - 10 = -10 < 0,
+\]
+\[
+f(2\pi) = (2\pi)^2 \cos(2\pi) - 7 \sin(2\pi) - 10 = (2\pi)^2 (1) - 0 - 10 = 4\pi^2 - 10 > 0
+\]
+Como \(f(0) < 0\) y \(f(2\pi) > 0\), y \(f\) es continua en \([0, 2\pi]\), por el TVI existe al menos un \(c \in (0, 2\pi)\) tal que
+\[
+f(c) = 0.
+\]
+Por lo tanto, la ecuación tiene al menos una raíz en el intervalo \((0, 2\pi)\).
+\color{black}
+
+
+
+\item Usando el m\'etodo de la bisecci\'on, muestre que
+$$ 1.4 \le \sqrt{2} \le 1.5 $$
+
+\color{blue}
+\textbf{Sol:}
+Usando el método de la bisección, definimos la función $f(x) = x^2 - 2$
+Evaluamos:
+\[
+f(1.4) = 1.96 - 2 = -0.04 < 0, \quad f(1.5) = 2.25 - 2 = 0.25 > 0
+\]
+Como \( f(1.4) < 0 < f(1.5) \), y \( f \) es continua, por el Teorema del Valor Intermedio:
+\[
+\exists \, c \in (1.4, 1.5) \text{ tal que } f(c) = 0 \Rightarrow \sqrt{2} \in (1.4, 1.5)
+\]
+\[
+\Rightarrow \boxed{1.4 \le \sqrt{2} \le 1.5}
+\]
+\textbf{Nota:} En la ayudantía expliqué que la función cumplía las condiciones del teorema del valor intermedio. con un ejemplo sencillo de evaluar $f$ en $x=0$ y $x=2$. \textbf{A pesar de que sea muy evidente.} En una evaluación, basta con evaluar los extremos $1.4$ y $1.5$ :).
+\color{black}
+
+\item \textbf{(propuesto)} Demuestre por medio de la definición de límite que
+
+\begin{enumerate}
+        \item $\displaystyle \lim_{x \to -2} x^2 - 1 = 3$
+
+\color{blue}
+\textbf{Sol:} Sea \( f(x) = x^2 - 1 \). Entonces:
+\[
+\lim_{x \to -2} f(x) = 3
+\quad \Leftrightarrow \quad
+\forall \varepsilon > 0, \, \exists \delta > 0 : 
+0 < |x + 2| < \delta \Rightarrow |f(x) - 3| < \varepsilon
+\]
+Esto equivale a
+\[
+|f(x) - 3| = |x^2 - 1 - 3| = |x^2 - 4| = |x - 2||x + 2|
+\]
+Acotamos \( |x - 2| \). Si tomamos \( \delta \leq 1 \), entonces:
+\[
+|x + 2| < 1 \Rightarrow -1<x+2<1 \Rightarrow -3 < x <-1 
+\]
+\[
+\Rightarrow -5 < x -2 <-3 \quad \textbf{Aplicamos $|.|$, lo que nos cambia la desigualdad} 
+\Rightarrow |x - 2| \leq 5
+\]
+Por lo tanto:
+\[
+|x^2 - 4| = |x - 2||x + 2| \leq 5|x + 2| < 5\delta
+\]
+
+Para asegurar que \( |x^2 - 4| < \varepsilon \), basta tomar:
+\[
+\delta = \min\left\{1, \frac{\varepsilon}{5}\right\}
+\]
+
+Entonces, si \( 0 < |x + 2| < \delta \), se cumple que:
+\[
+5|x + 2| < 5\delta =5 \cdot \frac{\epsilon}{5} = \epsilon 
+\]
+\color{black}
+
+  
+        \item $\displaystyle \lim_{x \to 2} x^2 - 4x + 5 = 1$
+
+\color{blue}
+\textbf{Sol:} Sea \( f(x) = x^2 - 4x + 5 \). Entonces:
+\[
+\lim_{x \to 2} f(x) = 1
+\quad \Leftrightarrow \quad
+\forall \varepsilon > 0, \, \exists \delta > 0 : 
+0 < |x - 2| < \delta \Rightarrow |f(x) - 1| < \varepsilon
+\]
+Esto equivale a
+\[
+|f(x) - 1| = |x^2 - 4x + 5 - 1| = |x^2 - 4x + 4| = |(x - 2)^2|
+\]
+Ahora, como \( |(x - 2)^2| = |x - 2|^2 \), tenemos:
+\[
+|f(x) - 1| = |x - 2|^2
+\]
+Entonces, para que \( |x - 2|^2 < \varepsilon \), basta tomar:
+\[
+\delta = \sqrt{\varepsilon}
+\]
+Entonces, si \( 0 < |x - 2| < \delta \), se cumple que:
+\[
+|f(x) - 1| = |x - 2|^2 < \delta^2 = (\sqrt{\epsilon})^2 = \varepsilon
+\]
+\color{black}
+        
+\end{enumerate}
+\end{enumerate}
+
+\newgeometry{top=1.8cm, bottom=1.4cm, left=1cm, right=1cm} % NUEVOS márgenes
+
+\begin{tcolorbox}[title = Resumen, colframe=cyan!80!black, colback=cyan!5!white, boxrule=0.8pt, arc=4pt, auto outer arc]
+
+\begin{multicols}{2}
+\begin{defi}
+Decimos que el límite de \( f(x) \) cuando \( x \) tiende hacia \( a \) por la derecha es \( L \), y escribimos
+\[
+\lim_{x \to a^+} f(x) = L
+\]
+si y solamente si para todo \( \varepsilon > 0 \) existe un \( \delta > 0 \) tal que, para todo \( x \),
+\[
+\text{si } 0 < x - a < \delta, \text{ entonces } |f(x) - L| < \varepsilon.
+\]
+\end{defi}
+
+\begin{prop}[Cambio de variable]
+Supongamos que
+\[
+\lim_{x \to a} g(x) = L \quad \text{y que} \quad \lim_{y \to L} f(y) = f(L),
+\]
+entonces
+\[
+\lim_{x \to a} f(g(x)) = f\left( \lim_{x \to a} g(x) \right) = f(L).
+\]
+\end{prop}
+
+\begin{defi}[Continuidad en un punto]
+    Sea \( f : D \subset \mathbb{R} \to \mathbb{R} \) y \( a \in D \). Decimos que \( f \) es continua en \( a \) si
+\[
+\lim_{x \to a} f(x) = f(a).
+\]
+Se usan límites laterales cuando corresponde; continuidad en un intervalo significa continuidad en todos sus puntos.
+\end{defi}
+
+\begin{prop}
+Si \( g \) es continua en \( a \) y \( f \) es continua en \( g(a) \), entonces \( f \circ g \) es continua en \( a \).
+\end{prop}
+
+\textbf{Identidades trigonométricas importantes:}
+\begin{itemize}
+    \item $\sen^2 x + \cos^2 x = 1$
+    \item $1 + \tan^2 x = \sec^2 x$
+    \item $1 + \cot^2 x = \csc^2 x$
+    \item $\sen(2x) = 2\sen x \cos x$
+    \item $\cos(2x)=\cos(x)^2-\sen(x)^2$
+    \item $\sen(\pi + \alpha) = - \sen \alpha$ 
+    \item $\cos(\pi + \alpha) = - \cos \alpha.$
+\end{itemize}
+\textbf{Límites Notables}
+\begin{itemize}
+    \item $\displaystyle \lim_{x \to 0} \frac{\sen x}{x} = 1$
+    \item $\displaystyle \lim_{x \to 0} \frac{1 - \cos x}{x^2} = \frac{1}{2}$
+    \item $\displaystyle \lim_{x \to 0} \frac{e^x - 1}{x} = 1$
+\end{itemize}
+
+\begin{teo}[TVI (forma general)] Si \( f \) es continua en \( [a, b] \) y \( N \) está entre \( f(a) \) y \( f(b) \), entonces existe \( c \in [a, b] \) tal que \( f(c) = N \).
+\end{teo}
+
+\begin{teo}[TVI]
+Sea \( f : [a,b] \to \mathbb{R} \) una función continua tal que \( f(a)f(b) < 0 \), entonces existe \( \alpha \in (a,b) \) tal que \( f(\alpha) = 0 \).
+\end{teo}
+\textbf{\textcolor{blue}{Nota:}} \( f(a)f(b) < 0 \) significa que \( f(a) \) y \( f(b) \) tienen signos opuestos.
+
+\begin{defi}[Método de Bisección] Sea \( f : [a, b] \to \mathbb{R} \) una función continua tal que \( f(a)f(b) < 0 \). Para simplicidad, suponemos que la raíz \( p \) de la función \( f \) en el intervalo \( [a, b] \) es única. Sea \( a_1 = a \) y \( b_1 = b \).
+
+\textbf{\textcolor{blue}{Proceso:}} Buscar el punto medio \( p_1 \) del intervalo \( [a_1, b_1] \), es decir,
+    \[
+    p_1 = \frac{a_1 + b_1}{2}.
+    \]
+Hay 3 casos:
+    \begin{enumerate}
+        \item Si \( f(p_1) = 0 \), entonces \( p = p_1 \) y \textbf{\textcolor{blue}{terminamos}}.
+        \item Si \( f(p_1) \) y \( f(a_1) \) tienen el mismo signo, \( p \in (p_1, b_1) \). Asignar \( a_2 = p_1 \) y \( b_2 = b_1 \).
+        \item Si \( f(p_1) \) y \( f(b_1) \) tienen el mismo signo, \( p \in (a_1, p_1) \). Asignar \( a_2 = a_1 \) y \( b_2 = p_1 \).
+    \end{enumerate}
+Si no terminamos, \textbf{\textcolor{blue}{volver a aplicar el proceso}} a \( [a_2, b_2] \).
+\end{defi}
+
+
+
+\end{multicols}
+\end{tcolorbox}
+
+
+\end{document}
+

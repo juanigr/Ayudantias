@@ -1,0 +1,496 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{framed}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=1.5cm,top=0.9cm,right=1.5cm, bottom=1.4cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+% Page
+\oddsidemargin -0.4in
+\textwidth 7in
+\topmargin -0.6in
+\textheight 9.1in
+\parindent 0em
+\parskip 1ex
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+% fin macros
+
+% Comandos más usados
+% Conjuntos
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R} \times \mathbb{R}}
+% Flechas
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+\newcommand{\pmi}{\Longleftarrow}
+% Trigonométricas
+\newcommand{\sen}{\text{sen}}
+
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Prueba con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+	
+	\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+	\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+	
+	\begin{minipage}{11.5 cm}
+         \vspace{-6mm}
+		\begin{flushleft}
+			\vspace{1mm}
+			\textbf{ING1002-2 Cálculo Diferencial e Integral}\\
+			\textbf{Profesor:}  Gonzalo Flores G.  \\
+			\textbf{Ayudante:}  Juan I. Riquelme \& Cristian Acevedo R. \\
+		\end{flushleft}
+	\end{minipage}
+	
+	\begin{picture}(2,3)
+		\put(430,9.5){\includegraphics[scale=0.22]{Imagenes/UOH.png}}
+	\end{picture}
+	\vspace{-6mm}
+	\begin{center}
+		\LARGE \bf{Ayudantía 9: Repaso CC2}
+	\end{center}
+    \vspace{-8.5mm}
+    \begin{center}
+		11 de diciembre de 2025
+	\end{center}
+
+\begin{enumerate}[\textbf{P\arabic{enumi}.}]
+\item Se desea construir un comedero como se muestra en la Figura. Si en el diseño solo se puede variar el ángulo \( \theta \). 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{Imagenes/comedero.jpg} 
+\end{figure}
+Encuentre el valor \( \theta \) que maximiza el volumen del comedero.
+
+\color{blue}
+\textbf{Sol:} La función objetivo puede ser del área del trapecio del comedero, usted tiene que llegar a
+$$A(\theta) = (1 + \sen(\theta)) \cos(\theta)$$
+Criterio de la primera derivada $A'(\theta)=0:$
+$$A'(\theta) = \cos^2(\theta) - \sen(\theta) - \sen^2(\theta)$$
+igualamos $A'(\theta) = 0$:
+$$\cos^2(\theta) - \sen(\theta) - \sen^2(\theta) = 0$$
+usamos $\cos^2(\theta) = 1 - \sin^2(\theta)$:
+$$(1 - \sen^2(\theta)) - \sen(\theta) - \sin^2(\theta) = 0$$
+$$1 - \sen(\theta) - 2\sen^2(\theta) = 0$$
+Sea $u = \sen(\theta)$:
+$$2\sen^2(\theta) + \sen(\theta) - 1 = 0$$
+$$2u^2 + u - 1 = 0$$
+$$(2u - 1)(u + 1) = 0$$
+\begin{multicols}{2}
+\begin{itemize}
+    \item $\sen(\theta) = u_1 = \frac{1}{2}$
+    \item $\sen(\theta) = u_2 = -1$
+\end{itemize}
+\end{multicols}
+La solución $\sen(\theta) = -1$ (que implica $\theta = 270^\circ$) no tiene sentido para el problema. Tomamos la solución positiva:
+$$\sen(\theta) = \frac{1}{2} \implies \theta = \arcsen\left(\frac{1}{2}\right) \implies \theta = 30^\circ$$
+Aplicamos el criterio de la segunda derivada (queda propuesto el cálculo). Como $A''(\frac{\pi}{3})<0$, el punto es un máximo. Concluimos que el $\theta$ que maximiza el volumen del comedero es $30^\circ$.
+\color{black}
+
+\item Usar el teorema del valor medio para mostrar que si $0 < x < 1$ entonces
+$$ x < \arcsen x < \frac{x}{\sqrt{1-x^2}}. $$
+
+\color{blue}
+\textbf{Sol:} Sea $f(t) = \arcsen t$, continua en $[0, x]$ y derivable en $(0, x)$ para $x \in (0, 1)$. Su derivada es $f'(t) = \frac{1}{\sqrt{1-t^2}}$. Por el TVM, existe $c \in (0, x)$ tal que:
+$$ \frac{1}{\sqrt{1-c^2}} = f'(c) = \frac{\arcsen x - \arcsen 0}{x - 0} = \frac{\arcsen x}{x} \quad (1)$$
+$$ \arcsen x = \frac{x}{\sqrt{1-c^2}} \quad \text{para algún } c \in (0, x). $$ Como $c \in (0, x) $ , se tienen las siguientes relaciones:
+    $$ c > 0 \quad \implies \quad 1-c^2 < 1 \quad \implies \quad \sqrt{1-c^2} < 1 $$
+    $$ \implies \quad \frac{1}{\sqrt{1-c^2}} > 1 $$
+    Por (1):
+    $$ \frac{\arcsen x}{x} > 1 \quad \implies \quad \arcsen x > x. $$
+    Además
+    $$ c < x \quad \implies \quad 1-c^2 > 1-x^2 \quad \implies \quad \sqrt{1-c^2} > \sqrt{1-x^2} $$
+    $$ \implies \quad \frac{1}{\sqrt{1-c^2}} < \frac{1}{\sqrt{1-x^2}} $$
+    Por (1):
+    $$ \frac{\arcsen x}{x} < \frac{1}{\sqrt{1-x^2}} \quad \implies \quad \arcsen x < \frac{x}{\sqrt{1-x^2}}. $$
+    Finalmente:
+$$ x < \arcsen x < \frac{x}{\sqrt{1-x^2}},\qquad 0<x<1. $$
+
+\color{black}
+\newpage
+\item Halle la ecuación de la recta tangente a la función \( y = f(x) \) definida implícitamente por
+\[
+y^3 + x^3 - 3xy = 0
+\]
+en \( (x, y) = \left(\frac{3}{2}, \frac{3}{2}\right) \).
+
+\color{blue}
+\textbf{Sol:} derivamos implícitamente con respecto a $x$:
+\[
+y^3 + x^3 - 3xy = 0.
+\]
+\[
+3y^2 \, y' + 3x^2 - 3(y + x y') = 0.
+\]
+\[
+3y^2 y' - 3x y' + 3x^2 - 3y = 0,
+\]
+\[
+(3y^2 - 3x)\, y' = 3(y - x^2).
+\]
+Despejamos $y'$:
+\[
+y' = \frac{3(y - x^2)}{3(y^2 - x)}
+    = \frac{y - x^2}{y^2 - x}.
+\]
+Evaluamos en $\left(\frac{3}{2},\frac{3}{2}\right)$:
+\[
+y' = 
+\frac{\frac{3}{2} - \left(\frac{3}{2}\right)^2}
+     {\left(\frac{3}{2}\right)^2 - \frac{3}{2}}
+=
+\frac{\frac{3}{2} - \frac{9}{4}}
+     {\frac{9}{4} - \frac{3}{2}}
+=
+\frac{-\frac{3}{4}}{\frac{3}{4}}
+= -1.
+\]
+Así, la pendiente de la recta tangente es $m=-1$. La recta tangente en el punto 
+$\left(\frac{3}{2},\frac{3}{2}\right)$ es:
+\[
+y - \frac{3}{2} = -1\left(x - \frac{3}{2}\right).
+\]
+\[
+y = -x + 3.
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Imagenes/folio_de_descartes.png}
+\end{figure}
+
+\color{black}
+
+\newpage
+\item Límites
+\begin{enumerate}
+    \item $\displaystyle \lim_{x \to 0} (1 + \sen x)^{\frac{1}{3x}}$
+
+\color{blue}
+\textbf{Sol:} Sabemos que:
+\[
+\frac{\sen(x)}{x} \to 1 \quad \text{cuando } x \to 0
+\quad \Rightarrow \quad \sen(x) \sim x \quad \text{cuando } x \to 0
+\]
+Entonces:
+\[
+\lim_{x \to 0} (1 + \sen(x))^{\frac{1}{3x}} 
+= \lim_{x \to 0} (1 + x)^{\frac{1}{3x}} 
+= \left( \lim_{x \to 0} (1 + x)^{\frac{1}{x}} \right)^{1/3}
+= \sqrt[3]{e}
+\]
+\color{black}
+    \item $\displaystyle \lim_{x \to 0} \cos(x)^{\frac{1}{x^2}}$
+
+    \color{blue}
+\textbf{Propuesto} Usar la propiedad $\displaystyle \lim_{t \to 0} (1+t)^{\frac{1}{t}} = e$.
+y llegar a 
+$$
+\frac{1}{\sqrt{e}}.
+$$
+\color{black}
+    \item \( \displaystyle \lim_{x \to \infty} \sqrt{x^2 + 1} - x \)
+
+    \color{blue}
+\textbf{Sol:} \[
+\lim_{x\to\infty} \left(\sqrt{x^{2}+1}-x\right)
+\]
+
+Multiplicamos por el conjugado:
+
+\[
+= \lim_{x\to\infty} 
+\frac{(\sqrt{x^{2}+1}-x)(\sqrt{x^{2}+1}+x)}{\sqrt{x^{2}+1}+x}
+\]
+
+\[
+= \lim_{x\to\infty} 
+\frac{x^{2}+1 - x^{2}}{\sqrt{x^{2}+1}+x}
+= \lim_{x\to\infty} \frac{1}{\sqrt{x^{2}+1}+x} \cdot \frac{1/x}{1/x}.
+\]
+\[
+= \lim_{x\to\infty} 
+\frac{1/x}{\sqrt{1+\frac{1}{x^{2}}}+1}
+= 0.
+\]
+
+\color{black}
+\end{enumerate}
+
+\item Analizar completamente la función \( f(x) = (1 + x)e^{\frac{1}{x}} \) incluyendo:
+\begin{enumerate}
+        \item Dominio, paridad, signos y ceros
+
+        \color{blue}
+\textbf{Sol:} 
+    $\text{Dom}(f) = \mathbb{R} \setminus \{0\} \quad \text{pues } \frac{1}{0} \notin \R$. Para la paridad recordemos que:
+    \begin{itemize}
+        \item \( f \) es par \( \Leftrightarrow \forall x \in \text{Dom}(f),\  f(-x)=f(x) \)
+        \item \( f \) es impar \( \Leftrightarrow \forall x \in \text{Dom}(f),\ f(-x)=-f(x) \)
+    \end{itemize}
+    Evaluamos:
+    \[
+    f(-x) = (1 - x) e^{-\frac{1}{x}} = (1 - x) \left( \frac{1}{e} \right)^{\frac{1}{x}}
+    \]
+    Esto no es igual a \( f(x) \) ni a \( -f(x) \). 
+    \[
+    f(-x) \neq f(x) \quad \text{y} \quad f(-x) \neq -f(x)
+    \]
+    Luego, la función no es par ni impar. Ahora para los signos,
+    \[
+    f(x) = (1 + x) e^{\frac{1}{x}}, \quad \text{y } e^{\frac{1}{x}} > 0 \text{ siempre en el dominio}
+    \]
+    entonces el signo de $f$ solo depende de \( (1 + x) \):
+    \begin{itemize}
+        \item \( f(x) > 0 \) cuando \( 1 + x > 0 \Rightarrow x > -1 \)
+        \item \( f(x) < 0 \) cuando \( 1 + x < 0 \Rightarrow x < -1 \)
+    \end{itemize}
+    Entonces:
+    \[
+    f(x) > 0, \ \text{si} \ x\in (-1, 0) \cup (0, \infty)
+    \]
+    \[
+    f(x) < 0, \ \text{si} \ x \in (-\infty, -1) = (-\infty, -1)
+    \]
+    lo anterior sin considerar al $x=0$. Además el único cero de $f$ es:
+    \[
+x = -1
+    \]
+\color{black}
+
+        \item Determine límites laterales en \( x = 0 \) y continuidad. ¿Es reparable?
+
+\color{blue}
+\textbf{Sol:} Límite por la derecha:
+        \[
+        \lim_{x \to 0^+} (1 + x) e^{\frac{1}{x}} 
+        = \lim_{y \to +\infty} \left(1 + \frac{1}{y}\right) e^y = \infty
+        \]
+         Límite por la izquierda:
+        (haciendo el cambio de variable \( y = \frac{1}{x} \))
+        \[
+        \lim_{x \to 0^-} (1 + x) e^{\frac{1}{x}} 
+        = \left( \lim_{x \to 0^-} (1 + x) \right) \cdot \left( \lim_{x \to 0^-} e^{\frac{1}{x}} \right) 
+        = 1 \cdot 0 = 0
+        \]
+    como \( 0 \neq \infty \), la función \( f \) no se puede reparar la discontinuidad en \( x = 0 \).
+\color{black}
+    
+        \item Determine asíntotas
+
+\color{blue}
+\textbf{Sol:} tenemos que
+    \[
+    \lim_{x \to 0^+} f(x) = \infty
+    \Rightarrow x = 0 \text{ es asíntota vertical}
+    \]
+    En caso de asíntota horizontal: 
+    \[
+    \lim_{x \to \infty} f(x) = \lim_{x \to \infty} (1 + x) e^{\frac{1}{x}} \to \infty
+    \quad \text{(pues } (1+x) \to \infty \text{ y } e^{\frac{1}{x}} \to 1)
+    \]
+    \[
+    \lim_{x \to -\infty} f(x) = \lim_{x \to -\infty} (1 + x) e^{\frac{1}{x}} \to -\infty
+    \quad \text{(pues } (1+x) \to -\infty \text{ y } e^{\frac{1}{x}} \to 1)
+    \]
+    \[
+    \Rightarrow \text{No hay asíntota horizontal, pues el límite no tiende a un número finito.}
+    \]
+    Para la Asíntota oblicua:
+    \[
+    \lim_{x \to \infty} \frac{f(x)}{x} = \lim_{x \to \infty} \frac{(1 + x)e^{\frac{1}{x}}}{x}
+    \]
+    \[
+    = \lim_{x \to \infty} \left( \frac{1 + x}{x} \right) \cdot \lim_{x \to \infty} e^{\frac{1}{x}} 
+    = \lim_{x \to \infty} \left(1 + \frac{1}{x} \right) \cdot 1 = 1 \cdot 1 = 1 =m
+    \]
+    \[
+\lim_{x \to \infty} \left[ f(x) - mx \right] = \lim_{x \to \infty} \left[ (x+1) e^{\frac{1}{x}} - x \right]
+= \lim_{x \to \infty} \left[ x\left(e^{\frac{1}{x}} - 1 \right) + e^{\frac{1}{x}} \right]
+\]
+Hacemos el cambio de variable \( y = \frac{1}{x} \Rightarrow x = \frac{1}{y} \) con \( y \to 0^+ \), y obtenemos:
+\[
+= \lim_{y \to 0^+} \left[ \frac{1}{y} (e^y - 1) + e^y \right]
+\]
+El límite \(\displaystyle  \lim_{y \to 0} \frac{e^y - 1}{y} = 1 \) es conocido, así que:
+\[
+= 1 + 1 = 2
+\]
+Por lo tanto, hacia \( +\infty \), la función tiene una asíntota oblicua dada por:
+\[
+y = x + 2
+\]
+Para la Verificación hacia \( -\infty \):
+\[
+\lim_{x \to -\infty} \frac{f(x)}{x} = \lim_{x \to -\infty} \frac{(1 + x) e^{\frac{1}{x}}}{x}
+\]
+es idéntico al caso anterior, obtenemos nuevamente \( m = 1 \).
+\[
+\lim_{x \to -\infty} \left[ f(x) - mx \right] 
+= \lim_{x \to -\infty} \left[ (1+x)e^{\frac{1}{x}} - x \right]
+= \lim_{x \to -\infty} \left[ x(e^{\frac{1}{x}} - 1) + e^{\frac{1}{x}} \right]
+\]
+Cambio de variable: \( y = \frac{1}{x} \Rightarrow y \to 0^- \), entonces:
+\[
+= \lim_{y \to 0^-} \left[ \frac{e^y - 1}{y} + e^y \right] = 1 + 1 = 2
+\]
+\[
+\Rightarrow \text{hacia } -\infty \text{ tengo la asíntota } y = x + 2
+\]
+\color{black}
+
+        \item Estudie crecimiento y concavidad
+
+\color{blue}
+\textbf{Sol:}
+
+\textbf{Crecimiento:} Estudiar signos de \( f'(x) \)
+\[
+f'(x) = \left( (1 + x)e^{\frac{1}{x}} \right)'
+= e^{\frac{1}{x}} - \frac{e^{\frac{1}{x}}(1 + x)}{x^2}
+\]
+\[
+= e^{\frac{1}{x}} \left( 1 - \frac{1 + x}{x^2} \right)
+= e^{\frac{1}{x}} \cdot \frac{x^2 - x - 1}{x^2}
+\]
+Ahora, como \( e^{\frac{1}{x}} > 0 \) y \( x^2 > 0 \), el signo de \( f'(x) \) depende del signo de:
+\[
+x^2 - x - 1
+\]
+$$
+x^2 - x - 1 > 0 
+$$
+Puntos críticos de la inecuación:
+$$
+x^2 - x - 1 = 0 \Rightarrow x = \frac{1 \pm \sqrt{1 + 4}}{2} 
+$$
+Puntos críticos:$$x_1 = \frac{1 + \sqrt{5}}{2}, \quad x_2 = \frac{1 - \sqrt{5}}{2} $$
+$$
+x^2 - x - 1 = \left(x - \frac{1 + \sqrt{5}}{2}\right)\left(x - \frac{1 - \sqrt{5}}{2}\right)
+$$
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.8\linewidth]{Imagenes/image_tabla_signos.jpg}
+    \label{fig:placeholder}
+\end{figure}
+Podemos hacer el siguiente cuadro:
+\[
+\begin{array}{c|ccccc}
+x & -\infty & \frac{1 - \sqrt{5}}{2} & 0 & \frac{1 + \sqrt{5}}{2} & +\infty \\
+\hline
+f'(x) & + & 0 & \text{--} & 0 & + \\
+f(x) & \nearrow & \text{máx local} & \searrow & \text{mín local} & \nearrow
+\end{array}
+\]
+\textbf{Nota:}
+$\nearrow \text{ creciente} \qquad \searrow \text{ decreciente}$
+\[
+f'(x) > 0 \Rightarrow f \text{ es creciente}
+\]
+\[
+f'(x) < 0 \Rightarrow f \text{ es decreciente}
+\]
+Concavidad: (Signos de \( f'' \))
+\[
+f''(x) = \frac{e^{1/x}}{x^4}(1 + 3x)
+\]
+Como \( e^{1/x} > 0 \) y \( x^4 \geq 0 \), analizo \( (1 + 3x) \):
+\[
+\begin{cases}
+f''(x) > 0 & \text{si } x > -\frac{1}{3} \quad \Rightarrow \quad f \text{ convexa} \\
+f''(x) < 0 & \text{si } x < -\frac{1}{3} \quad \Rightarrow \quad f \text{ cóncava}
+\end{cases}
+\]
+
+\color{black}
+
+     \item Dibuje el gráfico indicando puntos 
+
+\color{blue}
+\textbf{Sol:} En base a los datos entregados anteriormente:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Imagenes/grafica_enferma.png}
+    \caption{:V}
+    \label{fig:placeholder}
+\end{figure}
+\color{black}
+\end{enumerate}
+
+\newpage
+
+\item Sea un paralelepipedo de lados $a,b,c$ donde se cumple que, $2a+c=8$ y $a-b=2$, hallar el máximo volumen que puede alcanzar el paralelepipedo.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\linewidth]{Imagenes/paralelepipedo.jpg}
+    \caption{Hecho con inteligencia artesanal}
+\end{figure}
+\color{blue}
+\textbf{Sol:}
+Se establece
+\begin{align*} 2a + c &= 8 \\ a - b &= 2 \end{align*} 
+De la segunda ecuación
+$$ a = b + 2 $$
+Sustituyendo en la primera
+$$ 2(b+2) + c = 8 $$
+$$ 2b + 4 + c = 8 $$
+$$ c = 4 - 2b $$
+Sustituyendo $a$ y $c$ en el volumen $V = abc$:
+$$ V = (b+2)(b)(4-2b) $$
+simplificando se llega a
+$$ V(b) = 8b - 2b^3 $$
+Aplicamos el criterio de la primera derivada
+$$ V'(b) = 8 - 6b^2 \Rightarrow 8 - 6b^2 = 0 $$
+$$ b^2 = \frac{8}{6} = \frac{4}{3} $$
+$$ b = \frac{2\sqrt{3}}{3} $$
+Por medio de la segunda derivada tenemos $V'(b)=-12b \Rightarrow V'(\frac{2\sqrt{3}}{3})<0$, entonces tenemos un máximo local de $f$, también se puede concluir lo mismo estudiando los intervalos de crecimiento y decrecimiento de $f$ por medio de su derivada, se debería tener que el máximo
+Se puede ver que
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagenes/maximo_local.png}
+\end{figure}
+
+Finalmente el máximo volumen de $V(b)$:
+$$ V_{\text{máx}} = V\left(\frac{2\sqrt{3}}{3}\right) = 8\left(\frac{2\sqrt{3}}{3}\right) - 2\left(\frac{2\sqrt{3}}{3}\right)^3 $$
+Llegando a
+$$ V_{\text{máx}} = \frac{32\sqrt{3}}{9} $$
+\color{black}
+
+\end{enumerate}
+\end{document}

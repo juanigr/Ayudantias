@@ -1,0 +1,447 @@
+\documentclass[letterpaper,12pt]{article}
+\oddsidemargin -1.0cm \textwidth 16.5cm
+%\usepackage[latin1]{inputenc}
+%\usepackage[spanish]{babel}
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{tcolorbox}
+\usepackage{comment}
+%\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{anyfontsize}
+\usepackage{bbm}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{listings}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[left=1.5cm,top=2cm,right=1.5cm, bottom=2cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolor}{rgb}{0.95,0.95,0.92}
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0}
+	\definecolor{ballblue}{rgb}{0.13, 0.67, 0.8}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolor},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\tiende}{\rightarrow}
+\newcommand{\borel}{\mathcal{B}}
+\newcommand{\proba}{\mathbb{P}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\partes}{\mathcal{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{V}ar}
+\newcommand{\1}{\mathbbm{1}}
+% fin macros
+
+
+%\fancypagestyle{plain}{%
+%\fancyhf{}
+%\lhead{\footnotesize\itshape\bfseries\rightmark}
+%\rhead{\footnotesize\itshape\bfseries\leftmark}}
+%\pagestyle{plain}
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Ayudantía con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+
+%Encabezado
+\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+\[
+\vspace{-1.7cm}
+\]
+
+\begin{minipage}{11.5 cm}
+\begin{flushleft}
+\hspace*{-0.55cm}\textbf{ING1002-2  Cálculo Diferencial e Integral}\\
+\hspace*{-0.7cm} \textbf{Profesor:} Gonzalo Flores G.\\
+\hspace*{-0.7cm} \textbf{Ayudantes:} Juan I. Riquelme \& Cristian Acevedo R.\\
+\end{flushleft}\end{minipage}
+
+\begin{picture}(2,3)
+\put(425,-8){\includegraphics[scale=0.23]{Imagenes/logo_uoh_2.png}}
+\end{picture}
+
+\vspace{-0.2cm}
+\begin{center}
+\LARGE\textbf{Ayudantía 4: Derivadas}\\
+\large {\fontsize{13}{14}\selectfont 25 de Septiembre de 2025}
+\end{center}
+\vspace{-0.2cm}
+\begin{enumerate}[label=\textbf{P\arabic*.}, itemsep=0cm]
+\item Límites:
+\begin{enumerate}
+ \item $\displaystyle \lim_{x \to +\infty} \frac{e^{3x} - e^{-3x}}{e^{3x} + e^{-3x}}$
+ 
+ \vspace{0.5em}
+ \color{blue}
+    \noindent{\bf Sol:}  Vamos a multiplicar el númerador y el denominador por $e^{-3x}$
+$$
+\lim_{x \to +\infty} \frac{e^{3x} - e^{-3x}}{e^{3x} + e^{-3x}} \cdot \left(\dfrac{e^{-3x}}{e^{-3x}}\right) = \lim_{x \to +\infty} \frac{1 - e^{-6x}}{1 + e^{-6x}}
+ = \frac{1 - 0}{1 + 0} = 1
+$$
+\color{black}
+\item
+$\displaystyle \lim_{x \to +\infty}  \sqrt{3x^2 + 8x + 6} - \sqrt{3x^2 + 3x + 6} $
+
+ \vspace{0.5em}
+ \color{blue}
+    \noindent{\bf Sol:} 
+\[
+= \lim_{x \to +\infty} \left( \sqrt{3x^2 + 8x + 6} - \sqrt{3x^2 + 3x + 6} \right) \cdot \frac{\sqrt{3x^2 + 8x + 6} + \sqrt{3x^2 + 3x + 6}}{\sqrt{3x^2 + 8x + 6} + \sqrt{3x^2 + 3x + 6}}  
+\]
+\[
+= \lim_{x \to +\infty} \frac{5x}{\sqrt{3x^2 + 8x + 6} + \sqrt{3x^2 + 3x + 6}} = \lim_{x \to +\infty} \frac{5x}{\sqrt{3x^2 + 8x + 6} + \sqrt{3x^2 + 3x + 6}} \cdot \frac{\frac{1}{x}}{\frac{1}{x}}
+\]
+\[
+= \lim_{x \to +\infty} \frac{5}{\sqrt{3 + \frac{8}{x} + \frac{6}{x^2}} + \sqrt{3 + \frac{3}{x} + \frac{6}{x^2}}}
+= \frac{5}{2\sqrt{3}}
+\]
+\color{black}
+\item \textbf{[Ejercicio Extra]}$\displaystyle \lim_{x \to +\infty} \frac{\sen^2(x)}{x^2 + 1}$
+
+ \vspace{0.5em}
+ \color{blue}
+    \noindent{\bf Sol:} 
+    Sabemos que \( 0 \leq \sen^2(x) \leq 1 \), entonces multiplicando por $\dfrac{1}{x^2+1}$2:
+\[
+0 \leq \frac{\sen^2(x)}{x^2 + 1} \leq \frac{1}{x^2 + 1}
+\]
+y como:
+\[
+\lim_{x \to +\infty} \frac{1}{x^2 + 1} = 0
+\]
+Por el \textbf{Teorema del Sandwich}, se concluye que:
+\[
+\lim_{x \to +\infty} \frac{\sen^2(x)}{x^2 + 1} = 0
+\]    
+\color{black}
+
+\item $\displaystyle \lim_{x \to \frac{\pi}{2}} (1 + \cos x)^{3 \sec x}$
+
+ \vspace{0.5em}
+ \color{blue}
+    \noindent{\bf Sol:}  Partamos recordando el siguiente \textbf{Límite notable:}
+\[
+\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e
+\]
+Arreglemoslo un poquito, sea \(\frac{1}{x} = u\), cuando \( x \to \infty \), entonces \(u \to 0\), reemplazando:
+\[
+\Rightarrow \lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = \lim_{u \to 0} (1 + u)^{\frac{1}{u}} = e
+\]
+Ahora resolvemos el límite, tenemos que
+\[
+\lim_{x \to \frac{\pi}{2}} (1 + \cos(x))^{3 \sec(x)}
+= \lim_{x \to \frac{\pi}{2}} (1 + \cos(x))^{\frac{3}{\cos(x)}}
+\]
+Cambio de variable! Sea \(\cos(x) = u\), entonces cuando \(x \to \frac{\pi}{2} \Rightarrow u \to 0\), reemplazando:
+\[
+\Rightarrow \lim_{x \to \frac{\pi}{2}} (1 + \cos(x))^{\frac{3}{\cos(x)}} =\lim_{u \to 0} (1 + u)^{\frac{3}{u}} = \left( \lim_{u \to 0} (1 + u)^{\frac{1}{u}} \right)^3 = e^3 \quad \textcolor{blue}{\text{(Por el límite notable del inicio)}}
+\]
+\color{black}
+\end{enumerate}
+\item \textbf{[Ejercicio Extra]} Para cada una de las siguientes funciones, calcule todas las as\'{\i}ntotas (horizontales, verticales y oblicuas, si existen).
+\begin{enumerate}
+    \item $\displaystyle f(x) = \frac{x}{\sqrt{x^2 - 1}}$.
+    
+     \color{blue}
+    \noindent{\bf Sol:} 
+
+\textbf{Horizontal:} 
+\[
+ \lim_{x \to \infty} \frac{x}{\sqrt{x^2 - 1}} = 
+\lim_{x \to \infty} \frac{\dfrac{x}{x}}{\sqrt{\dfrac{x^2}{x^2} - \dfrac{1}{x^2}}} =
+\lim_{x \to \infty} \frac{1}{\sqrt{1 - \frac{1}{x^2}}}
+= \frac{1}{\sqrt{1 - 0}} = 1
+\]
+Luego, tenemos asíntota horizontal en \( y = 1 \).
+
+\textbf{Vertical:}
+\[
+x^2 - 1 = 0 \Rightarrow x = \pm 1 
+\]
+Luego, tenemos asíntota vertical en \( x = 1 \) y $x=-1$.
+
+\textbf{Oblicua:} No hay, ya que $\displaystyle \lim_{x\to \infty} f(x)=1$, lo cual ya es la asíntota horizontal.
+\color{black}
+    
+    \item $\displaystyle h(x) = e^{2/x}$.
+
+ \color{blue}
+    \noindent{\bf Sol:} 
+    
+\textbf{Horizontal:}
+\[
+\lim_{x \to \infty} e^{\frac{2}{x}} = e^0 = 1 \Rightarrow y = 1 \quad \text{es asíntota horizontal.}
+\]
+\textbf{Vertical:} \( x = 0 \), ya que 
+\[
+\lim_{x \to 0} e^{\frac{2}{x}} = e^{\infty} = \infty,
+\quad \text{cumple la definición.}
+\]
+\textbf{Oblicua:} No hay, ya que $\displaystyle \lim_{x\to \infty} h(x)=1$, lo cual ya es la asíntota horizontal.
+\color{black}
+\end{enumerate}
+
+\item Calcule la derivada de las siguientes funciones:
+\begin{enumerate}
+    \item \( f(x) = x^3 + 2e^x \sqrt{x} \)
+
+ \color{blue}
+    \noindent{\bf Sol:} Partamos con el primer término
+    \[
+    (x^3)' = 3x^2
+    \]
+    ahora para \( 2e^x \sqrt{x} = 2e^x x^{1/2} \), usamos la regla del producto:
+    \[
+    (2e^x x^{1/2})' = 2\left( (e^x)' \cdot x^{1/2} + e^x \cdot (x^{1/2})' \right)
+    \]
+    \[
+    = 2\left( e^x \cdot x^{1/2} + e^x \cdot \frac{1}{2}x^{-1/2} \right)
+    = 2e^x\left( x^{1/2} + \frac{1}{2}x^{-1/2} \right)
+  \]
+  \[ f'(x) = 3x^2 + 2e^x\left( x^{1/2} + \frac{1}{2}x^{-1/2} \right)
+    \]
+
+    
+\color{black}
+
+    \item \( f(x) = x(\sen x + \cos x) + 3e^x \)
+
+ \color{blue}
+    \noindent{\bf Sol:} Aplicamos la regla del producto al primer término
+\[
+\left[ x(\sen x + \cos x) \right]' =x'(\sen x + \cos x) + x(\sen x + \cos x)' = (\sen x + \cos x) + x(\cos x - \sen x) 
+\]
+derivamos el segundo término
+\[
+(3e^x)' = 3e^x
+\]
+\[
+f'(x) = (\sen x + \cos x) + x(\cos x - \sen x) + 3e^x
+\]
+\color{black}
+
+    \item \( f(x) = \dfrac{2}{6 + 6x + 3x^2} \)
+
+ \color{blue}
+    \noindent{\bf Sol:} Usamos la regla de la división:
+\[
+f'(x)= \frac{0 - 2(6 + 6x)}{(6 + 6x + 3x^2)^2} = \frac{-2(6 + 6x)}{(6 + 6x + 3x^2)^2}
+\]
+\color{black}
+
+    \item \( f(x) = \dfrac{x^2 \cos(x)}{\sqrt{x}} \)
+
+ \color{blue}
+    \noindent{\bf Sol:} Primero vemos que
+    
+\[
+(x^2 \cos(x))' = 2x \cos(x) - x^2 \sen(x)
+\]
+Además la derivada de $\sqrt{x}$, es\( = x^{1/2}\), entonces, aplicamos la regla de la división:
+\[
+f'(x) = \frac{(2x \cos(x) - x^2 \sen(x)) \cdot \sqrt{x} - x^2 \cos(x) \cdot \frac{1}{2}x^{-1/2}}{x}
+\]
+\color{black}
+
+\end{enumerate}
+\item Calcule las derivadas de las siguientes funciones usando Regla De La Cadena:
+\begin{enumerate}
+    \item\( f(x) = \sen^3(x) \cos^8(x) \)
+
+ \color{blue}
+    \noindent{\bf Sol:} 
+Sea \( f(x) = u(x) v(x) \) con \( u(x) = \sen^3(x) \) y \( v(x) = \cos^8(x) \). Derivamos usando la regla del producto y de la cadena:
+\[
+u'(x) = 3 \sen^2(x) \cos(x)
+\]
+\[
+v'(x) = 8 \cos^7(x)(-\sen x) = -8 \cos^7(x) \sen(x)
+\]
+Por lo tanto,
+\[
+f'(x) = u'(x)v(x) + u(x)v'(x) = 3 \sen^2(x) \cos(x) \cdot \cos^8(x) - 8 \sen^3(x) \cos^7(x) \sen(x)
+\]
+\[
+ = 3 \sen^2(x) \cos^9(x) - 8 \sen^4(x) \cos^7(x)
+\]
+\color{black}
+    
+    \item  \( g(x) = \dfrac{\ln\left( \sqrt[5]{x^2 + 1} \right)}{x^n} \)
+
+ \color{blue}
+    \noindent{\bf Sol:} 
+
+Primero simplificamos el logaritmo:
+\[
+\ln\left( \sqrt[5]{x^2 + 1} \right) = \frac{1}{5} \ln(x^2 + 1)
+\]
+Entonces
+\[
+g(x) = \frac{1}{5} \cdot \frac{\ln(x^2 + 1)}{x^n}
+\]
+Usamos la regla de la división con
+\[
+u(x) = \ln(x^2 + 1), \quad v(x) = x^n
+\]
+Calculamos las derivadas:
+\[
+u'(x) = \frac{2x}{x^2 + 1}, \quad v'(x) = n x^{n-1}
+\]
+Derivamos usando la regla del cociente:
+\[
+g'(x) = \frac{1}{5} \cdot \frac{u'(x)v(x) - u(x)v'(x)}{[v(x)]^2} = \frac{1}{5} \cdot \frac{\frac{2x}{x^2 + 1} \cdot x^n - \ln(x^2 + 1) \cdot n x^{n-1}}{x^{2n}}
+\]  
+\color{black}
+
+\item $u(x)=2^x,\ \text{Hint: Use que $a=e^{\ln(a)},\forall a>0$}.$
+
+ \color{blue}
+    \noindent{\bf Sol:} 
+\begin{align*}
+u(x) &= 2^x \\
+     &= \left(e^{\ln(2)}\right)^x \quad \text{(ya que $2 = e^{\ln(2)}$)} \\
+     &= e^{x \ln(2)}
+\end{align*} 
+Luego 
+\begin{align*}
+u(x) &= e^{x \ln(2)} \\
+u'(x) &= \frac{d}{dx} \left( e^{x \ln(2)} \right) \\
+      &= \ln(2) \cdot e^{x \ln(2)} \\
+      &= \ln(2) \cdot 2^x
+\end{align*}
+\color{black}
+
+
+    
+    \item \( h(x) = \ln(1 + e^{-3x + 2}) \)
+
+ \color{blue}
+    \noindent{\bf Sol:} 
+Sea \( u(x) = 1 + e^{-3x + 2} \), entonces
+\[
+h(x) = \ln(u(x)) \implies (h(x))'=\frac{1}{u'(x)}
+\]
+Calculamos \( u'(x) \):
+\[
+u'(x) = \left(1 + e^{-3x + 2}\right)' = -3 e^{-3x + 2}
+\]
+Por lo tanto,
+\[
+h'(x) = \frac{-3 e^{-3x + 2}}{1 + e^{-3x + 2}}
+\]
+
+\color{black}
+    
+\end{enumerate}
+\item Encontrar la ecuaci\'on de la recta tangente a la curva $x^2 + y^2 - xy = 1$ en el punto $(1,1)$.
+
+ \color{blue}
+    \noindent{\bf Sol:} 
+Diferenciamos implícitamente:
+\[
+2x + 2y \frac{dy}{dx} - \left( y + x \frac{dy}{dx} \right) = 0
+\]
+\[
+2y \frac{dy}{dx} - x \frac{dy}{dx} = y - 2x
+\]
+Sacamos factor común \(\dfrac{dy}{dx}\):
+\[
+\frac{dy}{dx}(2y - x) = y - 2x
+\]
+\[
+\frac{dy}{dx} = \frac{y - 2x}{2y - x}
+\]
+Evaluamos en \((1,1)\):
+\[
+\left.\frac{dy}{dx}\right|_{(1,1)} = \frac{1 - 2(1)}{2(1) - 1} = \frac{1 - 2}{2 - 1} = \frac{-1}{1} = -1
+\]
+
+Ecuación de la recta tangente:
+\[
+y - 1 = -1 (x - 1) \implies y = -x + 2
+\]
+\color{black}
+\item Encuentre la ecuaci\'on de la recta tangente a la gr\'afica de la funci\'on $f(x) = \arctan x$ en $x = 1$.
+
+ \color{blue}
+    \noindent{\bf Sol:} 
+Partamos con la derivada de $\arctan x$
+\[
+(\arctan x)' = \frac{1}{1 + x^2}
+\]
+
+Evaluamos en \( x = 1 \):
+\[
+f'(1) = \frac{1}{1 + 1^2} = \frac{1}{2}
+\]
+
+Calculamos el punto para $y$:
+\[
+f(1) = \arctan(1) = \frac{\pi}{4}
+\]
+
+Ecuación de la recta tangente:
+\[
+y - \frac{\pi}{4} = \frac{1}{2}(x - 1) \implies y = \frac{1}{2}x + \frac{\pi}{4} - \frac{1}{2}
+\]
+
+\end{enumerate}
+
+\end{document}

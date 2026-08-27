@@ -1,0 +1,415 @@
+\documentclass[letterpaper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{framed}
+\usepackage{amsfonts,setspace}
+\usepackage{amsmath}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+\usepackage{amssymb}
+\usepackage{dsfont}
+\usepackage{anysize}
+\usepackage{pdfpages}
+\usepackage{multicol}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[left=1.5cm,top=0.9cm,right=1.5cm, bottom=1.4cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+% Page
+\oddsidemargin -0.4in
+\textwidth 7in
+\topmargin -0.6in
+\textheight 9.1in
+\parindent 0em
+\parskip 1ex
+
+%Teoremas, Lemas, etc.
+\theoremstyle{plain}
+\newtheorem{teo}{Teorema}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposici\'on}
+\newtheorem{cor}{Corolario}
+\theoremstyle{definition}
+\newtheorem{defi}{Definici\'on}
+\newtheorem{eje}{Ejemplo}
+\newtheorem{obs}{Observaci\'on}
+% fin macros
+
+% Comandos más usados
+% Conjuntos
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R} \times \mathbb{R}}
+% Flechas
+\newcommand{\ssi}{\Longleftrightarrow}
+\newcommand{\imp}{\Longrightarrow}
+\newcommand{\pmi}{\Longleftarrow}
+% Trigonométricas
+\newcommand{\sen}{\text{sen}}
+
+\usepackage{versions}
+\includeversion{solution}
+
+\let\epsilon\varepsilon
+
+\begin{document}
+\def\Pauta{1}
+%%%%%ESCRIBIR 1 si quieren ver la Prueba con Pauta%%%%
+%%%%%ESCRIBIR 0 si quieren ver sólo la Ayudantía%%%%
+	
+	\fancyhead[L]{\itshape{Escuela de Ingeniería}}
+	\fancyhead[R]{\itshape{Universidad de O'Higgins}}
+	
+	\begin{minipage}{11.5 cm}
+         \vspace{-6mm}
+		\begin{flushleft}
+			\vspace{1mm}
+			\textbf{ING1002-2 Cálculo Diferencial e Integral}\\
+			\textbf{Profesor:}  Gonzalo Flores G.  \\
+			\textbf{Ayudante:}  Juan I. Riquelme \& Cristian Acevedo R. \\
+		\end{flushleft}
+	\end{minipage}
+	
+	\begin{picture}(2,3)
+		\put(430,9.5){\includegraphics[scale=0.22]{Imagenes/UOH.png}}
+	\end{picture}
+	\vspace{-6mm}
+	\begin{center}
+		\LARGE \bf{Ayudantía 10: Primitivas}
+	\end{center}
+    \vspace{-8.8mm}
+    \begin{center}
+		9 de octubre de 2025
+	\end{center}
+
+\begin{enumerate}[\textbf{P\arabic{enumi}.}]
+\item Aplicar un cambio de variable para calcular las siguientes primitivas:
+\begin{enumerate}
+    \item $\displaystyle \int \frac{x}{\sqrt{x^2 - a^2}} \, dx$.
+
+    \color{blue}
+    \textbf{Sol:} Resolver con cambio de variable $u=x^2-a^2$.
+    \color{black}
+
+\item $\displaystyle
+\int x e^{x^2-1}\,dx
+$
+
+\color{blue}    
+\textbf{Sol:} Hacemos el cambio de variable \(u=x^2-1\), entonces
+\[
+du=2x\,dx.
+\]
+Obtenemos:
+\[
+\int x e^{x^2-1}\,dx
+= \frac{1}{2}\int e^{u}\,du
+= \frac{1}{2}e^{u}+C
+= \frac{1}{2}e^{x^2-1}+C.
+\]
+    \color{black}
+    
+    
+    \item $\displaystyle \int e^x \sqrt{1 + e^x} \, dx$.
+
+\color{blue}
+    \textbf{Sol:} \[
+u=1+e^x \quad\Rightarrow\quad du=e^x\,dx.
+\]
+\[
+\int e^x \sqrt{1+e^x}\,dx
+= \int \sqrt{u}\,du
+= \frac{2}{3}u^{3/2}+C.
+\]
+Volviendo a \(x\):
+\[
+\displaystyle \int e^x \sqrt{1+e^x}\,dx
+= \frac{2}{3}\left(1+e^x\right)^{3/2}+C
+\]
+    \color{black}
+    
+    \item $\displaystyle \int x\sqrt{9-x^2}\, dx$.
+
+    \color{blue}
+\textbf{Sol:} 
+Usamos el cambio de variable \(v=9-x^2\), con
+\[
+dv=-2x\,dx,
+\]
+con lo que
+\[
+\int x\sqrt{9-x^2}\,dx
+= -\frac{1}{2}\int \sqrt{v}\,dv
+= -\frac{1}{2}\cdot \frac{2}{3}v^{3/2}+C
+= -\frac{1}{3}v^{3/2}+C.
+\]
+Volviendo a la variable \(x\):
+\[
+\int x\sqrt{9-x^2}\,dx
+= -\frac{1}{3}(9-x^2)^{3/2}+C.
+\]
+
+    \color{black}
+    
+\end{enumerate}
+\item Sean $f, g, h$ funciones tales que $f(x) = g'(x) + h'(x)g(x)$. Usando la definición de primitiva muestre que
+\[
+\int f(x)e^{h(x)}dx = e^{h(x)}g(x) + c.
+\]
+\color{blue}
+    \textbf{Sol:} Dado que nos dan el valor de la primitiva
+\[
+F(x)=e^{h(x)}g(x)+c.
+\]
+\[
+F'(x)=e^{h(x)}g'(x)+e^{h(x)}h'(x)g(x)
+     =e^{h(x)}\bigl(g'(x)+h'(x)g(x)\bigr).
+\]
+dado que
+\[
+f(x)=g'(x)+h'(x)g(x),
+\]
+\[
+F'(x)=f(x)e^{h(x)}.
+\]
+Por la definición de primitiva, se concluye que
+\[
+\int f(x)e^{h(x)}\,dx = e^{h(x)}g(x)+c.
+\]
+    \color{black}
+
+\item Sean $f, g : [-1, 1] \to \mathbb{R}$ las funciones dadas por $f(x) = \sqrt{1 - x^2}$ y $g(x) = \sqrt{3} - \sqrt{1 - x^2}$.
+\begin{enumerate}
+    \item Calcular el área encerrada entre ambas curvas y las rectas $x = -1$ y $x = 1$.
+
+\color{blue}
+    \textbf{Sol:} propuesto
+    \color{black}
+    
+    \item Determinar el volumen del sólido generado por la rotación de la región encerrada por el eje $OX$ y la curva $h(x) = \min\{f(x), g(x)\}$, en torno a $OX$.
+
+\color{blue}
+    \textbf{Sol:} propuesto 
+    \color{black}
+    
+\end{enumerate}
+
+\item Hallar el área de la región encerrada entre las parábolas $y = \frac{x^2}{3}$ e $y = 4 - \frac{2}{3}x^2$.
+
+\color{blue}
+    \textbf{Sol:} Hallamos primero los puntos de intersección para hallar en que intervalos una función está por arriba de la otra
+\[
+\frac{x^2}{3}=4-\frac{2}{3}x^2.
+\]
+\[
+x^2=12-2x^2,
+\qquad
+3x^2=12,
+\qquad
+x^2=4,
+\qquad
+x=\pm2.
+\]
+
+En el intervalo $[-2,2]$ la parábola superior es
+\(
+y=4-\frac{2}{3}x^2
+\)
+y la inferior es
+\(
+y=\frac{x^2}{3}.
+\), basta con sacar un valor del intervalo y reemplazar.
+\[
+A=\int_{-2}^{2}
+\left[\left(4-\frac{2}{3}x^2\right)-\frac{x^2}{3}\right]dx
+=\int_{-2}^{2}\left(4-x^2\right)dx.
+\]
+
+Calculando la integral,
+\[
+A=\left[4x-\frac{x^3}{3}\right]_{-2}^{2}
+=\left(8-\frac{8}{3}\right)-\left(-8+\frac{8}{3}\right)
+=\frac{32}{3}.
+\]
+    \color{black}
+
+
+\item Sea $f : \mathbb{R} \to \mathbb{R}_{+}$ derivable y tal que $\displaystyle \int f(x)dx = f(x)$.
+\begin{enumerate}
+    \item Muestre que $\frac{f'(x)}{f(x)} = 1$ y deduzca que $\displaystyle \int \frac{f'(x)}{f(x)}dx = x + c$.
+
+    \color{blue}
+    \textbf{Sol:} Como
+\[
+\int f(x)\,dx=f(x),
+\]
+por definición de primitiva derivando a ambos lados, tenemos
+\[
+f(x)=f'(x).
+\]
+Como $f(x)>0$ para todo $x$, podemos dividir y obtenemos
+\[
+\frac{f'(x)}{f(x)}=1.
+\]
+\[
+\int \frac{f'(x)}{f(x)}\,dx=\int 1\,dx=x+c.
+\]
+
+    \color{black}
+    \item Concluya que $f(x) = e^{x+c}$.
+
+    \color{blue}
+    \textbf{Sol:} De lo anterior tenemos
+\[
+\int \frac{f'(x)}{f(x)}\,dx=x+c.
+\]
+Haciendo un cambio de variable $f(x)=u \rightarrow f'(x)dx=du$, entonces
+\[
+\int \frac{f'(x)}{f(x)}\,dx=\int\frac{du}{u}=\ln(u)=\ln f(x)
+\]
+por lo tanto
+\[
+\ln f(x)=x+c.
+\]
+Exponenciando ambos lados
+\[
+f(x)=e^{x+c}
+\]
+
+
+    \color{black}
+\end{enumerate}
+
+\item Considere las funciones $F, G : [0, 1] \to \mathbb{R}$ dadas por
+    \[
+    F(x) = \int_0^x t e^{-t} dt, \quad G(x) = \int_0^x \cos(\pi x) e^{-t^2} dt.
+    \]
+    Sea además $H : [0, 1] \to \mathbb{R}$ la función dada por
+    \[
+    H(x) = F(x) - 2G'(x).
+    \]
+    \begin{enumerate}
+        \item Justifique que $H$ es Riemann integrable en $[0, 1]$.
+
+        \color{blue}
+    \textbf{Sol:} Por TFC
+\[
+F'(x)=x e^{-x}.
+\]
+\[
+G(x)=\cos(\pi x)\int_0^x e^{-t^2}\,dt.
+\]
+\[
+G'(x)
+=-\pi\sen(\pi x)\int_0^x e^{-t^2}\,dt
++\cos(\pi x)e^{-x^2}.
+\]
+\[
+H(x)=F(x)-2G'(x)
+=\int_0^x t e^{-t}\,dt
++2\pi\sen(\pi x)\int_0^x e^{-t^2}\,dt
+-2\cos(\pi x)e^{-x^2}.
+\]
+Cada término de esta expresión es continuo en $[0,1]$, luego $H$ es continua en $[0,1]$. Como toda función continua en un intervalo cerrado y acotado es Riemann integrable, se concluye que
+\[
+H \text{ es Riemann integrable en } [0,1].
+\]
+
+    \color{black}
+        
+        \item Demuestre que
+        \[
+        H(1) = 1.
+        \]
+        \textbf{Indicación:} puede usar que $\displaystyle \int_0^1 t e^{-t} dt = -2e^{-1} + 1$.
+
+        \color{blue}
+    \textbf{Sol:} Evaluamos en $x=1$:
+\[
+H(1) = (-2 e^{-1} + 1) + 0 + 2 e^{-1} = 1.
+\]
+
+    \color{black}
+    \end{enumerate}
+
+
+\color{blue}
+    \textbf{Propuesto}
+\color{black}
+
+\item \textbf{[Propuesto].-} Calcule las siguientes primitivas usando cambio de variable
+
+    
+\begin{enumerate}
+    \item $\displaystyle \int \frac{1}{x} \ln(x) dx$
+
+    \color{blue}
+    \textbf{Sol:} Sea \( u = \ln(x) \), entonces derivando, \( du = \frac{1}{x} dx \), reemplazando
+\[
+\int u \, du = \frac{u^2}{2} + C = \frac{(\ln(x))^2}{2} + C
+\]
+Por lo tanto:
+\[
+\int \frac{\ln(x)}{x} \, dx = \frac{(\ln(x))^2}{2} + C
+\]
+    \color{black}
+\item $\displaystyle \int \frac{\cos(x) e^{\frac{3}{\sen(x)}}}{\sen^2(x)} dx$
+
+ \color{blue}
+    \textbf{Sol:} Realizamos el siguiente cambio de variable:
+\[
+u = \frac{3}{\sen(x)} \ \Rightarrow \
+du = \frac{d}{dx} \left( \frac{3}{\sen(x)} \right) 
+= -\frac{3 \cos(x)}{\sen^2(x)} \, dx
+\ \Rightarrow  - \frac{\sen^2(x)}{3 \cos(x)} \, du = dx
+\]
+Sustituimos
+\[
+\int \frac{\cos(x) \cdot e^u}{\sen^2(x)} \cdot dx 
+= \int \frac{\cos(x) \cdot e^u}{\sen^2(x)} \cdot 
+\left( - \frac{\sen^2(x)}{3 \cos(x)} \, du \right)
+\]
+\[
+= - \frac{1}{3} \int e^u \, du
+= - \frac{1}{3} e^u + C
+\]
+Desaciendo el cambio de variable
+\[
+= - \frac{1}{3} e^{\frac{3}{\sen(x)}} + C
+\]
+\color{black}
+\item $\displaystyle \int \frac{e^{\ln(x)}}{x} dx$
+
+ \color{blue}
+    \textbf{Sol:} Queda propuesto el desarrollo con cambio de variable, pero decir que se puede resolver facilmente de esta manera\[
+\int \frac{e^{\ln(x)}}{x} \, dx = \int \frac{x}{x} \, dx = \int 1 \, dx = x + C \quad\quad \textcolor{blue}{\text{(Recordando que}\  e^{\ln(x)}=x)}
+\]
+\color{black}
+\item $\displaystyle\int \frac{x^2 + 1}{x - 1} dx$
+
+ \color{blue}
+    \textbf{Sol:} Dividimos el polinomio:
+\[
+\frac{x^2 + 1}{x - 1} = x + 1 + \frac{2}{x - 1}
+\]
+Por lo tanto,
+\[
+\int \frac{x^2 + 1}{x - 1} \, dx = \int (x + 1) \, dx + \int \frac{2}{x - 1} \, dx = \frac{x^2}{2} + x + 2 \ln|x - 1| + C
+\]
+    \color{black}
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+\end{document}
