@@ -1,2 +1,3 @@
 Segunda línea
 generador rex besto mecha
+seq 1 20
