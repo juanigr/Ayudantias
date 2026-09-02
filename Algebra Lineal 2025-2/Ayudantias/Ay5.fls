@@ -1,0 +1,8 @@
+PWD /mnt/c/Users/ignac/Ayudantias/Algebra Lineal 2025-2/Ayudantias
+INPUT /var/lib/texmf/web2c/luahbtex/lualatex.fmt
+INPUT ./Ay5.pdf
+OUTPUT Ay5.log
+INPUT /usr/share/texlive/texmf-dist/tex/latex/tex-ini-files/lualatexquotejobname.lua
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ltluatex.lua
+INPUT /usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.lua
+INPUT /usr/share/texlive/texmf-dist/tex/luatex/lua-uni-algos/lua-uni-stage-tables.lua
