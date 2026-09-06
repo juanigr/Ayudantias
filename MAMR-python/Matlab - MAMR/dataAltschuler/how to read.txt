@@ -1,0 +1,18 @@
+% Read dataAlstschuler
+ for i=1:M
+     d = load(strcat(num2str(i),'.txt'));
+     d(:,[1 2]) = round(K*d(:,[1 2]));
+     im= zeros(K,K);
+     n = size(d,1);
+     for j = 1:n
+         ii=d(j,1);
+         jj=d(j,2);
+         jj=max(jj,1);
+         im(ii,jj) = d(j,3);
+     end
+     Q(:,i) = reshape(im,K*K,1);
+     subplot(2,5,i)
+     imagesc(1-im)
+     colormap hot
+ end
+ clear im
