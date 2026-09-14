@@ -1,0 +1,7 @@
+ID,Nombre,Departamento,Salario,Fecha de Ingreso
+1,Juan Pérez,Recursos Humanos,3500,2019-03-15
+2,Ana Gómez,Marketing,4200,2018-07-22
+3,Luis Rodríguez,IT,5000,2020-01-10
+4,Sofía Castillo,Recursos Humanos,4000,2019-11-12
+5,Mario Bros,Marketing,3800,2021-05-16
+6,Laura Núñez,IT,4500,2017-12-05
