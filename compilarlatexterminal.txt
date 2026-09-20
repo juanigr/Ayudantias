@@ -1,6 +1,0 @@
-1. usar touch para crear un archivo .txt
-2. usar vscode para escribir el codigo
-3. copiar y usar nano sobre el archivo .tex para editarlo
-4. compilar con pdflatex archivo.tex
-5. compilar pdf con xdg-open archivo.pdf
-
